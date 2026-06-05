@@ -1,0 +1,145 @@
+---
+import { getFaqs } from '../../lib/data';
+import TinaMarkdown from '@tinacms/astro/TinaMarkdown.astro';
+
+const faqsResult = await getFaqs();
+const allFaqs = faqsResult?.data?.faqsConnection?.edges ?? [];
+const faqs = allFaqs
+  .map((e: { node: unknown }) => e.node)
+  .sort((a: { order?: number }, b: { order?: number }) => (a.order ?? 0) - (b.order ?? 0)) as Array<{
+    question: string;
+    answer?: unknown;
+    order?: number;
+  }>;
+---
+
+<section class="faq surface-light">
+  <div class="container section">
+    <h2 class="faq-heading">Frequently asked questions</h2>
+    <dl class="faq-list">
+      {faqs.map((faq, i) => (
+        <div class="faq-item">
+          <dt class="faq-question">
+            <button
+              class="faq-trigger"
+              aria-expanded="false"
+              aria-controls={`faq-answer-${i}`}
+              id={`faq-btn-${i}`}
+            >
+              <span>{faq.question}</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </dt>
+          <dd
+            class="faq-answer"
+            id={`faq-answer-${i}`}
+            role="region"
+            aria-labelledby={`faq-btn-${i}`}
+            hidden
+          >
+            <div class="faq-answer-inner prose">
+              {faq.answer && <TinaMarkdown content={faq.answer} />}
+            </div>
+          </dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>
+
+<style>
+  .faq-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    color: var(--color-text-dark);
+    margin-bottom: 2rem;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 760px;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid rgba(30, 39, 48, 0.1);
+  }
+
+  .faq-item:first-child {
+    border-top: 1px solid rgba(30, 39, 48, 0.1);
+  }
+
+  .faq-question {
+    display: block;
+  }
+
+  .faq-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: var(--font-heading);
+    font-size: 1.0625rem;
+    font-weight: 400;
+    color: var(--color-text-dark);
+    transition: color 0.2s;
+  }
+
+  .faq-trigger:hover {
+    color: var(--color-accent);
+  }
+
+  .faq-trigger[aria-expanded="true"] {
+    color: var(--color-accent);
+  }
+
+  .faq-icon {
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+    color: var(--color-accent);
+  }
+
+  .faq-trigger[aria-expanded="true"] .faq-icon {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    overflow: hidden;
+  }
+
+  .faq-answer-inner {
+    padding-bottom: 1.25rem;
+    color: var(--color-text-dark);
+    font-size: 0.9375rem;
+    line-height: 1.65;
+  }
+</style>
+
+<script>
+  const triggers = document.querySelectorAll<HTMLButtonElement>('.faq-trigger');
+  triggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const expanded = trigger.getAttribute('aria-expanded') === 'true';
+      const answerId = trigger.getAttribute('aria-controls');
+      const answer = answerId ? document.getElementById(answerId) : null;
+
+      trigger.setAttribute('aria-expanded', String(!expanded));
+      if (answer) {
+        if (expanded) {
+          answer.hidden = true;
+        } else {
+          answer.hidden = false;
+        }
+      }
+    });
+  });
+</script>

@@ -1,0 +1,13 @@
+{
+  "question": "How long does it take?",
+  "order": 2,
+  "answer": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [{ "type": "text", "text": "[Placeholder — Content Writing will draft this answer.]" }]
+      }
+    ]
+  }
+}

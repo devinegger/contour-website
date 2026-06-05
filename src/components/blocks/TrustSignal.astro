@@ -1,0 +1,47 @@
+---
+interface Props {
+  statement: string;
+  badgeSlot?: string;
+}
+
+const { statement, badgeSlot } = Astro.props;
+---
+
+<section class="trust topo-bg">
+  <div class="container section">
+    <div class="trust-inner">
+      <p class="trust-statement">{statement}</p>
+      {badgeSlot && (
+        <div class="trust-badge">
+          <img src={badgeSlot} alt="Trust badge" width="120" height="60" />
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .trust-inner {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .trust-statement {
+    font-family: var(--font-heading);
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--color-text);
+    max-width: 60ch;
+    line-height: 1.5;
+    opacity: 0.9;
+  }
+
+  .trust-badge img {
+    display: block;
+    opacity: 0.8;
+  }
+</style>

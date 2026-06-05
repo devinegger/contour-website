@@ -1,0 +1,30 @@
+---
+import TinaMarkdown from '@tinacms/astro/TinaMarkdown.astro';
+
+interface Props {
+  body?: unknown;
+}
+
+const { body } = Astro.props;
+---
+
+<section class="richtext surface-light">
+  <div class="container section">
+    <div class="prose richtext-body">
+      {body && <TinaMarkdown content={body} />}
+    </div>
+  </div>
+</section>
+
+<style>
+  .richtext-body {
+    color: var(--color-text-dark);
+    font-size: 1.0625rem;
+  }
+
+  .richtext-body :global(h1),
+  .richtext-body :global(h2),
+  .richtext-body :global(h3) {
+    color: var(--color-text-dark);
+  }
+</style>

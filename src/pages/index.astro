@@ -1,0 +1,40 @@
+---
+export const prerender = true;
+import Layout from '../components/layout/Layout.astro';
+import PageSpeedWidget from '../components/blocks/PageSpeedWidget.astro';
+import { blockComponents } from '../lib/blockComponents';
+import { getPage, getSiteSettings } from '../lib/data';
+
+const pageResult = await getPage('home');
+const settingsResult = await getSiteSettings();
+const page = pageResult?.data?.pages;
+const settings = settingsResult?.data?.siteSettings;
+
+type BlockData = Record<string, unknown> & { __typename: string };
+const blocks: BlockData[] = (page?.blocks ?? []) as BlockData[];
+
+// PageSpeedWidget is hardcoded between differentiators and trust-signal
+const diffIdx = blocks.findIndex((b) => b.__typename === 'PagesBlocksDifferentiators');
+const beforeWidget = diffIdx >= 0 ? blocks.slice(0, diffIdx + 1) : blocks;
+const afterWidget = diffIdx >= 0 ? blocks.slice(diffIdx + 1) : [];
+---
+
+<Layout
+  title={page?.seo?.metaTitle ?? settings?.defaultSeoTitle ?? 'Contour'}
+  description={page?.seo?.metaDescription ?? settings?.defaultSeoDescription ?? ''}
+  ogImage={page?.seo?.ogImage ?? settings?.defaultOgImage ?? ''}
+>
+  {beforeWidget.map((block) => {
+    const Component = blockComponents[block.__typename] as unknown;
+    if (!Component) return null;
+    return <Component {...block} />;
+  })}
+
+  <PageSpeedWidget />
+
+  {afterWidget.map((block) => {
+    const Component = blockComponents[block.__typename] as unknown;
+    if (!Component) return null;
+    return <Component {...block} />;
+  })}
+</Layout>

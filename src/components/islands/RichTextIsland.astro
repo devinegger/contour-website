@@ -1,0 +1,26 @@
+---
+import RichText from '../blocks/RichText.astro';
+import { tinaField } from '@tinacms/astro/tina-field';
+
+interface Props {
+  data?: {
+    data?: {
+      pages?: {
+        blocks?: Array<Record<string, unknown>>;
+      };
+    };
+  };
+}
+
+const { data } = Astro.props;
+const page = data?.data?.pages;
+const block = page?.blocks?.find((b) => (b as { _template?: string })._template === 'rich-text') as {
+  body?: unknown;
+} | undefined;
+---
+
+{block && (
+  <div data-tina-field={tinaField(page, 'blocks')}>
+    <RichText body={block.body} />
+  </div>
+)}

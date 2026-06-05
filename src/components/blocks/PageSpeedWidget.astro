@@ -1,0 +1,327 @@
+---
+// No server-side props — this is a fully client-side component
+---
+
+<section class="psi-section topo-bg">
+  <div class="container section">
+    <div class="psi-inner">
+      <div class="psi-header">
+        <h2 class="psi-title">How fast is your site?</h2>
+        <p class="psi-subtitle">Enter your URL to get a free Google PageSpeed score.</p>
+      </div>
+
+      <form class="psi-form" id="psi-form" novalidate>
+        <div class="psi-input-row">
+          <label for="psi-url" class="sr-only">Your website URL</label>
+          <input
+            type="url"
+            id="psi-url"
+            class="psi-input"
+            placeholder="https://yoursite.com"
+            autocomplete="url"
+            required
+          />
+          <button type="submit" class="btn btn-primary psi-submit" id="psi-btn">
+            See My Score
+          </button>
+        </div>
+        <p class="psi-error" id="psi-error" role="alert" hidden></p>
+      </form>
+
+      <div class="psi-result" id="psi-result" hidden>
+        <div class="score-display">
+          <div class="score-circle" id="score-circle">
+            <span class="score-number" id="score-number">--</span>
+          </div>
+          <div class="score-meta">
+            <span class="score-label" id="score-label"></span>
+            <span class="score-url" id="score-url"></span>
+          </div>
+        </div>
+        <a href="/contact" class="btn btn-secondary psi-cta">
+          Tell me why — show me how to fix it
+        </a>
+      </div>
+
+      <div class="psi-loading" id="psi-loading" hidden>
+        <div class="psi-spinner" aria-label="Loading your PageSpeed score…" role="status">
+          <span class="sr-only">Loading…</span>
+        </div>
+        <p class="psi-loading-text">Checking your site…</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .psi-section {
+    padding: clamp(3rem, 8vw, 5rem) var(--container-padding);
+  }
+
+  .psi-inner {
+    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .psi-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .psi-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--color-text);
+  }
+
+  .psi-subtitle {
+    color: var(--color-text);
+    opacity: 0.75;
+    font-size: 1rem;
+  }
+
+  .psi-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .psi-input-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 500px) {
+    .psi-input-row {
+      flex-direction: row;
+    }
+  }
+
+  .psi-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    background-color: rgba(245, 240, 235, 0.07);
+    border: 1px solid rgba(245, 240, 235, 0.2);
+    border-radius: 4px;
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: border-color 0.2s;
+  }
+
+  .psi-input::placeholder {
+    color: var(--color-text);
+    opacity: 0.35;
+  }
+
+  .psi-input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+
+  .psi-submit {
+    flex-shrink: 0;
+  }
+
+  .psi-error {
+    font-size: 0.875rem;
+    color: #e07070;
+  }
+
+  /* Result */
+  .psi-result {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .score-display {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .score-circle {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    border: 4px solid var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: border-color 0.3s;
+  }
+
+  .score-circle[data-rating="good"] {
+    border-color: var(--color-accent);
+  }
+
+  .score-circle[data-rating="needs-work"] {
+    border-color: #d4a017;
+  }
+
+  .score-circle[data-rating="critical"] {
+    border-color: #c0504a;
+  }
+
+  .score-number {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  .score-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .score-label {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+
+  [data-rating="good"] ~ .score-meta .score-label,
+  .score-label[data-rating="good"] {
+    color: var(--color-accent);
+  }
+
+  .score-url {
+    font-size: 0.875rem;
+    color: var(--color-text);
+    opacity: 0.6;
+    word-break: break-all;
+  }
+
+  .psi-cta {
+    align-self: flex-start;
+    font-size: 0.9rem;
+  }
+
+  /* Loading */
+  .psi-loading {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .psi-spinner {
+    width: 28px;
+    height: 28px;
+    border: 3px solid rgba(74, 140, 140, 0.25);
+    border-top-color: var(--color-accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  .psi-loading-text {
+    color: var(--color-text);
+    opacity: 0.7;
+    font-size: 0.9375rem;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('psi-form') as HTMLFormElement | null;
+  const input = document.getElementById('psi-url') as HTMLInputElement | null;
+  const btn = document.getElementById('psi-btn') as HTMLButtonElement | null;
+  const resultEl = document.getElementById('psi-result');
+  const loadingEl = document.getElementById('psi-loading');
+  const errorEl = document.getElementById('psi-error');
+  const scoreNumber = document.getElementById('score-number');
+  const scoreLabel = document.getElementById('score-label');
+  const scoreUrl = document.getElementById('score-url');
+  const scoreCircle = document.getElementById('score-circle');
+
+  function setLoading(loading: boolean) {
+    if (!btn || !loadingEl || !resultEl) return;
+    btn.disabled = loading;
+    if (loading) {
+      loadingEl.hidden = false;
+      resultEl.hidden = true;
+      if (errorEl) errorEl.hidden = true;
+    } else {
+      loadingEl.hidden = true;
+    }
+  }
+
+  function showError(msg: string) {
+    if (!errorEl) return;
+    errorEl.textContent = msg;
+    errorEl.hidden = false;
+  }
+
+  function getRating(score: number): { label: string; rating: string } {
+    if (score >= 90) return { label: 'Good', rating: 'good' };
+    if (score >= 50) return { label: 'Needs work', rating: 'needs-work' };
+    return { label: 'Critical', rating: 'critical' };
+  }
+
+  function getLabelColor(rating: string) {
+    if (rating === 'good') return 'var(--color-accent)';
+    if (rating === 'needs-work') return '#d4a017';
+    return '#c0504a';
+  }
+
+  if (form && input) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const raw = input.value.trim();
+      if (!raw) {
+        showError('Please enter a URL.');
+        return;
+      }
+
+      let url = raw;
+      if (!/^https?:\/\//i.test(url)) {
+        url = 'https://' + url;
+      }
+
+      try {
+        new URL(url);
+      } catch {
+        showError('That doesn\'t look like a valid URL. Try https://yoursite.com');
+        return;
+      }
+
+      setLoading(true);
+
+      try {
+        const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&strategy=mobile`;
+        const res = await fetch(apiUrl);
+        if (!res.ok) {
+          throw new Error(`PageSpeed API returned ${res.status}`);
+        }
+        const data = await res.json();
+        const score = Math.round((data?.lighthouseResult?.categories?.performance?.score ?? 0) * 100);
+        const { label, rating } = getRating(score);
+
+        if (scoreNumber) scoreNumber.textContent = String(score);
+        if (scoreLabel) {
+          scoreLabel.textContent = label;
+          scoreLabel.style.color = getLabelColor(rating);
+        }
+        if (scoreUrl) scoreUrl.textContent = url;
+        if (scoreCircle) scoreCircle.setAttribute('data-rating', rating);
+        if (resultEl) resultEl.hidden = false;
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : String(err);
+        showError(`Couldn't fetch your score — ${msg}. Try again or check your URL.`);
+      } finally {
+        setLoading(false);
+      }
+    });
+  }
+</script>

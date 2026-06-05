@@ -1,0 +1,28 @@
+{
+  "name": "Crest",
+  "slug": "crest",
+  "tier": "crest",
+  "tagline": "[Placeholder — a tight, punchy tagline for the top-tier plan.]",
+  "description": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [{ "type": "text", "text": "[Placeholder — Content Writing will draft this description.]" }]
+      }
+    ]
+  },
+  "price": "$397/mo",
+  "setupFee": "$997",
+  "inclusions": [
+    "Everything in Elevated",
+    "Conversion rate optimization review",
+    "Email marketing setup & monthly send",
+    "Quarterly strategy call",
+    "Unlimited content edits",
+    "Custom reporting dashboard",
+    "Dedicated account manager"
+  ],
+  "ctaLabel": "Get started",
+  "ctaUrl": "/contact"
+}

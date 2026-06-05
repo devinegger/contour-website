@@ -1,0 +1,88 @@
+---
+import TinaMarkdown from '@tinacms/astro/TinaMarkdown.astro';
+
+interface Props {
+  opening?: string;
+  storyBody?: unknown;
+  howWeWork?: unknown;
+  locationLine?: string;
+  ctaLabel?: string;
+  ctaUrl?: string;
+}
+
+const { opening, storyBody, howWeWork, locationLine, ctaLabel, ctaUrl } = Astro.props;
+---
+
+<section class="about-story surface-light">
+  <div class="container section">
+    <div class="story-content">
+      {opening && (
+        <p class="story-opening">{opening}</p>
+      )}
+
+      {storyBody && (
+        <div class="story-section prose">
+          <TinaMarkdown content={storyBody} />
+        </div>
+      )}
+
+      {howWeWork && (
+        <div class="story-section prose">
+          <h2 class="story-subhead">How we work</h2>
+          <TinaMarkdown content={howWeWork} />
+        </div>
+      )}
+
+      {locationLine && (
+        <p class="story-location">{locationLine}</p>
+      )}
+
+      {ctaLabel && ctaUrl && (
+        <div class="story-cta-wrap">
+          <a href={ctaUrl} class="btn btn-primary">{ctaLabel}</a>
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .story-content {
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .story-opening {
+    font-family: var(--font-heading);
+    font-size: clamp(1.375rem, 2.5vw, 1.875rem);
+    font-weight: 400;
+    color: var(--color-text-dark);
+    line-height: 1.4;
+  }
+
+  .story-section {
+    color: var(--color-text-dark);
+    font-size: 1.0625rem;
+  }
+
+  .story-subhead {
+    font-family: var(--font-heading);
+    font-size: 1.375rem;
+    color: var(--color-text-dark);
+    margin-bottom: 1rem;
+  }
+
+  .story-location {
+    font-style: italic;
+    color: var(--color-text-dark);
+    opacity: 0.7;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+  }
+
+  .story-cta-wrap {
+    padding-top: 0.5rem;
+  }
+</style>

@@ -1,0 +1,28 @@
+{
+  "name": "Elevated",
+  "slug": "elevated",
+  "tier": "elevated",
+  "tagline": "[Placeholder — a tight, punchy tagline for the mid-tier plan.]",
+  "description": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [{ "type": "text", "text": "[Placeholder — Content Writing will draft this description.]" }]
+      }
+    ]
+  },
+  "price": "$197/mo",
+  "setupFee": "$497",
+  "inclusions": [
+    "Everything in Baseline",
+    "Blog / content publishing",
+    "Google Business Profile optimization",
+    "Monthly local SEO audit",
+    "Two rounds of content edits per month",
+    "Performance & core web vitals monitoring",
+    "Priority support response"
+  ],
+  "ctaLabel": "Get started",
+  "ctaUrl": "/contact"
+}

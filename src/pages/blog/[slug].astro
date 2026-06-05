@@ -1,0 +1,75 @@
+---
+export const prerender = true;
+import Layout from '../../components/layout/Layout.astro';
+import TinaMarkdown from '@tinacms/astro/TinaMarkdown.astro';
+import { getPost } from '../../lib/data';
+import client from '../../../tina/__generated__/client';
+
+export async function getStaticPaths() {
+  const postsResult = await client.queries.postsConnection();
+  const posts = postsResult?.data?.postsConnection?.edges ?? [];
+  return posts
+    .map((edge: { node: { slug?: string } }) => edge.node?.slug)
+    .filter((slug: string | undefined): slug is string => Boolean(slug))
+    .map((slug: string) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+const postResult = await getPost(slug ?? '');
+const post = postResult?.data?.posts;
+---
+
+<Layout
+  title={post?.title ? `${post.title} — Contour` : 'Contour'}
+  description={post?.excerpt ?? ''}
+>
+  <article class="post-page topo-bg">
+    <div class="container section">
+      <header class="post-header">
+        <time class="post-date">{post?.date}</time>
+        <h1 class="post-title">{post?.title}</h1>
+      </header>
+      <div class="post-body prose">
+        {post?.body && <TinaMarkdown content={post.body} />}
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .post-header {
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .post-date {
+    font-size: 0.875rem;
+    color: var(--color-text);
+    opacity: 0.55;
+  }
+
+  .post-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--color-text);
+    line-height: 1.15;
+  }
+
+  .post-body {
+    max-width: 68ch;
+    color: var(--color-text);
+    font-size: 1.0625rem;
+  }
+
+  .post-body :global(h1),
+  .post-body :global(h2),
+  .post-body :global(h3) {
+    color: var(--color-text);
+  }
+
+  .post-body :global(a) {
+    color: var(--color-accent);
+  }
+</style>

@@ -1,0 +1,91 @@
+---
+export const prerender = true;
+import Layout from '../../components/layout/Layout.astro';
+import { getPosts } from '../../lib/data';
+
+const postsResult = await getPosts();
+const posts = (postsResult?.data?.postsConnection?.edges ?? []).map(
+  (e: { node: unknown }) => e.node
+) as Array<{
+  title: string;
+  slug: string;
+  date?: string;
+  excerpt?: string;
+}>;
+---
+
+<Layout title="Blog — Contour" description="Articles from the Contour team.">
+  <section class="blog-index topo-bg">
+    <div class="container section">
+      <h1 class="blog-title">Blog</h1>
+      {posts.length === 0 ? (
+        <p class="blog-empty">No posts yet — check back soon.</p>
+      ) : (
+        <ul class="post-list" role="list">
+          {posts.map((post) => (
+            <li class="post-item">
+              <article>
+                <time class="post-date">{post.date}</time>
+                <h2 class="post-title">
+                  <a href={`/blog/${post.slug}`}>{post.title}</a>
+                </h2>
+                {post.excerpt && <p class="post-excerpt">{post.excerpt}</p>}
+              </article>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .blog-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--color-text);
+    margin-bottom: 2.5rem;
+  }
+
+  .blog-empty {
+    color: var(--color-text);
+    opacity: 0.65;
+  }
+
+  .post-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .post-date {
+    font-size: 0.875rem;
+    color: var(--color-text);
+    opacity: 0.55;
+  }
+
+  .post-title {
+    font-family: var(--font-heading);
+    font-size: 1.375rem;
+    color: var(--color-text);
+    margin-top: 0.25rem;
+  }
+
+  .post-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .post-title a:hover {
+    color: var(--color-accent);
+  }
+
+  .post-excerpt {
+    color: var(--color-text);
+    opacity: 0.75;
+    margin-top: 0.5rem;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+</style>

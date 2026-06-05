@@ -1,0 +1,145 @@
+fragment PagesParts on Pages {
+  __typename
+  title
+  slug
+  seo {
+    __typename
+    metaTitle
+    metaDescription
+    ogImage
+  }
+  blocks {
+    __typename
+    ... on PagesBlocksHero {
+      headline
+      subheading
+      primaryCtaLabel
+      primaryCtaUrl
+      secondaryCtaLabel
+      secondaryCtaUrl
+      trustAnchor
+    }
+    ... on PagesBlocksServices_preview {
+      _placeholder
+    }
+    ... on PagesBlocksDifferentiators {
+      items {
+        __typename
+        headline
+        body
+      }
+    }
+    ... on PagesBlocksTrust_signal {
+      statement
+      badgeSlot
+    }
+    ... on PagesBlocksCta_strip {
+      headline
+      ctaLabel
+      ctaUrl
+      background
+    }
+    ... on PagesBlocksServices_full {
+      _placeholder
+    }
+    ... on PagesBlocksCost_comparison {
+      headline
+      intro
+      rows {
+        __typename
+        label
+        competitorCost
+        contourCost
+      }
+    }
+    ... on PagesBlocksSecondary_services {
+      card1 {
+        __typename
+        headline
+        description
+        price
+        ctaLabel
+        ctaUrl
+      }
+      card2 {
+        __typename
+        headline
+        description
+        price
+        ctaLabel
+        ctaUrl
+      }
+    }
+    ... on PagesBlocksFaq {
+      _placeholder
+    }
+    ... on PagesBlocksRich_text {
+      body
+    }
+    ... on PagesBlocksAbout_story {
+      opening
+      storyBody
+      howWeWork
+      locationLine
+      ctaLabel
+      ctaUrl
+    }
+    ... on PagesBlocksContact_form {
+      pageHeader
+      responseTimeLine
+      bookingLinkLabel
+      bookingLinkUrl
+      locationLine
+    }
+  }
+}
+
+fragment PostsParts on Posts {
+  __typename
+  title
+  slug
+  date
+  excerpt
+  body
+}
+
+fragment ServicesParts on Services {
+  __typename
+  name
+  slug
+  tier
+  tagline
+  description
+  price
+  setupFee
+  inclusions
+  ctaLabel
+  ctaUrl
+}
+
+fragment FaqsParts on Faqs {
+  __typename
+  question
+  answer
+  order
+}
+
+fragment SiteSettingsParts on SiteSettings {
+  __typename
+  businessName
+  tagline
+  locationLine
+  navLinks {
+    __typename
+    label
+    url
+  }
+  footerLinks {
+    __typename
+    label
+    url
+  }
+  defaultSeoTitle
+  defaultSeoDescription
+  defaultOgImage
+}
