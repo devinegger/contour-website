@@ -1,0 +1,13 @@
+{
+  "question": "Isn't this expensive?",
+  "order": 1,
+  "answer": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [{ "type": "text", "text": "[Placeholder — Content Writing will draft this answer.]" }]
+      }
+    ]
+  }
+}

@@ -1,0 +1,221 @@
+---
+import { getSiteSettings } from '../../lib/data';
+
+const settings = await getSiteSettings();
+const navLinks = settings?.data?.siteSettings?.navLinks ?? [
+  { label: 'Services', url: '/services' },
+  { label: 'About', url: '/about' },
+  { label: 'Contact', url: '/contact' },
+];
+---
+
+<header class="nav-header">
+  <nav class="nav-inner container" aria-label="Main navigation">
+    <!-- Logo -->
+    <a href="/" class="nav-logo" aria-label="Contour — Home">
+      <svg
+        class="nav-mark"
+        width="32"
+        height="32"
+        viewBox="0 0 32 32"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <path
+          d="M16 4C9.373 4 4 9.373 4 16s5.373 12 12 12"
+          stroke="#4A8C8C"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          fill="none"
+        />
+        <path
+          d="M16 9C12.134 9 9 12.134 9 16s3.134 7 7 7"
+          stroke="#4A8C8C"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          fill="none"
+        />
+      </svg>
+      <span class="nav-wordmark">Contour.</span>
+    </a>
+
+    <!-- Desktop nav links -->
+    <ul class="nav-links hide-mobile" role="list">
+      {navLinks.map((link: { label: string; url: string }) => (
+        <li>
+          <a href={link.url} class="nav-link">{link.label}</a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Right side -->
+    <div class="nav-actions">
+      <a href="/contact" class="btn btn-primary">Book a Call</a>
+      <button
+        class="nav-hamburger hide-desktop"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        aria-label="Open navigation menu"
+        id="hamburger-btn"
+      >
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <ul class="mobile-links" role="list">
+      {navLinks.map((link: { label: string; url: string }) => (
+        <li>
+          <a href={link.url} class="mobile-link">{link.label}</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</header>
+
+<style>
+  .nav-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--color-dark);
+    border-bottom: 1px solid rgba(74, 140, 140, 0.15);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    gap: 2rem;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .nav-logo:hover {
+    text-decoration: none;
+  }
+
+  .nav-mark {
+    flex-shrink: 0;
+  }
+
+  .nav-wordmark {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text);
+    letter-spacing: -0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-link {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-text);
+    text-decoration: none;
+    opacity: 0.85;
+    transition: opacity 0.2s;
+  }
+
+  .nav-link:hover {
+    opacity: 1;
+    text-decoration: none;
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+  }
+
+  .nav-hamburger {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .hamburger-bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-text);
+    border-radius: 2px;
+    transition: transform 0.2s;
+  }
+
+  .mobile-menu {
+    background-color: var(--color-dark);
+    border-top: 1px solid rgba(74, 140, 140, 0.15);
+    padding: 1rem var(--container-padding) 1.5rem;
+  }
+
+  .mobile-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .mobile-link {
+    display: block;
+    padding: 0.875rem 0;
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    font-weight: 500;
+    color: var(--color-text);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(245, 240, 235, 0.08);
+  }
+
+  .mobile-link:hover {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  @media (min-width: 769px) {
+    .nav-hamburger {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const btn = document.getElementById('hamburger-btn');
+  const menu = document.getElementById('mobile-menu');
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      if (expanded) {
+        menu.hidden = true;
+      } else {
+        menu.hidden = false;
+      }
+    });
+  }
+</script>

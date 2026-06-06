@@ -1,0 +1,18 @@
+{
+  "title": "Contact",
+  "slug": "contact",
+  "seo": {
+    "metaTitle": "Let's Talk — Contour",
+    "metaDescription": "Book a call or send us a message. We'll get back to you promptly."
+  },
+  "blocks": [
+    {
+      "_template": "contact_form",
+      "pageHeader": "Let's talk.",
+      "responseTimeLine": "You'll hear from us promptly.",
+      "bookingLinkLabel": "",
+      "bookingLinkUrl": "",
+      "locationLine": "Located in Travelers Rest, SC. Serving Greenville and the surrounding area — and anywhere your business is."
+    }
+  ]
+}

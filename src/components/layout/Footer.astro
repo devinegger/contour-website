@@ -1,0 +1,182 @@
+---
+import { getSiteSettings } from '../../lib/data';
+
+const settings = await getSiteSettings();
+const site = settings?.data?.siteSettings;
+const footerLinks = site?.footerLinks ?? [];
+const locationLine = site?.locationLine ?? 'Located in Travelers Rest, SC. Serving Greenville and the surrounding area — and anywhere your business is.';
+const year = new Date().getFullYear();
+---
+
+<footer class="footer topo-bg">
+  <div class="footer-inner container">
+    <div class="footer-top">
+      <a href="/" class="footer-logo" aria-label="Contour — Home">
+        <svg
+          width="28"
+          height="28"
+          viewBox="0 0 32 32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path
+            d="M16 4C9.373 4 4 9.373 4 16s5.373 12 12 12"
+            stroke="#4A8C8C"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            fill="none"
+          />
+          <path
+            d="M16 9C12.134 9 9 12.134 9 16s3.134 7 7 7"
+            stroke="#4A8C8C"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            fill="none"
+          />
+        </svg>
+        <span class="footer-wordmark">Contour.</span>
+      </a>
+
+      {footerLinks.length > 0 && (
+        <nav aria-label="Footer navigation">
+          <ul class="footer-links" role="list">
+            {footerLinks.map((link: { label: string; url: string }) => (
+              <li>
+                <a href={link.url} class="footer-link">{link.label}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
+    </div>
+
+    <p class="footer-location">{locationLine}</p>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; {year} Contour. All rights reserved.</p>
+      <ul class="footer-legal" role="list">
+        <li><a href="/privacy" class="footer-legal-link">Privacy Policy</a></li>
+        <li><a href="/terms" class="footer-legal-link">Terms</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding: 3rem var(--container-padding) 2rem;
+    border-top: 1px solid rgba(74, 140, 140, 0.2);
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .footer-top {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .footer-top {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+  }
+
+  .footer-logo:hover {
+    text-decoration: none;
+  }
+
+  .footer-wordmark {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer-link {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--color-text);
+    opacity: 0.75;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .footer-link:hover {
+    opacity: 1;
+    text-decoration: none;
+  }
+
+  .footer-location {
+    font-size: 0.875rem;
+    color: var(--color-text);
+    opacity: 0.6;
+    line-height: 1.5;
+  }
+
+  .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(245, 240, 235, 0.08);
+  }
+
+  @media (min-width: 640px) {
+    .footer-bottom {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  .footer-copy {
+    font-size: 0.8125rem;
+    color: var(--color-text);
+    opacity: 0.5;
+  }
+
+  .footer-legal {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer-legal-link {
+    font-size: 0.8125rem;
+    color: var(--color-text);
+    opacity: 0.5;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .footer-legal-link:hover {
+    opacity: 0.8;
+    text-decoration: none;
+  }
+</style>

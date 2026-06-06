@@ -1,0 +1,28 @@
+{
+  "name": "Baseline",
+  "slug": "baseline",
+  "tier": "baseline",
+  "tagline": "[Placeholder — a tight, punchy tagline for the entry plan.]",
+  "description": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [{ "type": "text", "text": "[Placeholder — Content Writing will draft this description.]" }]
+      }
+    ]
+  },
+  "price": "$97/mo",
+  "setupFee": "$297",
+  "inclusions": [
+    "Custom Astro website",
+    "Managed hosting on Cloudflare CDN",
+    "Security & software updates",
+    "Monthly performance report",
+    "One round of content edits per month",
+    "Contact form",
+    "Basic local SEO setup"
+  ],
+  "ctaLabel": "Get started",
+  "ctaUrl": "/contact"
+}

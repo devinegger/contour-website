@@ -1,0 +1,13 @@
+{
+  "question": "Do I own my site?",
+  "order": 4,
+  "answer": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [{ "type": "text", "text": "[Placeholder — Content Writing will draft this answer.]" }]
+      }
+    ]
+  }
+}

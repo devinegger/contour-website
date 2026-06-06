@@ -1,0 +1,68 @@
+{
+  "title": "Services",
+  "slug": "services",
+  "seo": {
+    "metaTitle": "Services — Contour",
+    "metaDescription": "Transparent pricing for modern websites. Baseline, Elevated, and Crest plans — plus WordPress migration and custom builds."
+  },
+  "blocks": [
+    {
+      "_template": "rich_text",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "h2",
+            "children": [{ "type": "text", "text": "Simple plans. Real results." }]
+          },
+          {
+            "type": "p",
+            "children": [{ "type": "text", "text": "[Placeholder — Content Writing will draft this section header copy.]" }]
+          }
+        ]
+      }
+    },
+    {
+      "_template": "services_full"
+    },
+    {
+      "_template": "cost_comparison",
+      "headline": "What does it actually cost?",
+      "intro": "[Placeholder — Content Writing will draft this intro.]",
+      "rows": [
+        { "label": "Website hosting", "competitorCost": "$20–80/mo", "contourCost": "Included" },
+        { "label": "Website maintenance", "competitorCost": "$99–299/mo", "contourCost": "Included" },
+        { "label": "Security & updates", "competitorCost": "$49–149/mo", "contourCost": "Included" },
+        { "label": "SEO basics", "competitorCost": "$200–500/mo", "contourCost": "Included" },
+        { "label": "Total", "competitorCost": "$368–1,028/mo", "contourCost": "From $97/mo" }
+      ]
+    },
+    {
+      "_template": "secondary_services",
+      "card1": {
+        "headline": "Have a WordPress site you're ready to leave in the dust?",
+        "description": "[Placeholder — Content Writing will draft this description.]",
+        "price": "$297 flat",
+        "ctaLabel": "Get the details",
+        "ctaUrl": "/contact"
+      },
+      "card2": {
+        "headline": "Don't have a site yet…?",
+        "description": "[Placeholder — Content Writing will draft this description.]",
+        "price": "$497 + $47/mo",
+        "ctaLabel": "Let's build it",
+        "ctaUrl": "/contact"
+      }
+    },
+    {
+      "_template": "faq"
+    },
+    {
+      "_template": "cta_strip",
+      "headline": "Ready to get started?",
+      "ctaLabel": "Book a Call",
+      "ctaUrl": "/contact",
+      "background": "dark"
+    }
+  ]
+}

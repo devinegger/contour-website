@@ -1,0 +1,94 @@
+---
+interface Props {
+  headline: string;
+  subheading?: string;
+  primaryCtaLabel?: string;
+  primaryCtaUrl?: string;
+  secondaryCtaLabel?: string;
+  secondaryCtaUrl?: string;
+  trustAnchor?: string;
+  tinaField?: (obj: unknown, field: string) => string;
+  data?: unknown;
+}
+
+const {
+  headline,
+  subheading,
+  primaryCtaLabel,
+  primaryCtaUrl,
+  secondaryCtaLabel,
+  secondaryCtaUrl,
+  trustAnchor,
+} = Astro.props;
+---
+
+<section class="hero topo-bg">
+  <div class="hero-inner container">
+    <div class="hero-content">
+      <h1 class="hero-headline">{headline}</h1>
+      {subheading && <p class="hero-subheading">{subheading}</p>}
+      <div class="hero-ctas">
+        {primaryCtaLabel && primaryCtaUrl && (
+          <a href={primaryCtaUrl} class="btn btn-primary">{primaryCtaLabel}</a>
+        )}
+        {secondaryCtaLabel && secondaryCtaUrl && (
+          <a href={secondaryCtaUrl} class="btn btn-secondary">{secondaryCtaLabel}</a>
+        )}
+      </div>
+      {trustAnchor && <p class="hero-trust">{trustAnchor}</p>}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: clamp(5rem, 15vw, 10rem) var(--container-padding);
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-inner {
+    width: 100%;
+  }
+
+  .hero-content {
+    max-width: 780px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .hero-headline {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 600;
+    color: var(--color-text);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-subheading {
+    font-family: var(--font-body);
+    font-size: clamp(1.0625rem, 2vw, 1.25rem);
+    color: var(--color-text);
+    opacity: 0.8;
+    line-height: 1.6;
+    max-width: 60ch;
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+    margin-top: 0.5rem;
+  }
+
+  .hero-trust {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--color-text);
+    opacity: 0.55;
+    margin-top: 0.25rem;
+  }
+</style>

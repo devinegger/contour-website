@@ -1,0 +1,40 @@
+---
+import Hero from '../blocks/Hero.astro';
+import { tinaField } from '@tinacms/astro/tina-field';
+
+interface Props {
+  data?: {
+    data?: {
+      pages?: {
+        blocks?: Array<Record<string, unknown>>;
+      };
+    };
+  };
+}
+
+const { data } = Astro.props;
+const page = data?.data?.pages;
+const heroBlock = page?.blocks?.find((b) => (b as { _template?: string })._template === 'hero') as {
+  headline?: string;
+  subheading?: string;
+  primaryCtaLabel?: string;
+  primaryCtaUrl?: string;
+  secondaryCtaLabel?: string;
+  secondaryCtaUrl?: string;
+  trustAnchor?: string;
+} | undefined;
+---
+
+{heroBlock && (
+  <div data-tina-field={tinaField(page, 'blocks')}>
+    <Hero
+      headline={heroBlock.headline ?? ''}
+      subheading={heroBlock.subheading}
+      primaryCtaLabel={heroBlock.primaryCtaLabel}
+      primaryCtaUrl={heroBlock.primaryCtaUrl}
+      secondaryCtaLabel={heroBlock.secondaryCtaLabel}
+      secondaryCtaUrl={heroBlock.secondaryCtaUrl}
+      trustAnchor={heroBlock.trustAnchor}
+    />
+  </div>
+)}

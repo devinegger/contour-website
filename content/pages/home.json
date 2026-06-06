@@ -1,0 +1,51 @@
+{
+  "title": "Home",
+  "slug": "home",
+  "seo": {
+    "metaTitle": "Contour — Web Design & Local Marketing for Growing Businesses",
+    "metaDescription": "Fast, modern websites and local marketing for businesses in Greenville, SC and beyond."
+  },
+  "blocks": [
+    {
+      "_template": "hero",
+      "headline": "You didn't start a business to spend morning coffee wrestling with your website.",
+      "subheading": "[Placeholder — Content Writing will draft this]",
+      "primaryCtaLabel": "Book a Call",
+      "primaryCtaUrl": "/contact",
+      "secondaryCtaLabel": "Get a Free Site Review",
+      "secondaryCtaUrl": "/contact",
+      "trustAnchor": ""
+    },
+    {
+      "_template": "services_preview"
+    },
+    {
+      "_template": "differentiators",
+      "items": [
+        {
+          "headline": "Craftsmanship",
+          "body": "[Placeholder — Content Writing will draft this differentiator body copy.]"
+        },
+        {
+          "headline": "Local",
+          "body": "[Placeholder — Content Writing will draft this differentiator body copy.]"
+        },
+        {
+          "headline": "A firm, not a vendor",
+          "body": "[Placeholder — Content Writing will draft this differentiator body copy.]"
+        }
+      ]
+    },
+    {
+      "_template": "trust_signal",
+      "statement": "You're looking at it. This site is built on the exact stack we build for clients."
+    },
+    {
+      "_template": "cta_strip",
+      "headline": "Ready to talk?",
+      "ctaLabel": "Book a Call",
+      "ctaUrl": "/contact",
+      "background": "dark"
+    }
+  ]
+}

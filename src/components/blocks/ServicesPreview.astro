@@ -1,0 +1,110 @@
+---
+import { getServices } from '../../lib/data';
+
+const servicesResult = await getServices();
+const allServices = servicesResult?.data?.servicesConnection?.edges ?? [];
+const tiers = ['baseline', 'elevated', 'crest'];
+const services = allServices
+  .map((e: { node: unknown }) => e.node)
+  .filter((s: { tier?: string }) => tiers.includes(s.tier ?? ''));
+---
+
+<section class="services-preview surface-light">
+  <div class="container section">
+    <h2 class="preview-heading">Simple, clear plans</h2>
+    <p class="preview-intro">Pick the tier that fits where you are. Move up as you grow.</p>
+    <div class="preview-cards">
+      {services.map((service: {
+        name: string;
+        slug: string;
+        tier: string;
+        tagline?: string;
+        price?: string;
+      }) => (
+        <article class="preview-card">
+          <span class="card-tier">{service.tier}</span>
+          <h3 class="card-name">{service.name}</h3>
+          {service.tagline && <p class="card-tagline">{service.tagline}</p>}
+          {service.price && <p class="card-price">{service.price}</p>}
+          <a href={`/services/${service.slug}`} class="card-cta btn btn-secondary">
+            Learn more
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .preview-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    color: var(--color-text-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .preview-intro {
+    color: var(--color-text-dark);
+    opacity: 0.75;
+    margin-bottom: 2.5rem;
+    font-size: 1.0625rem;
+  }
+
+  .preview-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .preview-card {
+    background: white;
+    border: 1px solid rgba(30, 39, 48, 0.1);
+    border-radius: 8px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: box-shadow 0.2s;
+  }
+
+  .preview-card:hover {
+    box-shadow: 0 4px 24px rgba(30, 39, 48, 0.08);
+  }
+
+  .card-tier {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+  }
+
+  .card-name {
+    font-family: var(--font-heading);
+    font-size: 1.375rem;
+    color: var(--color-text-dark);
+  }
+
+  .card-tagline {
+    font-size: 0.9375rem;
+    color: var(--color-text-dark);
+    opacity: 0.75;
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  .card-price {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+  }
+
+  .card-cta {
+    align-self: flex-start;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    padding: 0.625rem 1.25rem;
+  }
+</style>

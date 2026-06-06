@@ -1,0 +1,37 @@
+---
+export const prerender = true;
+import Layout from '../components/layout/Layout.astro';
+import { blockComponents } from '../lib/blockComponents';
+import { getPage, getSiteSettings } from '../lib/data';
+import client from '../../tina/__generated__/client';
+
+export async function getStaticPaths() {
+  const pagesResult = await client.queries.pagesConnection();
+  const pages = pagesResult?.data?.pagesConnection?.edges ?? [];
+  return pages
+    .map((edge: { node: { slug?: string } }) => edge.node?.slug)
+    .filter((slug: string | undefined): slug is string => Boolean(slug) && slug !== 'home')
+    .map((slug: string) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+const pageResult = await getPage(slug ?? '');
+const settingsResult = await getSiteSettings();
+const page = pageResult?.data?.pages;
+const settings = settingsResult?.data?.siteSettings;
+
+type BlockData = Record<string, unknown> & { __typename: string };
+const blocks: BlockData[] = (page?.blocks ?? []) as BlockData[];
+---
+
+<Layout
+  title={page?.seo?.metaTitle ?? settings?.defaultSeoTitle ?? 'Contour'}
+  description={page?.seo?.metaDescription ?? settings?.defaultSeoDescription ?? ''}
+  ogImage={page?.seo?.ogImage ?? settings?.defaultOgImage ?? ''}
+>
+  {blocks.map((block) => {
+    const Component = blockComponents[block.__typename] as unknown;
+    if (!Component) return null;
+    return <Component {...block} />;
+  })}
+</Layout>

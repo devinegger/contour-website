@@ -1,0 +1,35 @@
+{
+  "title": "About",
+  "slug": "about",
+  "seo": {
+    "metaTitle": "About — Contour",
+    "metaDescription": "Contour is a web design and local marketing firm based in Travelers Rest, SC. We build for growing businesses."
+  },
+  "blocks": [
+    {
+      "_template": "about_story",
+      "opening": "[Placeholder — Content Writing will draft the opening statement.]",
+      "storyBody": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [{ "type": "text", "text": "[Placeholder — Content Writing will draft the story body.]" }]
+          }
+        ]
+      },
+      "howWeWork": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [{ "type": "text", "text": "[Placeholder — Content Writing will draft the how-we-work section.]" }]
+          }
+        ]
+      },
+      "locationLine": "Located in Travelers Rest, SC. Serving Greenville and the surrounding area — and anywhere your business is.",
+      "ctaLabel": "Let's see if we're a fit.",
+      "ctaUrl": "/contact"
+    }
+  ]
+}
