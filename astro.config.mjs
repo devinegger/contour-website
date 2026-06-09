@@ -1,14 +1,12 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import tina from '@tinacms/astro/integration';
-import node from '@astrojs/node';
 
-// output: 'server' with per-page prerender = true gives a fully static site
-// at build time while allowing the tina-island SSR route for visual editing in dev.
-// At Assembly, swap @astrojs/node for @astrojs/cloudflare.
+// Pure static build. The Tina admin (/admin/index.html) is built as static
+// assets by `tinacms build` and bundled into dist/. Visual editing in dev
+// works in Tina local mode; in production it is admin-edit only.
 export default defineConfig({
-  output: 'server',
-  adapter: node({ mode: 'standalone' }),
+  output: 'static',
   integrations: [tina()],
   redirects: {
     '/admin': '/admin/index.html',
