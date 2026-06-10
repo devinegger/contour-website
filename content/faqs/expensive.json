@@ -6,7 +6,11 @@
     "children": [
       {
         "type": "p",
-        "children": [{ "type": "text", "text": "[Placeholder — Content Writing will draft this answer.]" }]
+        "children": [{ "type": "text", "text": "A WordPress site with managed hosting, a security plugin, a page-builder license, and someone to keep it updated typically runs $150–440 a month — before you count your own time. Baseline is $97/mo, hosting included. For most businesses this is a step down in cost, not up." }]
+      },
+      {
+        "type": "p",
+        "children": [{ "type": "text", "text": "Builder tools like Wix or Squarespace are cheaper on paper. But if your site is supposed to bring in work, speed and credibility matter — and a $12/mo builder site typically scores under 50 on PageSpeed. Slow sites lose leads you never even see." }]
       }
     ]
   }

@@ -2,26 +2,27 @@
   "name": "Elevated",
   "slug": "elevated",
   "tier": "elevated",
-  "tagline": "[Placeholder — a tight, punchy tagline for the mid-tier plan.]",
+  "tagline": "Get found. Get calls. Stay ahead.",
   "description": {
     "type": "root",
     "children": [
       {
         "type": "p",
-        "children": [{ "type": "text", "text": "[Placeholder — Content Writing will draft this description.]" }]
+        "children": [{ "type": "text", "text": "A site alone doesn't fill the calendar. Elevated adds the local SEO infrastructure that puts you in front of people in your area searching for what you do." }]
       }
     ]
   },
   "price": "$197/mo",
-  "setupFee": "$497",
+  "setupFee": "$1,297",
   "inclusions": [
     "Everything in Baseline",
-    "Blog / content publishing",
-    "Google Business Profile optimization",
-    "Monthly local SEO audit",
-    "Two rounds of content edits per month",
-    "Performance & core web vitals monitoring",
-    "Priority support response"
+    "Up to 12 pages, including a blog",
+    "Google Business Profile setup and optimization",
+    "Citation building — 40+ local directories",
+    "One SEO-targeted blog post per month",
+    "Automated review requests + done-for-you responses",
+    "Monthly keyword and ranking snapshot",
+    "Two content updates per month"
   ],
   "ctaLabel": "Get started",
   "ctaUrl": "/contact"

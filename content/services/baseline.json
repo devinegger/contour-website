@@ -2,26 +2,28 @@
   "name": "Baseline",
   "slug": "baseline",
   "tier": "baseline",
-  "tagline": "[Placeholder — a tight, punchy tagline for the entry plan.]",
+  "tagline": "Show up. Look the part. Get out of your way.",
   "description": {
     "type": "root",
     "children": [
       {
         "type": "p",
-        "children": [{ "type": "text", "text": "[Placeholder — Content Writing will draft this description.]" }]
+        "children": [{ "type": "text", "text": "You need a site that's fast, clean, and credible — one that does its job when someone looks you up, and doesn't need a developer to keep alive. That's Baseline." }]
       }
     ]
   },
   "price": "$97/mo",
-  "setupFee": "$297",
+  "setupFee": "$797",
   "inclusions": [
-    "Custom Astro website",
-    "Managed hosting on Cloudflare CDN",
-    "Security & software updates",
-    "Monthly performance report",
-    "One round of content edits per month",
-    "Contact form",
-    "Basic local SEO setup"
+    "5–7 pages designed and written for your business",
+    "Static stack — no WordPress, no plugins, no security patches",
+    "90+ PageSpeed score, guaranteed",
+    "Hosting, SSL, and DNS managed for you",
+    "Contact form routed to your inbox",
+    "Google Analytics + Search Console connected",
+    "One content update per month",
+    "Review monitoring + monthly review-request nudge",
+    "A monthly report a human actually wrote"
   ],
   "ctaLabel": "Get started",
   "ctaUrl": "/contact"

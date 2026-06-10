@@ -2,26 +2,27 @@
   "name": "Crest",
   "slug": "crest",
   "tier": "crest",
-  "tagline": "[Placeholder — a tight, punchy tagline for the top-tier plan.]",
+  "tagline": "Run the market, not just compete in it.",
   "description": {
     "type": "root",
     "children": [
       {
         "type": "p",
-        "children": [{ "type": "text", "text": "[Placeholder — Content Writing will draft this description.]" }]
+        "children": [{ "type": "text", "text": "You're not trying to show up — you're trying to own the category in your area. Crest puts the whole machine on top of Elevated: automation, booking, and a standing seat at the strategy table." }]
       }
     ]
   },
-  "price": "$397/mo",
-  "setupFee": "$997",
+  "price": "$497/mo",
+  "setupFee": "$2,497",
   "inclusions": [
     "Everything in Elevated",
-    "Conversion rate optimization review",
-    "Email marketing setup & monthly send",
-    "Quarterly strategy call",
-    "Unlimited content edits",
-    "Custom reporting dashboard",
-    "Dedicated account manager"
+    "Up to 20 pages",
+    "A lead magnet — written, designed, deployed with email capture",
+    "Instant SMS response to new leads + follow-up sequences",
+    "Booking integration, active and maintained",
+    "Multi-platform reputation management with 24-hour review responses",
+    "Two blog posts per month",
+    "Monthly strategy call + quarterly roadmap review"
   ],
   "ctaLabel": "Get started",
   "ctaUrl": "/contact"

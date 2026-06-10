@@ -39,7 +39,7 @@ Content files live in `content/`.
 
 ## Locked copy — do not change these in code or content
 
-- Hero headline: "You didn't start a business to spend morning coffee wrestling with your website."
+- Hero headline: "Your website should work for your business. Not the other way around." *(updated during Content Writing phase — original "morning coffee" line retired)*
 - WP Migration card headline: "Have a WordPress site you're ready to leave in the dust?"
 - Custom Build card headline: "Don't have a site yet…?"
 - Location line: "Located in Travelers Rest, SC. Serving Greenville and the surrounding area — and anywhere your business is."
@@ -55,7 +55,6 @@ Content files live in `content/`.
 
 ## What is not done yet (do not fabricate)
 
-- Real copy (Content Writing phase — placeholder text is intentional)
 - Final visual styling (Claude Design phase)
 - Tina Cloud ID
 - Real form endpoint

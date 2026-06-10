@@ -8,8 +8,8 @@
   "blocks": [
     {
       "_template": "hero",
-      "headline": "You didn't start a business to spend morning coffee wrestling with your website.",
-      "subheading": "[Placeholder — Content Writing will draft this]",
+      "headline": "Your website should work for your business. Not the other way around.",
+      "subheading": "When that side is handled, it's not the thing between you and where you're trying to go anymore.",
       "primaryCtaLabel": "Book a Call",
       "primaryCtaUrl": "/contact",
       "secondaryCtaLabel": "Get a Free Site Review",
@@ -24,15 +24,15 @@
       "items": [
         {
           "headline": "Craftsmanship",
-          "body": "[Placeholder — Content Writing will draft this differentiator body copy.]"
+          "body": "We know what it takes to be hired for skill — and we hold our work to that standard."
         },
         {
           "headline": "Local",
-          "body": "[Placeholder — Content Writing will draft this differentiator body copy.]"
+          "body": "Based in Travelers Rest, SC. As a locally owned business, we are proud to support companies in Greenville and across Upstate South Carolina."
         },
         {
           "headline": "A firm, not a vendor",
-          "body": "[Placeholder — Content Writing will draft this differentiator body copy.]"
+          "body": "Firm mindset: \"Don't prescribe before you diagnose.\" We survey the situation, build what it actually needs, then get out of the way."
         }
       ]
     },
