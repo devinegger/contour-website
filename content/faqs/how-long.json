@@ -1,13 +1,5 @@
 {
   "question": "How long does it take?",
   "order": 2,
-  "answer": {
-    "type": "root",
-    "children": [
-      {
-        "type": "p",
-        "children": [{ "type": "text", "text": "Build timeline is typically 1–2 weeks from the point we have your content and a clear direction. Discovery and strategy happen first — that's where we learn enough about your business to build something that actually fits. We don't skip that step, and we don't apologize for it." }]
-      }
-    ]
-  }
+  "answer": "Build timeline is typically 1–2 weeks from the point we have your content and a clear direction. Discovery and strategy happen first — that's where we learn enough about your business to build something that actually fits. We don't skip that step, and we don't apologize for it."
 }

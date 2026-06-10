@@ -8,19 +8,7 @@
   "blocks": [
     {
       "_template": "rich_text",
-      "body": {
-        "type": "root",
-        "children": [
-          {
-            "type": "h2",
-            "children": [{ "type": "text", "text": "Three levels of presence. One honest question: where are you right now?" }]
-          },
-          {
-            "type": "p",
-            "children": [{ "type": "text", "text": "Not every business needs the same thing. Some need to get found. Some need to get leads. Some are ready to run the market. We'll tell you which fits — and if none of them do, we'll tell you that too." }]
-          }
-        ]
-      }
+      "body": "## Three levels of presence. One honest question: where are you right now?\n\nNot every business needs the same thing. Some need to get found. Some need to get leads. Some are ready to run the market. We'll tell you which fits — and if none of them do, we'll tell you that too."
     },
     {
       "_template": "services_full"
