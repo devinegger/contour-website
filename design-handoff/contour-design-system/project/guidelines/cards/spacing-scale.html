@@ -1,0 +1,29 @@
+<!-- @dsCard group="Spacing" viewport="700x180" name="Spacing scale" subtitle="4px base · whitespace is deliberate, never compressed" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { background: var(--surface-light); padding: 28px 36px; font-family: var(--font-body); }
+  .scale { display: flex; align-items: flex-end; gap: 18px; }
+  .item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .bar { background: var(--teal); border-radius: 2px; width: 100%; }
+  .box { width: 28px; }
+  .lbl { font-size: 11px; color: var(--text-on-light-muted); }
+</style>
+</head>
+<body>
+  <div class="scale">
+    <div class="item box"><div class="bar" style="height:4px"></div><div class="lbl">4</div></div>
+    <div class="item box"><div class="bar" style="height:8px"></div><div class="lbl">8</div></div>
+    <div class="item box"><div class="bar" style="height:12px"></div><div class="lbl">12</div></div>
+    <div class="item box"><div class="bar" style="height:16px"></div><div class="lbl">16</div></div>
+    <div class="item box"><div class="bar" style="height:24px"></div><div class="lbl">24</div></div>
+    <div class="item box"><div class="bar" style="height:32px"></div><div class="lbl">32</div></div>
+    <div class="item box"><div class="bar" style="height:48px"></div><div class="lbl">48</div></div>
+    <div class="item box"><div class="bar" style="height:64px"></div><div class="lbl">64</div></div>
+    <div class="item box"><div class="bar" style="height:96px"></div><div class="lbl">96</div></div>
+  </div>
+</body>
+</html>

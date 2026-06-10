@@ -6,3 +6,6 @@ tina/__generated__/.cache/
 .env.local
 .env.*.local
 *.log
+
+# Claude Design handoff archives
+*-handoff.zip

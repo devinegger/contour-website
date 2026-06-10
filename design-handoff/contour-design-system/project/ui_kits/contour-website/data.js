@@ -1,0 +1,106 @@
+/* Contour website content — real copy from the production content/ collection. */
+window.CONTOUR_DATA = {
+  nav: [
+    { label: 'Services', href: 'services' },
+    { label: 'About', href: 'about' },
+    { label: 'Contact', href: 'contact' },
+  ],
+  locationLong: 'Located in Travelers Rest, SC. Serving the Greenville Area, Upstate South Carolina, Western North Carolina — and anywhere your business is located.',
+  locationShort: 'Located in Travelers Rest, SC. Serving the Greenville Area — and anywhere your business is located.',
+  hero: {
+    headline: 'Your website should work for your business. Not the other way around.',
+    subheading: 'Fast, modern websites — built, hosted, and tended for you — for businesses in the Greenville area and beyond.',
+    primary: { label: 'Get a Free Site Review', href: 'contact' },
+    secondary: { label: 'Book a Call', href: 'contact' },
+    trust: 'No pitch, no pressure — just an honest read on where you stand.',
+  },
+  differentiators: [
+    { headline: 'Craftsmanship', body: 'We know what it takes to be hired for skill — and we hold our work to that standard.' },
+    { headline: 'Local', body: 'Based in Travelers Rest, SC — locally owned, working with businesses across the Greenville Area, Upstate South Carolina, and Western North Carolina.' },
+    { headline: 'A firm, not a vendor', body: 'Firm mindset: “Don’t prescribe before you diagnose.” We survey the situation, build what it actually needs, then get out of the way.' },
+  ],
+  trust: 'Those scores above? This site, live, right now — built on the exact stack we build for clients.',
+  tiers: [
+    {
+      tier: 'baseline', name: 'Baseline', tagline: 'Show up. Look the part. Get out of your way.',
+      price: '$97/mo', setup: '$797', featured: false,
+      description: 'A site that’s fast, clean, and credible — one that does its job when someone looks you up, and doesn’t need a developer to keep alive.',
+      inclusions: [
+        '5–7 pages designed and written for your business',
+        'Static stack — no WordPress, no plugins, no patches',
+        '90+ PageSpeed score, guaranteed',
+        'Hosting, SSL, and DNS managed for you',
+        'Contact form routed to your inbox',
+        'Analytics + Search Console connected',
+        'One content update per month',
+        'A monthly report a human actually wrote',
+      ],
+    },
+    {
+      tier: 'elevated', name: 'Elevated', tagline: 'Get found. Get calls. Stay ahead.',
+      price: '$197/mo', setup: '$1,297', featured: true,
+      description: 'A site alone doesn’t fill the calendar. Elevated adds the local SEO infrastructure that puts you in front of people searching for what you do.',
+      inclusions: [
+        'Everything in Baseline',
+        'Up to 12 pages, including a blog',
+        'Google Business Profile setup & optimization',
+        'Citation building — 40+ local directories',
+        'One SEO-targeted blog post per month',
+        'Automated review requests + responses',
+        'Monthly keyword and ranking snapshot',
+        'Two content updates per month',
+      ],
+    },
+    {
+      tier: 'crest', name: 'Crest', tagline: 'Run the market, not just compete in it.',
+      price: '$497/mo', setup: '$2,497', featured: false,
+      description: 'You’re not trying to show up — you’re trying to own the category. Crest puts the whole machine on top of Elevated.',
+      inclusions: [
+        'Everything in Elevated',
+        'Up to 20 pages',
+        'A lead magnet — written, designed, deployed',
+        'Instant SMS response + follow-up sequences',
+        'Booking integration, active and maintained',
+        'Multi-platform reputation management',
+        'Two blog posts per month',
+        'Monthly strategy call + quarterly roadmap',
+      ],
+    },
+  ],
+  comparison: {
+    headline: 'What does it actually cost?',
+    intro: 'A typical WordPress setup — managed hosting, a security plugin, a maintenance retainer, someone handling basic SEO — adds up fast. And it’s still slow, still fragile. Here’s the same list, our way.',
+    rows: [
+      { label: 'Website hosting', competitor: '$20–80/mo', contour: 'Included' },
+      { label: 'Website maintenance', competitor: '$99–299/mo', contour: 'Included' },
+      { label: 'Security & updates', competitor: '$49–149/mo', contour: 'Included' },
+      { label: 'SEO basics', competitor: '$200–500/mo', contour: 'Included' },
+      { label: 'Total', competitor: '$368–1,028/mo', contour: 'From $97/mo', total: true },
+    ],
+  },
+  secondary: [
+    { headline: 'Have a WordPress site you’re ready to leave in the dust?', body: 'You don’t need to start over — you need to move. We extract your content, redirect every URL so your rankings survive, and land you on a stack that doesn’t need a maintenance plan to stay standing.', price: 'From +$497', cta: 'Start the move' },
+    { headline: 'Don’t have a site yet…?', body: 'Starting from zero is actually the cleaner scenario — no tech debt, no redirect headaches, no mystery plugins. We build from the ground up, set up correctly from day one. For most businesses, that’s Baseline.', price: '', cta: 'Start with Baseline' },
+  ],
+  faqs: [
+    { q: 'Isn’t this expensive?', a: 'A WordPress site with managed hosting, a security plugin, a page-builder license, and someone to keep it updated typically runs $150–440 a month — before you count your own time. Baseline is $97/mo, hosting included. For most businesses this is a step down in cost, not up.' },
+    { q: 'How long does it take?', a: 'Build timeline is typically 1–2 weeks from the point we have your content and a clear direction. Discovery and strategy happen first — that’s where we learn enough about your business to build something that actually fits.' },
+    { q: 'Will I actually get leads?', a: 'We build everything Google looks for when it decides who shows up in the map pack: a fast site, a complete Google Business Profile, consistent citations, reviews, and schema. We can’t promise you a ranking — Google controls that — but we close the gap most businesses leave open.' },
+    { q: 'Do I own my site?', a: 'Yes — the site is yours, and so is your domain. We build it, you own it. If you ever leave, both go with you: no exit fees, no hostage situations.' },
+    { q: 'What if I want to cancel?', a: 'Cancel anytime. No long-term contracts. We’d rather earn the relationship month to month than lock you in. If you cancel, we’ll help you migrate your domain.' },
+    { q: 'What do you need from me to get started?', a: 'A few hours of your time for a discovery conversation — we ask questions, you tell us about your business and your customers. After that, we handle the build.' },
+  ],
+  about: {
+    opening: 'We build fast, modern websites and local marketing for businesses in Greenville, SC and beyond. No ticket system — we answer personally.',
+    story: [
+      'Contour is a growing business trying to get beyond where it is. That’s the same reason every client comes to us.',
+      'Devin builds websites. Karen teaches violin. We’re craftspeople in our own rights — we know what it takes to do skilled work for someone, to care about the outcome more than the invoice.',
+      'That’s what we’re building here: a firm that handles a side of your business — cleanly, reliably, without requiring your attention — so you can stay focused on the work only you can do.',
+    ],
+    howWeWork: [
+      'We survey before we build. Every engagement starts with a real discovery conversation — we learn your business, your customers, and where you’re trying to go before we touch a line of code.',
+      'Then we build to that. Not a template dropped on you — a site shaped to your situation.',
+      'After that, we get out of your way. You own your site and your domain, always. If something needs attention, you call us — not a support queue.',
+    ],
+  },
+};

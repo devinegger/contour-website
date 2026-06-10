@@ -7,6 +7,7 @@ interface Props {
   secondaryCtaLabel?: string;
   secondaryCtaUrl?: string;
   trustAnchor?: string;
+  eyebrow?: string;
   tinaField?: (obj: unknown, field: string) => string;
   data?: unknown;
 }
@@ -19,20 +20,22 @@ const {
   secondaryCtaLabel,
   secondaryCtaUrl,
   trustAnchor,
+  eyebrow = 'Web design & local marketing',
 } = Astro.props;
 ---
 
 <section class="hero topo-bg">
   <div class="hero-inner container">
     <div class="hero-content">
+      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
       <h1 class="hero-headline">{headline}</h1>
       {subheading && <p class="hero-subheading">{subheading}</p>}
       <div class="hero-ctas">
         {primaryCtaLabel && primaryCtaUrl && (
-          <a href={primaryCtaUrl} class="btn btn-primary">{primaryCtaLabel}</a>
+          <a href={primaryCtaUrl} class="btn btn-primary btn-lg">{primaryCtaLabel}</a>
         )}
         {secondaryCtaLabel && secondaryCtaUrl && (
-          <a href={secondaryCtaUrl} class="btn btn-secondary">{secondaryCtaLabel}</a>
+          <a href={secondaryCtaUrl} class="btn btn-secondary btn-lg">{secondaryCtaLabel}</a>
         )}
       </div>
       {trustAnchor && <p class="hero-trust">{trustAnchor}</p>}
@@ -42,8 +45,8 @@ const {
 
 <style>
   .hero {
-    padding: clamp(5rem, 15vw, 10rem) var(--container-padding);
-    min-height: 80vh;
+    padding: clamp(5rem, 13vw, 9rem) var(--container-padding);
+    min-height: 78vh;
     display: flex;
     align-items: center;
   }
@@ -53,7 +56,7 @@ const {
   }
 
   .hero-content {
-    max-width: 780px;
+    max-width: 820px;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -61,20 +64,21 @@ const {
 
   .hero-headline {
     font-family: var(--font-heading);
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    font-weight: 600;
-    color: var(--color-text);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
+    font-size: var(--fs-display);
+    font-weight: var(--fw-display);
+    color: var(--text-on-dark);
+    line-height: var(--lh-display);
+    letter-spacing: var(--ls-display);
   }
 
   .hero-subheading {
     font-family: var(--font-body);
-    font-size: clamp(1.0625rem, 2vw, 1.25rem);
-    color: var(--color-text);
-    opacity: 0.8;
-    line-height: 1.6;
-    max-width: 60ch;
+    font-size: var(--fs-body-lg);
+    font-weight: var(--fw-body);
+    color: var(--text-on-dark);
+    opacity: 0.82;
+    line-height: 1.55;
+    max-width: 58ch;
   }
 
   .hero-ctas {
@@ -86,8 +90,8 @@ const {
 
   .hero-trust {
     font-family: var(--font-body);
-    font-size: 0.875rem;
-    color: var(--color-text);
+    font-size: 0.9rem;
+    color: var(--text-on-dark);
     opacity: 0.55;
     margin-top: 0.25rem;
   }

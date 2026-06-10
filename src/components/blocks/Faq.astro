@@ -13,8 +13,9 @@ const faqs = allFaqs
   }>;
 ---
 
-<section class="faq surface-light">
+<section class="faq topo-bg-light">
   <div class="container section">
+    <p class="eyebrow">Questions</p>
     <h2 class="faq-heading">Frequently asked questions</h2>
     <dl class="faq-list">
       {faqs.map((faq, i) => (
@@ -22,7 +23,7 @@ const faqs = allFaqs
           <dt class="faq-question">
             <button
               class="faq-trigger"
-              aria-expanded="false"
+              aria-expanded={i === 0 ? 'true' : 'false'}
               aria-controls={`faq-answer-${i}`}
               id={`faq-btn-${i}`}
             >
@@ -37,7 +38,7 @@ const faqs = allFaqs
             id={`faq-answer-${i}`}
             role="region"
             aria-labelledby={`faq-btn-${i}`}
-            hidden
+            hidden={i !== 0}
           >
             <div class="faq-answer-inner prose">
               {faq.answer && <TinaMarkdown content={faq.answer} />}
@@ -52,9 +53,9 @@ const faqs = allFaqs
 <style>
   .faq-heading {
     font-family: var(--font-heading);
-    font-size: clamp(1.75rem, 3vw, 2.5rem);
-    color: var(--color-text-dark);
-    margin-bottom: 2rem;
+    font-size: var(--fs-h2);
+    color: var(--text-on-light);
+    margin: 0.5rem 0 2rem;
   }
 
   .faq-list {
@@ -62,14 +63,11 @@ const faqs = allFaqs
     flex-direction: column;
     gap: 0;
     max-width: 760px;
+    border-top: 1px solid var(--border-on-light);
   }
 
   .faq-item {
-    border-bottom: 1px solid rgba(30, 39, 48, 0.1);
-  }
-
-  .faq-item:first-child {
-    border-top: 1px solid rgba(30, 39, 48, 0.1);
+    border-bottom: 1px solid var(--border-on-light);
   }
 
   .faq-question {
@@ -89,26 +87,23 @@ const faqs = allFaqs
     text-align: left;
     font-family: var(--font-heading);
     font-size: 1.0625rem;
-    font-weight: 400;
-    color: var(--color-text-dark);
-    transition: color 0.2s;
+    font-weight: var(--fw-ui);
+    color: var(--text-on-light);
+    transition: color var(--transition) var(--ease);
   }
 
-  .faq-trigger:hover {
-    color: var(--color-accent);
-  }
-
-  .faq-trigger[aria-expanded="true"] {
-    color: var(--color-accent);
+  .faq-trigger:hover,
+  .faq-trigger[aria-expanded='true'] {
+    color: var(--accent);
   }
 
   .faq-icon {
     flex-shrink: 0;
-    transition: transform 0.25s ease;
-    color: var(--color-accent);
+    transition: transform var(--transition-fast) var(--ease);
+    color: var(--accent);
   }
 
-  .faq-trigger[aria-expanded="true"] .faq-icon {
+  .faq-trigger[aria-expanded='true'] .faq-icon {
     transform: rotate(180deg);
   }
 
@@ -118,9 +113,9 @@ const faqs = allFaqs
 
   .faq-answer-inner {
     padding-bottom: 1.25rem;
-    color: var(--color-text-dark);
+    color: var(--text-on-light);
     font-size: 0.9375rem;
-    line-height: 1.65;
+    line-height: var(--lh-body);
   }
 </style>
 

@@ -1,0 +1,23 @@
+<!-- @dsCard group="Colors" viewport="700x190" name="Slate — dark surfaces" subtitle="Primary dark surfaces, heavy type, nav" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { background: var(--surface-light); padding: 28px; font-family: var(--font-body); }
+  .row { display: flex; gap: 16px; }
+  .sw { flex: 1; }
+  .chip { height: 84px; border-radius: var(--radius-md); border: 1px solid var(--border-on-light); }
+  .name { font-weight: 500; font-size: 13px; color: var(--text-on-light); margin-top: 10px; }
+  .hex { font-size: 12px; color: var(--text-on-light-muted); letter-spacing: 0.02em; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="sw"><div class="chip" style="background:var(--slate-deep)"></div><div class="name">Slate Deep</div><div class="hex">#1E2730 · deepest surface, hero</div></div>
+    <div class="sw"><div class="chip" style="background:var(--slate)"></div><div class="name">Slate</div><div class="hex">#2C3540 · primary surface</div></div>
+    <div class="sw"><div class="chip" style="background:var(--slate-mid)"></div><div class="name">Slate Mid</div><div class="hex">#3D4B5A · dark cards</div></div>
+  </div>
+</body>
+</html>

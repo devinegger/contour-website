@@ -1,0 +1,36 @@
+/* Contour website UI kit — layout-only helpers (everything visual is tokens). */
+.ck-diffs { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
+@media (min-width: 700px) { .ck-diffs { grid-template-columns: repeat(3, 1fr); } }
+
+.ck-tiers { display: grid; grid-template-columns: 1fr; gap: 1.5rem; align-items: stretch; }
+@media (min-width: 800px) { .ck-tiers { grid-template-columns: repeat(3, 1fr); } }
+
+.ck-secondary { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+@media (min-width: 700px) { .ck-secondary { grid-template-columns: repeat(2, 1fr); } }
+
+.ck-psi-row { display: flex; flex-direction: column; gap: 0.75rem; }
+@media (min-width: 520px) { .ck-psi-row { flex-direction: row; } }
+
+.ck-cta { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.5rem; }
+@media (min-width: 700px) { .ck-cta { flex-direction: row; justify-content: space-between; text-align: left; } }
+
+.ck-contact { display: grid; grid-template-columns: 1fr; gap: 3rem; }
+@media (min-width: 820px) { .ck-contact { grid-template-columns: 1fr 1.6fr; gap: 4rem; align-items: start; } }
+
+/* Cost comparison table */
+.ck-table { width: 100%; border-collapse: collapse; font-family: var(--font-body); font-size: 0.9375rem; }
+.ck-table thead { background: color-mix(in srgb, var(--teal) 10%, transparent); }
+.ck-table th { padding: 1rem 1.25rem; text-align: left; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-on-dark); opacity: 0.85; white-space: nowrap; }
+.ck-table td { padding: 0.875rem 1.25rem; border-top: 1px solid var(--border-on-dark-hairline); color: var(--text-on-dark); }
+.ck-table .ck-contour { color: var(--accent); font-weight: 600; }
+.ck-table .ck-total td { font-weight: 700; border-top: 1px solid var(--border-on-dark-strong); font-family: var(--font-heading); }
+
+/* Footer rows */
+.ck-footer-top { display: flex; flex-direction: column; gap: 1.5rem; }
+.ck-footer-links { display: flex; flex-wrap: wrap; gap: 1.25rem; list-style: none; }
+.ck-footer-bottom { display: flex; flex-direction: column; gap: 0.75rem; padding-top: 1.5rem; border-top: 1px solid var(--border-on-dark-hairline); }
+.ck-footer-legal { display: flex; gap: 1rem; list-style: none; }
+@media (min-width: 640px) {
+  .ck-footer-top { flex-direction: row; align-items: center; justify-content: space-between; }
+  .ck-footer-bottom { flex-direction: row; align-items: center; justify-content: space-between; }
+}

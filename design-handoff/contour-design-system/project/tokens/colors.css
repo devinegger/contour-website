@@ -1,0 +1,58 @@
+/* ============================================================
+   Contour — Color Tokens
+   Canon palette. NEVER pure black or pure white anywhere.
+   ============================================================ */
+:root {
+  /* --- Base palette: Slate (dark surfaces, heavy type) --- */
+  --slate:        #2C3540;  /* primary dark surface, heavy type, nav body */
+  --slate-deep:   #1E2730;  /* deepest surface — nav bar, hero */
+  --slate-mid:    #3D4B5A;  /* dark cards */
+
+  /* --- Base palette: Stone (light surfaces — warm, never clinical) --- */
+  --stone:        #F2EDE8;  /* light surface */
+  --stone-mid:    #E0D9D2;  /* light surface, secondary */
+  --stone-dark:   #C8BFB6;  /* light borders, dividers on light */
+
+  /* --- Base palette: Teal (the accent) --- */
+  --teal:         #4A8C8C;  /* CTAs, active states, eyebrows, the period, topo */
+  --teal-light:   #5FA8A8;  /* hover */
+  --teal-dim:     #3A7070;  /* featured cards */
+
+  /* --- Base palette: Gray (supporting) --- */
+  --gray-mid:     #8A97A4;  /* supporting text on dark */
+  --gray-light:   #B8C2CC;  /* supporting text, borders on dark */
+
+  /* --- Semantic: surfaces --- */
+  --surface-base:        var(--slate);
+  --surface-deep:        var(--slate-deep);
+  --surface-card:        var(--slate-mid);
+  --surface-featured:    var(--teal-dim);
+  --surface-light:       var(--stone);
+  --surface-light-2:     var(--stone-mid);
+  --surface-card-light:  #FBF8F4;  /* warm off-white card on stone — never pure white */
+
+  /* --- Semantic: text --- */
+  --text-on-dark:        var(--stone);
+  --text-on-dark-muted:  var(--gray-light);
+  --text-on-dark-dim:    var(--gray-mid);
+  --text-on-light:       var(--slate-deep);
+  --text-on-light-muted: #5A6571;  /* slate-gray, legible supporting text on stone */
+
+  /* --- Semantic: accent --- */
+  --accent:          var(--teal);
+  --accent-hover:    var(--teal-light);
+  --accent-featured: var(--teal-dim);
+
+  /* --- Semantic: borders --- */
+  --border-on-dark:        color-mix(in srgb, var(--teal) 18%, transparent);
+  --border-on-dark-strong: color-mix(in srgb, var(--teal) 40%, transparent);
+  --border-on-dark-hairline: color-mix(in srgb, var(--stone) 9%, transparent);
+  --border-on-light:       color-mix(in srgb, var(--slate-deep) 12%, transparent);
+  --border-input:          color-mix(in srgb, var(--stone) 20%, transparent);
+  --field-fill:            color-mix(in srgb, var(--stone) 7%, transparent);
+
+  /* --- Status (used sparingly, e.g. PageSpeed rating) --- */
+  --status-good:     var(--teal);
+  --status-warn:     #C99A3A;
+  --status-critical: #B86A62;
+}

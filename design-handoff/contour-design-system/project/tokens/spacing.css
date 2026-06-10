@@ -1,0 +1,40 @@
+/* ============================================================
+   Contour — Spacing, Layout, Radius, Motion, Elevation
+   Whitespace is deliberate — do not compress.
+   ============================================================ */
+:root {
+  /* Spacing scale (4px base) */
+  --space-1:  0.25rem;  /* 4 */
+  --space-2:  0.5rem;   /* 8 */
+  --space-3:  0.75rem;  /* 12 */
+  --space-4:  1rem;     /* 16 */
+  --space-5:  1.5rem;   /* 24 */
+  --space-6:  2rem;     /* 32 */
+  --space-7:  3rem;     /* 48 */
+  --space-8:  4rem;     /* 64 */
+  --space-9:  6rem;     /* 96 */
+
+  /* Layout */
+  --max-width:         1200px;
+  --measure:           68ch;     /* prose max line length */
+  --section-padding:   clamp(3rem, 8vw, 6rem);
+  --container-padding: clamp(1rem, 5vw, 2rem);
+
+  /* Radii — measured, never pill. 4px is the brand default. */
+  --radius-sm:   4px;   /* buttons, inputs, badges */
+  --radius-md:   8px;   /* cards */
+  --radius-lg:   12px;  /* large panels */
+  --radius-full: 999px; /* dots & avatars only — never buttons */
+
+  /* Motion — the only expressive motion is a 2-3px hover lift.
+     No scroll-triggered, parallax, or entrance animation. */
+  --ease:            ease; /* @kind other */
+  --ease-out:        cubic-bezier(0.22, 1, 0.36, 1); /* @kind other */
+  --transition-fast: 150ms; /* @kind other */
+  --transition:      200ms; /* @kind other */
+  --hover-lift:      -2px;  /* button hover upward translate */
+
+  /* Elevation — restrained. No heavy shadows, no glassmorphism. */
+  --shadow-card:  0 4px 24px color-mix(in srgb, var(--slate-deep) 8%, transparent);
+  --shadow-raise: 0 8px 32px color-mix(in srgb, var(--slate-deep) 14%, transparent);
+}
