@@ -6,10 +6,14 @@ const allServices = servicesResult?.data?.servicesConnection?.edges ?? [];
 const tiers = ['baseline', 'elevated', 'crest'];
 const services = allServices
   .map((e: { node: unknown }) => e.node)
-  .filter((s: { tier?: string }) => tiers.includes(s.tier ?? ''));
+  .filter((s: { tier?: string }) => tiers.includes(s.tier ?? ''))
+  .sort(
+    (a: { tier?: string }, b: { tier?: string }) =>
+      tiers.indexOf(a.tier ?? '') - tiers.indexOf(b.tier ?? '')
+  );
 ---
 
-<section class="services-preview topo-bg-light">
+<section class="services-preview surface-light">
   <div class="container section">
     <p class="eyebrow">Plans</p>
     <h2 class="preview-heading">Simple, clear plans</h2>
@@ -23,7 +27,9 @@ const services = allServices
         price?: string;
       }) => (
         <article class="preview-card">
-          <span class="card-tier">{service.tier}</span>
+          {service.tier && service.tier.toLowerCase() !== service.name.toLowerCase() && (
+            <span class="card-tier">{service.tier}</span>
+          )}
           <h3 class="card-name">{service.name}</h3>
           {service.tagline && <p class="card-tagline">{service.tagline}</p>}
           {service.price && <p class="card-price">{service.price}</p>}

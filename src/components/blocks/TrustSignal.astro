@@ -7,7 +7,7 @@ interface Props {
 const { statement, badgeSlot } = Astro.props;
 ---
 
-<section class="trust topo-bg">
+<section class="trust surface-light">
   <div class="container trust-section">
     <div class="trust-inner">
       <p class="trust-statement">{statement}</p>
@@ -36,16 +36,14 @@ const { statement, badgeSlot } = Astro.props;
   .trust-statement {
     font-family: var(--font-heading);
     font-size: clamp(1.25rem, 2.5vw, 1.7rem);
-    font-weight: var(--fw-ui);
-    font-style: italic;
-    color: var(--text-on-dark);
+    font-weight: var(--fw-heading);
+    color: var(--text-on-light);
     max-width: 58ch;
     line-height: 1.5;
-    opacity: 0.9;
   }
 
   .trust-badge img {
     display: block;
-    opacity: 0.8;
+    opacity: 0.85;
   }
 </style>

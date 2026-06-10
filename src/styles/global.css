@@ -194,20 +194,23 @@ a:hover { color: var(--accent-hover); }
 .surface-light { background-color: var(--surface-light); color: var(--text-on-light); }
 
 /* Topographic texture — "felt more than seen", never foreground.
-   Tiles behind dark and light surfaces alike. */
+   A single wide illustration spans the section edge-to-edge with no
+   repeat seam. Reserved for hero, CTA, and footer sections only. */
 .topo-bg {
   background-color: var(--surface-deep);
   background-image: url('/topo-dark.svg');
-  background-repeat: repeat;
-  background-size: 560px 560px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   color: var(--text-on-dark);
 }
 
 .topo-bg-light {
   background-color: var(--surface-light);
   background-image: url('/topo-light.svg');
-  background-repeat: repeat;
-  background-size: 560px 560px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   color: var(--text-on-light);
 }
 

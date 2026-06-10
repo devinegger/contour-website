@@ -21,22 +21,27 @@ const primaryTiers = ['baseline', 'elevated', 'crest'];
 const secondaryTiers = ['wp-migration', 'custom-build'];
 const featuredTier = 'elevated';
 
-const primary = services.filter(s => primaryTiers.includes(s.tier));
+const primary = services
+  .filter(s => primaryTiers.includes(s.tier))
+  .sort((a, b) => primaryTiers.indexOf(a.tier) - primaryTiers.indexOf(b.tier));
 const secondary = services.filter(s => secondaryTiers.includes(s.tier));
 ---
 
-<section class="services-full topo-bg-light">
+<section class="services-full surface-light">
   <div class="container section">
     <div class="primary-services">
       {primary.map(service => {
         const featured = service.tier === featuredTier;
+        const showTier = service.tier?.toLowerCase() !== service.name?.toLowerCase();
         return (
           <article class={`service-card ${featured ? 'service-card--featured' : ''}`}>
             <div class="service-card-header">
-              <div class="service-tier-row">
-                <span class="service-tier">{service.tier}</span>
-                {featured && <span class="service-popular">Most popular</span>}
-              </div>
+              {(showTier || featured) && (
+                <div class="service-tier-row">
+                  {showTier && <span class="service-tier">{service.tier}</span>}
+                  {featured && <span class="service-popular">Most popular</span>}
+                </div>
+              )}
               <h3 class="service-name">{service.name}</h3>
               {service.tagline && <p class="service-tagline">{service.tagline}</p>}
             </div>
