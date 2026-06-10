@@ -3,15 +3,7 @@
   "slug": "baseline",
   "tier": "baseline",
   "tagline": "Show up. Look the part. Get out of your way.",
-  "description": {
-    "type": "root",
-    "children": [
-      {
-        "type": "p",
-        "children": [{ "type": "text", "text": "You need a site that's fast, clean, and credible — one that does its job when someone looks you up, and doesn't need a developer to keep alive. That's Baseline." }]
-      }
-    ]
-  },
+  "description": "You need a site that's fast, clean, and credible — one that does its job when someone looks you up, and doesn't need a developer to keep alive. That's Baseline.",
   "price": "$97/mo",
   "setupFee": "$797",
   "inclusions": [

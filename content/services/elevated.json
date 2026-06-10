@@ -3,15 +3,7 @@
   "slug": "elevated",
   "tier": "elevated",
   "tagline": "Get found. Get calls. Stay ahead.",
-  "description": {
-    "type": "root",
-    "children": [
-      {
-        "type": "p",
-        "children": [{ "type": "text", "text": "A site alone doesn't fill the calendar. Elevated adds the local SEO infrastructure that puts you in front of people in your area searching for what you do." }]
-      }
-    ]
-  },
+  "description": "A site alone doesn't fill the calendar. Elevated adds the local SEO infrastructure that puts you in front of people in your area searching for what you do.",
   "price": "$197/mo",
   "setupFee": "$1,297",
   "inclusions": [

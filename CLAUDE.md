@@ -42,7 +42,8 @@ Content files live in `content/`.
 - Hero headline: "Your website should work for your business. Not the other way around." *(updated during Content Writing phase — original "morning coffee" line retired)*
 - WP Migration card headline: "Have a WordPress site you're ready to leave in the dust?"
 - Custom Build card headline: "Don't have a site yet…?"
-- Location line: "Located in Travelers Rest, SC. Serving Greenville and the surrounding area — and anywhere your business is."
+- Location line (pages): "Located in Travelers Rest, SC. Serving the Greenville Area, Upstate South Carolina, Western North Carolina — and anywhere your business is located."
+- Location line (footer, shortened): "Located in Travelers Rest, SC. Serving the Greenville Area — and anywhere your business is located."
 - Global brand rule: the word "trades" does not appear anywhere in copy or UI strings
 
 ## Key conventions

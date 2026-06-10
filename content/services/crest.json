@@ -3,15 +3,7 @@
   "slug": "crest",
   "tier": "crest",
   "tagline": "Run the market, not just compete in it.",
-  "description": {
-    "type": "root",
-    "children": [
-      {
-        "type": "p",
-        "children": [{ "type": "text", "text": "You're not trying to show up — you're trying to own the category in your area. Crest puts the whole machine on top of Elevated: automation, booking, and a standing seat at the strategy table." }]
-      }
-    ]
-  },
+  "description": "You're not trying to show up — you're trying to own the category in your area. Crest puts the whole machine on top of Elevated: automation, booking, and a standing seat at the strategy table.",
   "price": "$497/mo",
   "setupFee": "$2,497",
   "inclusions": [
