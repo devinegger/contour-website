@@ -1,5 +1,13 @@
 {
   "question": "What do you need from me to get started?",
   "order": 6,
-  "answer": "A few hours of your time for a discovery conversation — we ask questions, you tell us about your business and your customers. After that, we handle the build. You'll need to review and approve things, but we keep that lightweight. Most clients are surprised by how little they have to do once we get moving."
+  "answer": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [{ "type": "text", "text": "A few hours of your time for a discovery conversation — we ask questions, you tell us about your business and your customers. After that, we handle the build. You'll need to review and approve things, but we keep that lightweight. Most clients are surprised by how little they have to do once we get moving." }]
+      }
+    ]
+  }
 }

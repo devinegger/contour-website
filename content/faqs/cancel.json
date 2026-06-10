@@ -1,5 +1,13 @@
 {
   "question": "What if I want to cancel?",
   "order": 5,
-  "answer": "Cancel anytime. No long-term contracts. We'd rather earn the relationship month to month than lock you in. If you cancel, we'll help you migrate your domain and point you in the right direction."
+  "answer": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [{ "type": "text", "text": "Cancel anytime. No long-term contracts. We'd rather earn the relationship month to month than lock you in. If you cancel, we'll help you migrate your domain and point you in the right direction." }]
+      }
+    ]
+  }
 }

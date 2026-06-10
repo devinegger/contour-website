@@ -1,5 +1,13 @@
 {
   "question": "Do I own my site?",
   "order": 4,
-  "answer": "Yes — the site is yours, and so is your domain. We build it, you own it. If you ever leave, both go with you: no exit fees, no hostage situations. We'd rather keep you because the work is good, not because leaving is hard."
+  "answer": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [{ "type": "text", "text": "Yes — the site is yours, and so is your domain. We build it, you own it. If you ever leave, both go with you: no exit fees, no hostage situations. We'd rather keep you because the work is good, not because leaving is hard." }]
+      }
+    ]
+  }
 }
