@@ -8,13 +8,21 @@
   "blocks": [
     {
       "_template": "about_story",
-      "opening": "[Placeholder — Content Writing will draft the opening statement.]",
+      "opening": "We build fast, modern websites and local marketing for businesses in Greenville, SC and beyond. No ticket system — we answer personally.",
       "storyBody": {
         "type": "root",
         "children": [
           {
             "type": "p",
-            "children": [{ "type": "text", "text": "[Placeholder — Content Writing will draft the story body.]" }]
+            "children": [{ "type": "text", "text": "Contour is a growing business trying to get beyond where it is. That's the same reason every client comes to us." }]
+          },
+          {
+            "type": "p",
+            "children": [{ "type": "text", "text": "Devin builds websites. Karen teaches violin. We're craftspeople in our own rights — we know what it takes to do skilled work for someone, to care about the outcome more than the invoice. We've both been hired for what we're good at, and we've both felt what it's like when someone shows up and just handles it." }]
+          },
+          {
+            "type": "p",
+            "children": [{ "type": "text", "text": "That's what we're building here: a firm that handles a side of your business — cleanly, reliably, without requiring your attention — so you can stay focused on the work only you can do." }]
           }
         ]
       },
@@ -23,7 +31,19 @@
         "children": [
           {
             "type": "p",
-            "children": [{ "type": "text", "text": "[Placeholder — Content Writing will draft the how-we-work section.]" }]
+            "children": [{ "type": "text", "text": "We survey before we build. Every engagement starts with a real discovery conversation — we learn your business, your customers, and where you're trying to go before we touch a line of code or write a word of copy." }]
+          },
+          {
+            "type": "p",
+            "children": [{ "type": "text", "text": "Then we build to that. Not a template dropped on you, not a generic five-page site with your logo swapped in — a site shaped to your situation." }]
+          },
+          {
+            "type": "p",
+            "children": [{ "type": "text", "text": "After that, we get out of your way. You own your site and your domain, always. If something needs attention, you call us — not a support queue." }]
+          },
+          {
+            "type": "p",
+            "children": [{ "type": "text", "text": "A good website is the kind of thing you stop thinking about. That's the goal — get it right, hand it back, move on." }]
           }
         ]
       },

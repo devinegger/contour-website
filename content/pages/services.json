@@ -2,8 +2,8 @@
   "title": "Services",
   "slug": "services",
   "seo": {
-    "metaTitle": "Services — Contour",
-    "metaDescription": "Transparent pricing for modern websites. Baseline, Elevated, and Crest plans — plus WordPress migration and custom builds."
+    "metaTitle": "Services & Pricing — Contour | Web Design Greenville SC",
+    "metaDescription": "Transparent pricing for fast, modern websites with local SEO built in. Three plans — Baseline, Elevated, and Crest — plus WordPress migration."
   },
   "blocks": [
     {
@@ -13,11 +13,11 @@
         "children": [
           {
             "type": "h2",
-            "children": [{ "type": "text", "text": "Simple plans. Real results." }]
+            "children": [{ "type": "text", "text": "Three levels of presence. One honest question: where are you right now?" }]
           },
           {
             "type": "p",
-            "children": [{ "type": "text", "text": "[Placeholder — Content Writing will draft this section header copy.]" }]
+            "children": [{ "type": "text", "text": "Not every business needs the same thing. Some need to get found. Some need to get leads. Some are ready to run the market. We'll tell you which fits — and if none of them do, we'll tell you that too." }]
           }
         ]
       }
@@ -28,7 +28,7 @@
     {
       "_template": "cost_comparison",
       "headline": "What does it actually cost?",
-      "intro": "[Placeholder — Content Writing will draft this intro.]",
+      "intro": "A typical WordPress setup — managed hosting, a security plugin, a maintenance retainer, someone handling basic SEO — adds up fast. And it's still slow, still fragile, and still needs someone keeping the lights on. Here's the same list, our way.",
       "rows": [
         { "label": "Website hosting", "competitorCost": "$20–80/mo", "contourCost": "Included" },
         { "label": "Website maintenance", "competitorCost": "$99–299/mo", "contourCost": "Included" },
@@ -41,17 +41,29 @@
       "_template": "secondary_services",
       "card1": {
         "headline": "Have a WordPress site you're ready to leave in the dust?",
-        "description": "[Placeholder — Content Writing will draft this description.]",
-        "price": "$297 flat",
-        "ctaLabel": "Get the details",
+        "description": "You don't need to start over — you need to move. We extract your content, redirect every URL so your search rankings survive the trip, and land you on a stack that doesn't need a maintenance plan to stay standing. Migration is an add-on to whichever plan you land on.",
+        "price": "From +$497",
+        "ctaLabel": "Start the move",
         "ctaUrl": "/contact"
       },
       "card2": {
         "headline": "Don't have a site yet…?",
-        "description": "[Placeholder — Content Writing will draft this description.]",
-        "price": "$497 + $47/mo",
-        "ctaLabel": "Let's build it",
+        "description": "Starting from zero is actually the cleaner scenario — no tech debt, no redirect headaches, no mystery plugins. We build from the ground up, set up correctly from day one. For most businesses, that's Baseline.",
+        "price": "",
+        "ctaLabel": "Start with Baseline",
         "ctaUrl": "/contact"
+      }
+    },
+    {
+      "_template": "rich_text",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [{ "type": "text", "text": "If none of these fit your budget right now, talk to us anyway. We know what bootstrapping looks like from the inside — there's usually something we can do." }]
+          }
+        ]
       }
     },
     {
@@ -59,8 +71,8 @@
     },
     {
       "_template": "cta_strip",
-      "headline": "Ready to get started?",
-      "ctaLabel": "Book a Call",
+      "headline": "Not sure which fits?",
+      "ctaLabel": "Get a Free Site Review",
       "ctaUrl": "/contact",
       "background": "dark"
     }
