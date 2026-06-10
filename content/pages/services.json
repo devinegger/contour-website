@@ -56,15 +56,7 @@
     },
     {
       "_template": "rich_text",
-      "body": {
-        "type": "root",
-        "children": [
-          {
-            "type": "p",
-            "children": [{ "type": "text", "text": "If none of these fit your budget right now, talk to us anyway. We know what bootstrapping looks like from the inside — there's usually something we can do." }]
-          }
-        ]
-      }
+      "body": "If none of these fit your budget right now, talk to us anyway. We know what bootstrapping looks like from the inside — there's usually something we can do."
     },
     {
       "_template": "faq"
