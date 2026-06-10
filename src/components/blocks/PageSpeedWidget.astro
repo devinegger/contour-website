@@ -1,11 +1,22 @@
 ---
 // No server-side props — this is a fully client-side component
+const gauges = [
+  { id: 'performance', label: 'Performance' },
+  { id: 'accessibility', label: 'Accessibility' },
+  { id: 'best-practices', label: 'Best Practices' },
+  { id: 'seo', label: 'SEO' },
+];
+
+// SVG ring geometry: r=34 → circumference ≈ 213.63
+const RADIUS = 34;
+const CIRC = 2 * Math.PI * RADIUS;
 ---
 
-<section class="psi-section topo-bg">
-  <div class="container section">
+<section class="psi-section surface-slate">
+  <div class="container psi-pad">
     <div class="psi-inner">
       <div class="psi-header">
+        <p class="eyebrow">Proof, not promises</p>
         <h2 class="psi-title">How fast is your site?</h2>
         <p class="psi-subtitle">Enter your URL to get a free Google PageSpeed score.</p>
       </div>
@@ -29,15 +40,31 @@
       </form>
 
       <div class="psi-result" id="psi-result" hidden>
-        <div class="score-display">
-          <div class="score-circle" id="score-circle">
-            <span class="score-number" id="score-number">--</span>
-          </div>
-          <div class="score-meta">
-            <span class="score-label" id="score-label"></span>
-            <span class="score-url" id="score-url"></span>
-          </div>
+        <div class="psi-gauges">
+          {gauges.map((g) => (
+            <div class="gauge" id={`gauge-${g.id}`}>
+              <div class="gauge-ring">
+                <svg width="84" height="84" viewBox="0 0 84 84" aria-hidden="true">
+                  <circle class="gauge-track" cx="42" cy="42" r={RADIUS} fill="none" stroke-width="5" />
+                  <circle
+                    class="gauge-fill"
+                    cx="42"
+                    cy="42"
+                    r={RADIUS}
+                    fill="none"
+                    stroke-width="5"
+                    stroke-linecap="round"
+                    stroke-dasharray={CIRC}
+                    stroke-dashoffset={CIRC}
+                  />
+                </svg>
+                <span class="gauge-number">--</span>
+              </div>
+              <span class="gauge-label">{g.label}</span>
+            </div>
+          ))}
         </div>
+        <p class="psi-result-url" id="psi-result-url"></p>
         <a href="/contact" class="btn btn-secondary psi-cta">
           Tell me why — show me how to fix it
         </a>
@@ -54,12 +81,12 @@
 </section>
 
 <style>
-  .psi-section {
-    padding: clamp(3rem, 8vw, 5rem) var(--container-padding);
+  .psi-pad {
+    padding-block: clamp(3rem, 8vw, 5rem);
   }
 
   .psi-inner {
-    max-width: 640px;
+    max-width: 680px;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -73,14 +100,14 @@
 
   .psi-title {
     font-family: var(--font-heading);
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    color: var(--color-text);
+    font-size: var(--fs-h2);
+    color: var(--text-on-dark);
   }
 
   .psi-subtitle {
-    color: var(--color-text);
+    color: var(--text-on-dark);
     opacity: 0.75;
-    font-size: 1rem;
+    font-size: var(--fs-body);
   }
 
   .psi-form {
@@ -95,7 +122,7 @@
     gap: 0.75rem;
   }
 
-  @media (min-width: 500px) {
+  @media (min-width: 520px) {
     .psi-input-row {
       flex-direction: row;
     }
@@ -104,23 +131,24 @@
   .psi-input {
     flex: 1;
     padding: 0.75rem 1rem;
-    background-color: rgba(245, 240, 235, 0.07);
-    border: 1px solid rgba(245, 240, 235, 0.2);
-    border-radius: 4px;
-    color: var(--color-text);
+    background-color: var(--field-fill);
+    border: 1px solid var(--border-input);
+    border-radius: var(--radius-sm);
+    color: var(--text-on-dark);
     font-family: var(--font-body);
-    font-size: 1rem;
-    transition: border-color 0.2s;
+    font-size: var(--fs-body);
+    font-weight: var(--fw-body);
+    transition: border-color var(--transition) var(--ease);
   }
 
   .psi-input::placeholder {
-    color: var(--color-text);
+    color: var(--text-on-dark);
     opacity: 0.35;
   }
 
   .psi-input:focus {
     outline: none;
-    border-color: var(--color-accent);
+    border-color: var(--teal);
   }
 
   .psi-submit {
@@ -129,74 +157,80 @@
 
   .psi-error {
     font-size: 0.875rem;
-    color: #e07070;
+    color: var(--status-critical);
   }
 
-  /* Result */
+  /* Result card — outline card on dark */
   .psi-result {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.25rem;
+    background: transparent;
+    border: 1px solid var(--border-on-dark);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
   }
 
-  .score-display {
+  .psi-gauges {
     display: flex;
-    align-items: center;
-    gap: 1.5rem;
+    gap: 2rem;
+    flex-wrap: wrap;
   }
 
-  .score-circle {
-    width: 96px;
-    height: 96px;
-    border-radius: 50%;
-    border: 4px solid var(--color-accent);
+  .gauge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .gauge-ring {
+    position: relative;
+    width: 84px;
+    height: 84px;
+  }
+
+  .gauge-ring svg {
+    transform: rotate(-90deg);
+  }
+
+  .gauge-track {
+    stroke: color-mix(in srgb, var(--teal) 18%, transparent);
+  }
+
+  .gauge-fill {
+    stroke: var(--status-good);
+    transition: stroke-dashoffset 600ms var(--ease-out);
+  }
+
+  .gauge[data-rating='warn'] .gauge-fill {
+    stroke: var(--status-warn);
+  }
+
+  .gauge[data-rating='critical'] .gauge-fill {
+    stroke: var(--status-critical);
+  }
+
+  .gauge-number {
+    position: absolute;
+    inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
-    transition: border-color 0.3s;
-  }
-
-  .score-circle[data-rating="good"] {
-    border-color: var(--color-accent);
-  }
-
-  .score-circle[data-rating="needs-work"] {
-    border-color: #d4a017;
-  }
-
-  .score-circle[data-rating="critical"] {
-    border-color: #c0504a;
-  }
-
-  .score-number {
     font-family: var(--font-heading);
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--color-text);
+    font-weight: var(--fw-display);
+    font-size: 24px;
+    color: var(--text-on-dark);
   }
 
-  .score-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 0.375rem;
+  .gauge-label {
+    font-size: var(--fs-caption);
+    color: var(--text-on-dark-muted);
   }
 
-  .score-label {
-    font-family: var(--font-heading);
-    font-size: 1.125rem;
-    font-weight: 600;
-  }
-
-  [data-rating="good"] ~ .score-meta .score-label,
-  .score-label[data-rating="good"] {
-    color: var(--color-accent);
-  }
-
-  .score-url {
+  .psi-result-url {
     font-size: 0.875rem;
-    color: var(--color-text);
-    opacity: 0.6;
+    color: var(--text-on-dark-muted);
     word-break: break-all;
   }
 
@@ -215,14 +249,14 @@
   .psi-spinner {
     width: 28px;
     height: 28px;
-    border: 3px solid rgba(74, 140, 140, 0.25);
-    border-top-color: var(--color-accent);
-    border-radius: 50%;
+    border: 3px solid color-mix(in srgb, var(--teal) 25%, transparent);
+    border-top-color: var(--accent);
+    border-radius: var(--radius-full);
     animation: spin 0.8s linear infinite;
   }
 
   .psi-loading-text {
-    color: var(--color-text);
+    color: var(--text-on-dark);
     opacity: 0.7;
     font-size: 0.9375rem;
   }
@@ -239,10 +273,17 @@
   const resultEl = document.getElementById('psi-result');
   const loadingEl = document.getElementById('psi-loading');
   const errorEl = document.getElementById('psi-error');
-  const scoreNumber = document.getElementById('score-number');
-  const scoreLabel = document.getElementById('score-label');
-  const scoreUrl = document.getElementById('score-url');
-  const scoreCircle = document.getElementById('score-circle');
+  const resultUrlEl = document.getElementById('psi-result-url');
+
+  const RADIUS = 34;
+  const CIRC = 2 * Math.PI * RADIUS;
+
+  const CATEGORIES: Array<{ id: string; key: string }> = [
+    { id: 'performance', key: 'performance' },
+    { id: 'accessibility', key: 'accessibility' },
+    { id: 'best-practices', key: 'best-practices' },
+    { id: 'seo', key: 'seo' },
+  ];
 
   function setLoading(loading: boolean) {
     if (!btn || !loadingEl || !resultEl) return;
@@ -262,16 +303,20 @@
     errorEl.hidden = false;
   }
 
-  function getRating(score: number): { label: string; rating: string } {
-    if (score >= 90) return { label: 'Good', rating: 'good' };
-    if (score >= 50) return { label: 'Needs work', rating: 'needs-work' };
-    return { label: 'Critical', rating: 'critical' };
+  function getRating(score: number): string {
+    if (score >= 90) return 'good';
+    if (score >= 50) return 'warn';
+    return 'critical';
   }
 
-  function getLabelColor(rating: string) {
-    if (rating === 'good') return 'var(--color-accent)';
-    if (rating === 'needs-work') return '#d4a017';
-    return '#c0504a';
+  function setGauge(id: string, score: number) {
+    const gauge = document.getElementById(`gauge-${id}`);
+    if (!gauge) return;
+    gauge.setAttribute('data-rating', getRating(score));
+    const number = gauge.querySelector('.gauge-number');
+    if (number) number.textContent = String(score);
+    const fill = gauge.querySelector('.gauge-fill') as SVGCircleElement | null;
+    if (fill) fill.style.strokeDashoffset = String(CIRC * (1 - score / 100));
   }
 
   if (form && input) {
@@ -299,22 +344,21 @@
       setLoading(true);
 
       try {
-        const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&strategy=mobile`;
+        const categoryParams = '&category=PERFORMANCE&category=ACCESSIBILITY&category=BEST_PRACTICES&category=SEO';
+        const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&strategy=mobile${categoryParams}`;
         const res = await fetch(apiUrl);
         if (!res.ok) {
           throw new Error(`PageSpeed API returned ${res.status}`);
         }
         const data = await res.json();
-        const score = Math.round((data?.lighthouseResult?.categories?.performance?.score ?? 0) * 100);
-        const { label, rating } = getRating(score);
+        const categories = data?.lighthouseResult?.categories ?? {};
 
-        if (scoreNumber) scoreNumber.textContent = String(score);
-        if (scoreLabel) {
-          scoreLabel.textContent = label;
-          scoreLabel.style.color = getLabelColor(rating);
+        for (const { id, key } of CATEGORIES) {
+          const score = Math.round((categories?.[key]?.score ?? 0) * 100);
+          setGauge(id, score);
         }
-        if (scoreUrl) scoreUrl.textContent = url;
-        if (scoreCircle) scoreCircle.setAttribute('data-rating', rating);
+
+        if (resultUrlEl) resultUrlEl.textContent = `${url} · measured on mobile`;
         if (resultEl) resultEl.hidden = false;
       } catch (err) {
         const msg = err instanceof Error ? err.message : String(err);

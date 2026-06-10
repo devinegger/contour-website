@@ -1,0 +1,21 @@
+<!-- @dsCard group="Brand" viewport="700x220" name="Topographic texture" subtitle="Felt more than seen — 10-15% on dark, 8-12% on light" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { margin:0; display:flex; height:220px; font-family: var(--font-body); }
+  .half { flex:1; display:flex; align-items:flex-end; padding:18px 22px; }
+  .dark { background: var(--surface-deep) url('../../assets/topo-dark.svg') repeat; background-size:560px; }
+  .light { background: var(--surface-light) url('../../assets/topo-light.svg') repeat; background-size:560px; }
+  .tag { font-size:11px; letter-spacing:0.14em; text-transform:uppercase; }
+  .dark .tag { color: var(--text-on-dark-muted); }
+  .light .tag { color: var(--text-on-light-muted); }
+</style>
+</head>
+<body>
+  <div class="half dark"><span class="tag">On dark surfaces</span></div>
+  <div class="half light"><span class="tag">On light surfaces</span></div>
+</body>
+</html>

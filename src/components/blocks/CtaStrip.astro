@@ -10,12 +10,12 @@ const { headline, ctaLabel, ctaUrl, background = 'dark' } = Astro.props;
 const isDark = background === 'dark';
 ---
 
-<section class={`cta-strip ${isDark ? 'topo-bg' : 'surface-light'}`}>
+<section class={`cta-strip ${isDark ? 'topo-bg' : 'topo-bg-light'}`}>
   <div class="container">
     <div class="cta-strip-inner">
-      <h2 class={`cta-headline ${isDark ? '' : 'cta-headline--dark'}`}>{headline}</h2>
+      <h2 class={`cta-headline ${isDark ? '' : 'cta-headline--on-light'}`}>{headline}</h2>
       {ctaLabel && ctaUrl && (
-        <a href={ctaUrl} class={`btn ${isDark ? 'btn-primary' : 'btn-primary'}`}>
+        <a href={ctaUrl} class="btn btn-primary btn-lg">
           {ctaLabel}
         </a>
       )}
@@ -36,7 +36,7 @@ const isDark = background === 'dark';
     text-align: center;
   }
 
-  @media (min-width: 640px) {
+  @media (min-width: 700px) {
     .cta-strip-inner {
       flex-direction: row;
       justify-content: space-between;
@@ -47,12 +47,12 @@ const isDark = background === 'dark';
   .cta-headline {
     font-family: var(--font-heading);
     font-size: clamp(1.5rem, 3vw, 2.25rem);
-    font-weight: 600;
-    color: var(--color-text);
-    max-width: 50ch;
+    font-weight: var(--fw-heading);
+    color: var(--text-on-dark);
+    max-width: 24ch;
   }
 
-  .cta-headline--dark {
-    color: var(--color-text-dark);
+  .cta-headline--on-light {
+    color: var(--text-on-light);
   }
 </style>

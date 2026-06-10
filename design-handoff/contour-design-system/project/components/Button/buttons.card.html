@@ -1,0 +1,57 @@
+<!-- @dsCard group="Components" viewport="700x260" name="Button" subtitle="Primary · ghost · light — sizes, icon, disabled" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  body { background: var(--surface-deep); padding: 28px 32px; font-family: var(--font-body); }
+  .grid { display: flex; flex-direction: column; gap: 22px; }
+  .rowlbl { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-on-dark-dim); margin-bottom: 10px; }
+  .row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .lightbar { background: var(--surface-light); border-radius: var(--radius-md); padding: 18px 20px; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { Button } = window.ContourDesignSystem_7f839f;
+    const Arrow = () => <span style={{fontSize:'1.05em'}}>&rarr;</span>;
+    function Demo() {
+      return (
+        <div className="grid">
+          <div>
+            <div className="rowlbl">Variants</div>
+            <div className="row">
+              <Button variant="primary">Book a Call</Button>
+              <Button variant="ghost">Learn more</Button>
+              <Button variant="primary" iconRight={<Arrow/>}>Get a Free Site Review</Button>
+              <Button variant="primary" disabled>Disabled</Button>
+            </div>
+          </div>
+          <div>
+            <div className="rowlbl">Sizes</div>
+            <div className="row">
+              <Button variant="primary" size="sm">Small</Button>
+              <Button variant="primary" size="md">Medium</Button>
+              <Button variant="primary" size="lg">Large</Button>
+            </div>
+          </div>
+          <div>
+            <div className="rowlbl">Light variant — on stone</div>
+            <div className="lightbar row">
+              <Button variant="light">Start the move</Button>
+              <Button variant="ghost">Talk to us</Button>
+            </div>
+          </div>
+        </div>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+  </script>
+</body>
+</html>

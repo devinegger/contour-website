@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="720" viewBox="0 0 720 720" fill="none">
+  <defs>
+    <pattern id="topoDark" x="0" y="0" width="720" height="720" patternUnits="userSpaceOnUse">
+      <g fill="none" stroke="#4A8C8C">
+        <path d="M-40,150 C120,90 240,210 380,160 C520,110 620,200 760,150" stroke-width="1.6" opacity="0.13"></path>
+        <path d="M-40,260 C140,200 250,320 400,270 C540,224 630,300 760,255" stroke-width="1.3" opacity="0.12"></path>
+        <path d="M-40,470 C130,410 260,540 410,486 C560,432 640,520 760,470" stroke-width="1.3" opacity="0.12"></path>
+        <path d="M-40,590 C120,540 250,650 400,600 C540,554 650,630 760,585" stroke-width="1.6" opacity="0.11"></path>
+        <ellipse cx="400" cy="370" rx="232" ry="150" stroke-width="1.1" opacity="0.11"></ellipse>
+        <ellipse cx="400" cy="370" rx="158" ry="102" stroke-width="1.0" opacity="0.12"></ellipse>
+        <ellipse cx="400" cy="370" rx="86" ry="56" stroke-width="0.9" opacity="0.13"></ellipse>
+      </g>
+    </pattern>
+  </defs>
+  <rect width="720" height="720" fill="url(#topoDark)"></rect>
+</svg>

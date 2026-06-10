@@ -21,15 +21,21 @@ Visual editing uses `<TinaIsland>`, `tinaField()` markers, and `experimental_cre
 
 ## Visual system
 
-    --color-dark:      #1E2730   (Slate)
-    --color-accent:    #4A8C8C   (Teal)
-    --color-light:     #F5F0EB   (Stone)
-    --font-heading:    Fraunces (Google Fonts, serif)
-    --font-body:       Inter (Google Fonts, sans-serif)
+Canon per the Contour Design System handoff (`design-handoff/contour-design-system/`). The full reference — palette rationale, type scale, iconography, motion rules — is in that folder's `project/readme.md`.
 
-All tokens are CSS custom properties in `src/styles/global.css`. Never use inline color values.
+    Slate:   #1E2730 deep (nav, hero) · #2C3540 base · #3D4B5A cards
+    Stone:   #F2EDE8 light surface · #E0D9D2 · #C8BFB6 (warm, never clinical)
+    Teal:    #4A8C8C accent · #5FA8A8 hover · #3A7070 featured cards
+    Gray:    #8A97A4 / #B8C2CC supporting text and borders on dark
 
-Topographic line motif (`src/assets/topo.svg`) is used as a subtle repeating background texture on dark surfaces only.
+    --font-heading:  Fraunces (Google Fonts, variable serif) — 700 display, 600 headings
+    --font-body:     DM Sans (Google Fonts) — 300 body, 400 UI, 500 labels/nav/eyebrows
+
+All tokens are CSS custom properties in `src/styles/global.css` (semantic names like `--surface-deep`, `--text-on-light`, `--border-on-dark`). Never use inline color values. Never pure black or pure white.
+
+Topographic line motif (`public/topo-dark.svg`, `public/topo-light.svg`) tiles behind dark and light surfaces alike — "felt more than seen", never foreground. The C-mark logo (two-ring open C, gap facing right, teal, round caps) is inlined in `Nav.astro`/`Footer.astro` and lives at `src/assets/contour-mark.svg`.
+
+Motion is restrained: the only expressive motion is the 2px upward translate on button hover. No scroll-triggered animation, no parallax. Corners: 4px buttons/inputs, 8px cards — never pills.
 
 ## Content model
 
@@ -56,8 +62,7 @@ Content files live in `content/`.
 
 ## What is not done yet (do not fabricate)
 
-- Final visual styling (Claude Design phase)
 - Tina Cloud ID
 - Real form endpoint
-- Logo SVG (pending brand genesis)
+- favicon.ico still predates the canon C-mark (favicon.svg is current)
 - Individual service pages (/services/[slug]) — v2

@@ -19,47 +19,61 @@ const services = allServices.map((e: { node: unknown }) => e.node) as Array<{
 
 const primaryTiers = ['baseline', 'elevated', 'crest'];
 const secondaryTiers = ['wp-migration', 'custom-build'];
+const featuredTier = 'elevated';
 
-const primary = services.filter(s => primaryTiers.includes(s.tier));
+const primary = services
+  .filter(s => primaryTiers.includes(s.tier))
+  .sort((a, b) => primaryTiers.indexOf(a.tier) - primaryTiers.indexOf(b.tier));
 const secondary = services.filter(s => secondaryTiers.includes(s.tier));
 ---
 
 <section class="services-full surface-light">
   <div class="container section">
     <div class="primary-services">
-      {primary.map(service => (
-        <article class="service-card">
-          <div class="service-card-header">
-            <span class="service-tier">{service.tier}</span>
-            <h3 class="service-name">{service.name}</h3>
-            {service.tagline && <p class="service-tagline">{service.tagline}</p>}
-          </div>
-          <div class="service-pricing">
-            {service.price && <span class="service-price">{service.price}</span>}
-            {service.setupFee && <span class="service-setup">+ {service.setupFee} setup</span>}
-          </div>
-          {service.description && (
-            <div class="service-desc prose">
-              <TinaMarkdown content={service.description} />
+      {primary.map(service => {
+        const featured = service.tier === featuredTier;
+        const showTier = service.tier?.toLowerCase() !== service.name?.toLowerCase();
+        return (
+          <article class={`service-card ${featured ? 'service-card--featured' : ''}`}>
+            <div class="service-card-header">
+              {(showTier || featured) && (
+                <div class="service-tier-row">
+                  {showTier && <span class="service-tier">{service.tier}</span>}
+                  {featured && <span class="service-popular">Most popular</span>}
+                </div>
+              )}
+              <h3 class="service-name">{service.name}</h3>
+              {service.tagline && <p class="service-tagline">{service.tagline}</p>}
             </div>
-          )}
-          {service.inclusions && service.inclusions.length > 0 && (
-            <ul class="service-inclusions" role="list">
-              {service.inclusions.map((item: string) => (
-                <li class="inclusion-item">
-                  <span class="inclusion-check" aria-hidden="true">✓</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          )}
-          {service.ctaLabel && service.ctaUrl && (
-            <a href={service.ctaUrl} class="btn btn-primary service-cta">
-              {service.ctaLabel}
-            </a>
-          )}
-        </article>
-      ))}
+            <div class="service-pricing">
+              {service.price && <span class="service-price">{service.price}</span>}
+              {service.setupFee && <span class="service-setup">+ {service.setupFee} setup</span>}
+            </div>
+            {service.description && (
+              <div class="service-desc prose">
+                <TinaMarkdown content={service.description} />
+              </div>
+            )}
+            {service.inclusions && service.inclusions.length > 0 && (
+              <ul class="service-inclusions" role="list">
+                {service.inclusions.map((item: string) => (
+                  <li class="inclusion-item">
+                    <svg class="inclusion-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                      <path d="M3 8.5L6.5 12L13 4.5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {service.ctaLabel && service.ctaUrl && (
+              <a href={service.ctaUrl} class={`btn ${featured ? 'btn-light' : 'btn-primary'} service-cta`}>
+                {service.ctaLabel}
+              </a>
+            )}
+          </article>
+        );
+      })}
     </div>
 
     {secondary.length > 0 && (
@@ -73,7 +87,7 @@ const secondary = services.filter(s => secondaryTiers.includes(s.tier));
               {service.tagline && <p class="service-tagline">{service.tagline}</p>}
               <p class="service-price">{service.price}</p>
               {service.ctaLabel && service.ctaUrl && (
-                <a href={service.ctaUrl} class="btn btn-secondary secondary-cta">
+                <a href={service.ctaUrl} class="btn btn-secondary btn-sm secondary-cta">
                   {service.ctaLabel}
                 </a>
               )}
@@ -90,50 +104,84 @@ const secondary = services.filter(s => secondaryTiers.includes(s.tier));
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    align-items: stretch;
     margin-bottom: 4rem;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 800px) {
     .primary-services {
       grid-template-columns: repeat(3, 1fr);
     }
   }
 
   .service-card {
-    background: white;
-    border: 1px solid rgba(30, 39, 48, 0.1);
-    border-radius: 8px;
-    padding: 2rem;
+    background: var(--surface-card-light);
+    border: 1px solid var(--border-on-light);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 1.1rem;
+  }
+
+  /* Featured card — Teal Dim, used to single out one option */
+  .service-card--featured {
+    background: var(--surface-featured);
+    border-color: color-mix(in srgb, var(--teal-light) 45%, transparent);
   }
 
   .service-card-header {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.4rem;
+  }
+
+  .service-tier-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
 
   .service-tier {
-    font-size: 0.75rem;
-    font-weight: 600;
+    font-family: var(--font-body);
+    font-size: var(--fs-label);
+    font-weight: var(--fw-label);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--color-accent);
+    letter-spacing: var(--ls-eyebrow);
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .service-card--featured .service-tier {
+    color: var(--stone);
+  }
+
+  .service-popular {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--stone);
+    opacity: 0.7;
   }
 
   .service-name {
     font-family: var(--font-heading);
-    font-size: 1.375rem;
-    color: var(--color-text-dark);
+    font-size: 1.5rem;
+    color: var(--text-on-light);
+  }
+
+  .service-card--featured .service-name {
+    color: var(--stone);
   }
 
   .service-tagline {
     font-size: 0.9375rem;
-    color: var(--color-text-dark);
-    opacity: 0.75;
+    color: var(--text-on-light-muted);
     line-height: 1.5;
+  }
+
+  .service-card--featured .service-tagline {
+    color: color-mix(in srgb, var(--stone) 82%, transparent);
   }
 
   .service-pricing {
@@ -145,42 +193,65 @@ const secondary = services.filter(s => secondaryTiers.includes(s.tier));
 
   .service-price {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--color-text-dark);
+    font-size: 1.75rem;
+    font-weight: var(--fw-display);
+    color: var(--text-on-light);
+  }
+
+  .service-card--featured .service-price {
+    color: var(--stone);
   }
 
   .service-setup {
     font-size: 0.875rem;
-    color: var(--color-text-dark);
-    opacity: 0.6;
+    color: var(--text-on-light-muted);
+  }
+
+  .service-card--featured .service-setup {
+    color: color-mix(in srgb, var(--stone) 70%, transparent);
   }
 
   .service-desc {
-    color: var(--color-text-dark);
+    color: var(--text-on-light);
     font-size: 0.9375rem;
+    line-height: 1.55;
+  }
+
+  .service-card--featured .service-desc {
+    color: color-mix(in srgb, var(--stone) 85%, transparent);
   }
 
   .service-inclusions {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.55rem;
     flex: 1;
   }
 
   .inclusion-item {
     display: flex;
-    gap: 0.625rem;
+    gap: 0.6rem;
     font-size: 0.9rem;
-    color: var(--color-text-dark);
-    opacity: 0.85;
+    color: var(--text-on-light);
+    line-height: 1.4;
+  }
+
+  .service-card--featured .inclusion-item {
+    color: color-mix(in srgb, var(--stone) 90%, transparent);
   }
 
   .inclusion-check {
-    color: var(--color-accent);
-    font-weight: 700;
     flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  .inclusion-check path {
+    stroke: var(--accent);
+  }
+
+  .service-card--featured .inclusion-check path {
+    stroke: var(--stone);
   }
 
   .service-cta {
@@ -189,14 +260,14 @@ const secondary = services.filter(s => secondaryTiers.includes(s.tier));
   }
 
   .secondary-services-section {
-    border-top: 1px solid rgba(30, 39, 48, 0.1);
+    border-top: 1px solid var(--border-on-light);
     padding-top: 3rem;
   }
 
   .secondary-heading {
     font-family: var(--font-heading);
-    font-size: clamp(1.25rem, 2vw, 1.75rem);
-    color: var(--color-text-dark);
+    font-size: var(--fs-h3);
+    color: var(--text-on-light);
     margin-bottom: 1.5rem;
   }
 
@@ -206,16 +277,16 @@ const secondary = services.filter(s => secondaryTiers.includes(s.tier));
     gap: 1.5rem;
   }
 
-  @media (min-width: 640px) {
+  @media (min-width: 700px) {
     .secondary-grid {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
   .secondary-card {
-    background: white;
-    border: 1px solid rgba(30, 39, 48, 0.1);
-    border-radius: 8px;
+    background: var(--surface-card-light);
+    border: 1px solid var(--border-on-light);
+    border-radius: var(--radius-md);
     padding: 1.75rem;
     display: flex;
     flex-direction: column;

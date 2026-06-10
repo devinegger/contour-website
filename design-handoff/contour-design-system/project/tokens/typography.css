@@ -1,0 +1,54 @@
+/* ============================================================
+   Contour — Typography Tokens
+   Headings: Fraunces (variable serif). Body/UI: DM Sans.
+   ============================================================ */
+:root {
+  --font-heading: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body:    'DM Sans', system-ui, -apple-system, sans-serif;
+
+  /* Weights */
+  --fw-display: 700;  /* @kind other */ /* Fraunces display */
+  --fw-heading: 600;  /* @kind other */ /* Fraunces headings */
+  --fw-body:    300;  /* @kind other */ /* DM Sans body */
+  --fw-ui:      400;  /* @kind other */ /* DM Sans UI */
+  --fw-label:   500;  /* @kind other */ /* DM Sans labels / nav / eyebrows */
+
+  /* Type scale — Display 56-72 / H1 40-56 / H2 28-36 / H3 20-24
+     / body 16 / caption 13-14 / UI label 11-13 */
+  --fs-display: clamp(3.5rem, 1.8rem + 5vw, 4.5rem); /* @kind other */
+  --fs-h1:      clamp(2.5rem, 1.6rem + 3.2vw, 3.5rem); /* @kind other */
+  --fs-h2:      clamp(1.75rem, 1.3rem + 1.8vw, 2.25rem); /* @kind other */
+  --fs-h3:      clamp(1.25rem, 1.1rem + 0.7vw, 1.5rem); /* @kind other */
+  --fs-body-lg: 1.1875rem;  /* @kind other */ /* 19 — lead paragraphs */
+  --fs-body:    1rem;       /* @kind other */ /* 16 */
+  --fs-caption: 0.8125rem;  /* @kind other */ /* 13 */
+  --fs-label:   0.6875rem;  /* @kind other */ /* 11 — eyebrows / UI labels */
+
+  /* Line heights */
+  --lh-display: 1.08; /* @kind other */
+  --lh-heading: 1.18; /* @kind other */
+  --lh-snug:    1.4;  /* @kind other */
+  --lh-body:    1.65; /* @kind other */
+
+  /* Letter spacing */
+  --ls-display: -0.02em;  /* @kind other */ /* tighten display Fraunces */
+  --ls-heading: -0.01em;  /* @kind other */
+  --ls-eyebrow:  0.18em;  /* @kind other */ /* uppercase eyebrows: 0.16-0.22em */
+  --ls-ui:       0.01em;  /* @kind other */
+
+  /* Optical sizing — let Fraunces opsz breathe at display sizes */
+  --opsz-display: 144; /* @kind other */
+  --opsz-heading: 72;  /* @kind other */
+  --opsz-body:    24;  /* @kind other */
+}
+
+/* Eyebrow / kicker utility — DM Sans 500, uppercase, teal */
+.eyebrow {
+  font-family: var(--font-body);
+  font-weight: var(--fw-label);
+  font-size: var(--fs-label);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-eyebrow);
+  color: var(--accent);
+  line-height: 1;
+}

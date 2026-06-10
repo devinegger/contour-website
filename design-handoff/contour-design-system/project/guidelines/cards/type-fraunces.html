@@ -1,0 +1,21 @@
+<!-- @dsCard group="Type" viewport="700x320" name="Fraunces — display & headings" subtitle="Variable serif · 700 display, 600 headings, opsz breathes" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { background: var(--surface-deep); padding: 32px 36px; font-family: var(--font-body); }
+  .row { display: flex; align-items: baseline; gap: 16px; border-bottom: 1px solid var(--border-on-dark-hairline); padding-block: 14px; }
+  .row:last-child { border-bottom: 0; }
+  .spec { width: 120px; flex-shrink: 0; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-on-dark-dim); }
+  .sample { font-family: var(--font-heading); color: var(--text-on-dark); }
+</style>
+</head>
+<body>
+  <div class="row"><span class="spec">Display · 700</span><span class="sample" style="font-size:56px;font-weight:700;letter-spacing:-0.02em;line-height:1">Set the line.</span></div>
+  <div class="row"><span class="spec">H1 · 600</span><span class="sample" style="font-size:40px;font-weight:600;letter-spacing:-0.01em">Measured, precise, grounded</span></div>
+  <div class="row"><span class="spec">H2 · 600</span><span class="sample" style="font-size:30px;font-weight:600">A firm, not a vendor</span></div>
+  <div class="row"><span class="spec">H3 · 600</span><span class="sample" style="font-size:22px;font-weight:600">Simple, clear plans</span></div>
+</body>
+</html>

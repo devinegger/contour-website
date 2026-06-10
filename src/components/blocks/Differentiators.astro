@@ -11,7 +11,7 @@ interface Props {
 const { items = [] } = Astro.props;
 ---
 
-<section class="diffs topo-bg">
+<section class="diffs surface-dark">
   <div class="container section">
     <div class="diffs-grid">
       {items.map((item: DiffItem) => (
@@ -31,7 +31,7 @@ const { items = [] } = Astro.props;
     gap: 2.5rem;
   }
 
-  @media (min-width: 640px) {
+  @media (min-width: 700px) {
     .diffs-grid {
       grid-template-columns: repeat(3, 1fr);
     }
@@ -46,16 +46,16 @@ const { items = [] } = Astro.props;
   .diff-headline {
     font-family: var(--font-heading);
     font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--color-accent);
-    line-height: 1.2;
+    font-weight: var(--fw-heading);
+    color: var(--accent);
+    line-height: var(--lh-heading);
   }
 
   .diff-body {
     font-family: var(--font-body);
-    font-size: 1rem;
-    color: var(--color-text);
+    font-size: var(--fs-body);
+    color: var(--text-on-dark);
     opacity: 0.85;
-    line-height: 1.65;
+    line-height: 1.6;
   }
 </style>

@@ -7,6 +7,9 @@ const navLinks = settings?.data?.siteSettings?.navLinks ?? [
   { label: 'About', url: '/about' },
   { label: 'Contact', url: '/contact' },
 ];
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isCurrent = (url: string) => (url.replace(/\/$/, '') || '/') === currentPath;
 ---
 
 <header class="nav-header">
@@ -15,43 +18,45 @@ const navLinks = settings?.data?.siteSettings?.navLinks ?? [
     <a href="/" class="nav-logo" aria-label="Contour — Home">
       <svg
         class="nav-mark"
-        width="32"
-        height="32"
+        width="30"
+        height="30"
         viewBox="0 0 32 32"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
       >
         <path
-          d="M16 4C9.373 4 4 9.373 4 16s5.373 12 12 12"
-          stroke="#4A8C8C"
-          stroke-width="2.5"
+          d="M26.825 22.25 A12.5 12.5 0 1 1 26.825 9.75"
+          stroke-width="2.4"
           stroke-linecap="round"
           fill="none"
         />
         <path
-          d="M16 9C12.134 9 9 12.134 9 16s3.134 7 7 7"
-          stroke="#4A8C8C"
-          stroke-width="2.5"
+          d="M22.062 19.5 A7 7 0 1 1 22.062 12.5"
+          stroke-width="2.4"
           stroke-linecap="round"
           fill="none"
         />
       </svg>
-      <span class="nav-wordmark">Contour.</span>
+      <span class="nav-wordmark">Contour<span class="nav-dot">.</span></span>
     </a>
 
     <!-- Desktop nav links -->
     <ul class="nav-links hide-mobile" role="list">
       {navLinks.map((link: { label: string; url: string }) => (
         <li>
-          <a href={link.url} class="nav-link">{link.label}</a>
+          <a
+            href={link.url}
+            class="nav-link"
+            aria-current={isCurrent(link.url) ? 'page' : undefined}
+          >{link.label}</a>
         </li>
       ))}
     </ul>
 
     <!-- Right side -->
     <div class="nav-actions">
-      <a href="/contact" class="btn btn-primary">Book a Call</a>
+      <a href="/contact" class="btn btn-primary btn-sm">Book a Call</a>
       <button
         class="nav-hamburger hide-desktop"
         aria-controls="mobile-menu"
@@ -71,7 +76,11 @@ const navLinks = settings?.data?.siteSettings?.navLinks ?? [
     <ul class="mobile-links" role="list">
       {navLinks.map((link: { label: string; url: string }) => (
         <li>
-          <a href={link.url} class="mobile-link">{link.label}</a>
+          <a
+            href={link.url}
+            class="mobile-link"
+            aria-current={isCurrent(link.url) ? 'page' : undefined}
+          >{link.label}</a>
         </li>
       ))}
     </ul>
@@ -83,40 +92,44 @@ const navLinks = settings?.data?.siteSettings?.navLinks ?? [
     position: sticky;
     top: 0;
     z-index: 100;
-    background-color: var(--color-dark);
-    border-bottom: 1px solid rgba(74, 140, 140, 0.15);
+    background-color: var(--surface-deep);
+    border-bottom: 1px solid var(--border-on-dark);
   }
 
   .nav-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 64px;
+    height: 68px;
     gap: 2rem;
   }
 
   .nav-logo {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 10px;
     text-decoration: none;
     flex-shrink: 0;
-  }
-
-  .nav-logo:hover {
-    text-decoration: none;
   }
 
   .nav-mark {
     flex-shrink: 0;
   }
 
+  .nav-mark path {
+    stroke: var(--teal);
+  }
+
   .nav-wordmark {
     font-family: var(--font-heading);
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--color-text);
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--text-on-dark);
     letter-spacing: -0.01em;
+  }
+
+  .nav-dot {
+    color: var(--teal);
   }
 
   .nav-links {
@@ -130,16 +143,21 @@ const navLinks = settings?.data?.siteSettings?.navLinks ?? [
   .nav-link {
     font-family: var(--font-body);
     font-size: 0.9375rem;
-    font-weight: 500;
-    color: var(--color-text);
+    font-weight: var(--fw-label);
+    color: var(--text-on-dark);
     text-decoration: none;
-    opacity: 0.85;
-    transition: opacity 0.2s;
+    opacity: 0.82;
+    transition: opacity var(--transition) var(--ease);
   }
 
   .nav-link:hover {
     opacity: 1;
-    text-decoration: none;
+    color: var(--text-on-dark);
+  }
+
+  .nav-link[aria-current='page'] {
+    opacity: 1;
+    color: var(--accent);
   }
 
   .nav-actions {
@@ -163,14 +181,14 @@ const navLinks = settings?.data?.siteSettings?.navLinks ?? [
     display: block;
     width: 24px;
     height: 2px;
-    background-color: var(--color-text);
+    background-color: var(--text-on-dark);
     border-radius: 2px;
-    transition: transform 0.2s;
+    transition: transform var(--transition) var(--ease);
   }
 
   .mobile-menu {
-    background-color: var(--color-dark);
-    border-top: 1px solid rgba(74, 140, 140, 0.15);
+    background-color: var(--surface-deep);
+    border-top: 1px solid var(--border-on-dark);
     padding: 1rem var(--container-padding) 1.5rem;
   }
 
@@ -186,15 +204,15 @@ const navLinks = settings?.data?.siteSettings?.navLinks ?? [
     padding: 0.875rem 0;
     font-family: var(--font-body);
     font-size: 1.0625rem;
-    font-weight: 500;
-    color: var(--color-text);
+    font-weight: var(--fw-label);
+    color: var(--text-on-dark);
     text-decoration: none;
-    border-bottom: 1px solid rgba(245, 240, 235, 0.08);
+    border-bottom: 1px solid var(--border-on-dark-hairline);
   }
 
-  .mobile-link:hover {
-    color: var(--color-accent);
-    text-decoration: none;
+  .mobile-link:hover,
+  .mobile-link[aria-current='page'] {
+    color: var(--accent);
   }
 
   @media (min-width: 769px) {

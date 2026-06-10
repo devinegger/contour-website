@@ -9,7 +9,7 @@ const { body } = Astro.props;
 ---
 
 <section class="richtext surface-light">
-  <div class="container section">
+  <div class="container richtext-section">
     <div class="prose richtext-body">
       {body && <TinaMarkdown content={body} />}
     </div>
@@ -17,14 +17,18 @@ const { body } = Astro.props;
 </section>
 
 <style>
+  .richtext-section {
+    padding-block: clamp(3rem, 6vw, 4.5rem);
+  }
+
   .richtext-body {
-    color: var(--color-text-dark);
+    color: var(--text-on-light);
     font-size: 1.0625rem;
   }
 
   .richtext-body :global(h1),
   .richtext-body :global(h2),
   .richtext-body :global(h3) {
-    color: var(--color-text-dark);
+    color: var(--text-on-light);
   }
 </style>
