@@ -364,3 +364,7 @@ a:hover { color: var(--accent-hover); }
 @media (min-width: 769px) {
   .hide-desktop { display: none; }
 }
+
+/* TinaIsland wrappers must not create a layout box — the sticky nav and
+   full-bleed sections sit directly under <body>/<main>. */
+.tina-island-contents { display: contents; }

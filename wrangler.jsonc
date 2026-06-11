@@ -1,0 +1,11 @@
+// Cloudflare Workers (static assets) deployment config.
+// The @astrojs/cloudflare v13 adapter fills in `main` (its unified server
+// entrypoint) and the assets/session bindings at build time — only
+// project-level settings live here.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "contour-website",
+  "compatibility_date": "2026-06-11",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": { "enabled": true }
+}

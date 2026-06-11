@@ -8,22 +8,21 @@
   "scripts": {
     "dev": "tinacms dev -c \"astro dev\"",
     "build": "tinacms build --local --skip-cloud-checks -c \"astro build\"",
-    "build:cloud": "tinacms build && astro build",
+    "build:cloud": "tinacms build --content=local -c \"astro build\"",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^13.7.0",
     "@astrojs/sitemap": "^3.7.3",
-    "@tinacms/astro": "^0.4.0",
-    "@tinacms/cli": "^2.4.3",
-    "astro": "^6.4.4",
-    "tinacms": "^3.9.0"
+    "@tinacms/astro": "^0.5.0",
+    "astro": "^6.4.4"
   },
-  "pnpm": {
-    "allowedBuilds": {
-      "esbuild": true,
-      "sharp": true,
-      "better-sqlite3": true
-    }
+  "devDependencies": {
+    "@tinacms/cli": "^2.4.4",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "tinacms": "^3.9.1",
+    "wrangler": "^4.83.0"
   }
 }

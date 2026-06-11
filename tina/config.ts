@@ -2,7 +2,11 @@ import { defineConfig } from 'tinacms';
 
 // https://tina.io/docs/frameworks/astro
 export default defineConfig({
-  branch: process.env.GITHUB_BRANCH ?? process.env.VERCEL_GIT_COMMIT_REF ?? 'main',
+  branch:
+    process.env.GITHUB_BRANCH ??
+    process.env.WORKERS_CI_BRANCH ?? // Cloudflare Workers Builds
+    process.env.VERCEL_GIT_COMMIT_REF ??
+    'main',
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID ?? '',
   token: process.env.TINA_TOKEN ?? '',
 
@@ -30,6 +34,12 @@ export default defineConfig({
         label: 'Pages',
         path: 'content/pages',
         format: 'json',
+        ui: {
+          // Visual editing: the admin opens the document's live page in an
+          // iframe instead of the bare form. Filenames match slug fields.
+          router: ({ document }) =>
+            document._sys.filename === 'home' ? '/' : `/${document._sys.filename}`,
+        },
         fields: [
           { name: 'title', label: 'Page title', type: 'string', required: true },
           { name: 'slug', label: 'Slug', type: 'string', required: true },
@@ -48,6 +58,7 @@ export default defineConfig({
             label: 'Blocks',
             type: 'object',
             list: true,
+            ui: { visualSelector: true },
             templates: [
               // hero
               {
@@ -260,6 +271,9 @@ export default defineConfig({
         label: 'Blog posts',
         path: 'content/posts',
         format: 'json',
+        ui: {
+          router: ({ document }) => `/blog/${document._sys.filename}`,
+        },
         fields: [
           { name: 'title', label: 'Title', type: 'string', required: true },
           { name: 'slug', label: 'Slug', type: 'string', required: true },

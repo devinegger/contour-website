@@ -1,9 +1,13 @@
 ---
-import { getSiteSettings } from '../../lib/data';
+import { tinaField } from '@tinacms/astro/tina-field';
+import type { CmsSiteSettings } from '../../lib/data';
 
-const settings = await getSiteSettings();
-const site = settings?.data?.siteSettings;
-const footerLinks = site?.footerLinks ?? [];
+interface Props {
+  settings?: CmsSiteSettings | null;
+}
+
+const { settings: site } = Astro.props;
+const footerLinks = (site?.footerLinks?.filter(Boolean) as Array<{ label: string; url: string }> | undefined) ?? [];
 const locationLine = site?.locationLine ?? 'Located in Travelers Rest, SC. Serving the Greenville Area — and anywhere your business is located.';
 const year = new Date().getFullYear();
 ---
@@ -39,7 +43,7 @@ const year = new Date().getFullYear();
 
       {footerLinks.length > 0 && (
         <nav aria-label="Footer navigation">
-          <ul class="footer-links" role="list">
+          <ul class="footer-links" role="list" data-tina-field={site ? tinaField(site, 'footerLinks') : undefined}>
             {footerLinks.map((link: { label: string; url: string }) => (
               <li>
                 <a href={link.url} class="footer-link">{link.label}</a>
@@ -50,7 +54,7 @@ const year = new Date().getFullYear();
       )}
     </div>
 
-    <p class="footer-location">{locationLine}</p>
+    <p class="footer-location" data-tina-field={site ? tinaField(site, 'locationLine') : undefined}>{locationLine}</p>
 
     <div class="footer-bottom">
       <p class="footer-copy">&copy; {year} Contour. All rights reserved.</p>

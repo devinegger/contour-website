@@ -1,0 +1,35 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import PageSpeedWidget from './PageSpeedWidget.astro';
+import { blockComponents } from '../../lib/blockComponents';
+import type { CmsPage } from '../../lib/data';
+
+interface Props {
+  page?: CmsPage | null;
+}
+
+type BlockData = Record<string, unknown> & { __typename: string };
+
+const { page } = Astro.props;
+const blocks = (page?.blocks ?? []).filter(Boolean) as BlockData[];
+
+// PageSpeedWidget is hardcoded into the home page between the
+// differentiators and trust-signal blocks — it is not editor-composable.
+const isHome = page?._sys?.filename === 'home';
+const diffIdx = blocks.findIndex((b) => b.__typename === 'PagesBlocksDifferentiators');
+const widgetAfter = isHome ? (diffIdx >= 0 ? diffIdx : blocks.length - 1) : -1;
+---
+
+{blocks.map((block, i) => {
+  const Component = blockComponents[block.__typename] as unknown;
+  return (
+    <>
+      {Component && (
+        <div data-tina-field={tinaField(block)}>
+          <Component {...block} />
+        </div>
+      )}
+      {i === widgetAfter && <PageSpeedWidget />}
+    </>
+  );
+})}

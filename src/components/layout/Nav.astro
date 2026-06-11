@@ -1,12 +1,18 @@
 ---
-import { getSiteSettings } from '../../lib/data';
+import { tinaField } from '@tinacms/astro/tina-field';
+import type { CmsSiteSettings } from '../../lib/data';
 
-const settings = await getSiteSettings();
-const navLinks = settings?.data?.siteSettings?.navLinks ?? [
+interface Props {
+  settings?: CmsSiteSettings | null;
+}
+
+const { settings } = Astro.props;
+const navLinks = (settings?.navLinks?.filter(Boolean) as Array<{ label: string; url: string }> | undefined) ?? [
   { label: 'Services', url: '/services' },
   { label: 'About', url: '/about' },
   { label: 'Contact', url: '/contact' },
 ];
+const navLinksField = settings ? tinaField(settings, 'navLinks') : undefined;
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 const isCurrent = (url: string) => (url.replace(/\/$/, '') || '/') === currentPath;
@@ -42,7 +48,7 @@ const isCurrent = (url: string) => (url.replace(/\/$/, '') || '/') === currentPa
     </a>
 
     <!-- Desktop nav links -->
-    <ul class="nav-links hide-mobile" role="list">
+    <ul class="nav-links hide-mobile" role="list" data-tina-field={navLinksField}>
       {navLinks.map((link: { label: string; url: string }) => (
         <li>
           <a
@@ -73,7 +79,7 @@ const isCurrent = (url: string) => (url.replace(/\/$/, '') || '/') === currentPa
 
   <!-- Mobile menu -->
   <div class="mobile-menu" id="mobile-menu" hidden>
-    <ul class="mobile-links" role="list">
+    <ul class="mobile-links" role="list" data-tina-field={navLinksField}>
       {navLinks.map((link: { label: string; url: string }) => (
         <li>
           <a
