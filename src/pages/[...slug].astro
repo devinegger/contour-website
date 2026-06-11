@@ -2,7 +2,8 @@
 export const prerender = true;
 import Layout from '../components/layout/Layout.astro';
 import { blockComponents } from '../lib/blockComponents';
-import { getPage, getSiteSettings } from '../lib/data';
+import { getPage, getSiteSettings, getFaqs } from '../lib/data';
+import { localBusinessSchema, faqPageSchema, breadcrumbSchema } from '../lib/schema';
 import client from '../../tina/__generated__/client';
 
 export async function getStaticPaths() {
@@ -22,12 +23,36 @@ const settings = settingsResult?.data?.siteSettings;
 
 type BlockData = Record<string, unknown> & { __typename: string };
 const blocks: BlockData[] = (page?.blocks ?? []) as BlockData[];
+
+// Breadcrumb names should match visible navigation, not SEO titles
+// ("Contact", not "Let's Talk — Contour").
+const navLabel = settings?.navLinks?.find(
+  (l: { url?: string | null } | null) => l?.url === `/${slug}`,
+)?.label;
+const pageName = navLabel ?? page?.seo?.metaTitle?.split('—')[0]?.trim() ?? slug ?? '';
+const schemas: object[] = [
+  breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: pageName, path: `/${slug}` },
+  ]),
+];
+if (slug === 'contact') {
+  schemas.push(localBusinessSchema(settings));
+}
+if (blocks.some((b) => b.__typename === 'PagesBlocksFaq')) {
+  const faqsResult = await getFaqs();
+  const faqs = (faqsResult?.data?.faqsConnection?.edges ?? [])
+    .map((e: { node: unknown }) => e.node)
+    .filter(Boolean) as Array<{ question?: string | null; answer?: unknown }>;
+  if (faqs.length > 0) schemas.push(faqPageSchema(faqs));
+}
 ---
 
 <Layout
   title={page?.seo?.metaTitle ?? settings?.defaultSeoTitle ?? 'Contour'}
   description={page?.seo?.metaDescription ?? settings?.defaultSeoDescription ?? ''}
   ogImage={page?.seo?.ogImage ?? settings?.defaultOgImage ?? ''}
+  schemas={schemas}
 >
   {blocks.map((block) => {
     const Component = blockComponents[block.__typename] as unknown;

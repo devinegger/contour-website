@@ -8,6 +8,7 @@ interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
+  schemas?: object[];
 }
 
 const settings = await getSiteSettings();
@@ -15,6 +16,7 @@ const {
   title = settings?.data?.siteSettings?.defaultSeoTitle ?? 'Contour',
   description = settings?.data?.siteSettings?.defaultSeoDescription ?? '',
   ogImage = settings?.data?.siteSettings?.defaultOgImage ?? '',
+  schemas = [],
 } = Astro.props;
 ---
 
@@ -29,6 +31,9 @@ const {
     {ogImage && <meta property="og:image" content={ogImage} />}
     <meta property="og:type" content="website" />
     <title>{title}</title>
+    {schemas.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

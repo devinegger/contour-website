@@ -2,6 +2,7 @@
 export const prerender = true;
 import Layout from '../../components/layout/Layout.astro';
 import { getPosts } from '../../lib/data';
+import { breadcrumbSchema } from '../../lib/schema';
 
 const postsResult = await getPosts();
 const posts = (postsResult?.data?.postsConnection?.edges ?? []).map(
@@ -14,7 +15,11 @@ const posts = (postsResult?.data?.postsConnection?.edges ?? []).map(
 }>;
 ---
 
-<Layout title="Blog — Contour" description="Articles from the Contour team.">
+<Layout
+  title="Blog — Contour"
+  description="Articles from the Contour team."
+  schemas={[breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Blog', path: '/blog' }])]}
+>
   <section class="blog-index surface-dark">
     <div class="container section">
       <h1 class="blog-title">Blog</h1>

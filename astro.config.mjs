@@ -8,6 +8,7 @@ import tina from '@tinacms/astro/integration';
 // switch (19235d1). Dev mode writes content files locally; production
 // commits via TinaCloud.
 export default defineConfig({
+  site: 'https://contour-digital.com',
   output: 'static',
   integrations: [tina()],
   redirects: {

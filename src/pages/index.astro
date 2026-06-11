@@ -4,11 +4,14 @@ import Layout from '../components/layout/Layout.astro';
 import PageSpeedWidget from '../components/blocks/PageSpeedWidget.astro';
 import { blockComponents } from '../lib/blockComponents';
 import { getPage, getSiteSettings } from '../lib/data';
+import { localBusinessSchema, webSiteSchema } from '../lib/schema';
 
 const pageResult = await getPage('home');
 const settingsResult = await getSiteSettings();
 const page = pageResult?.data?.pages;
 const settings = settingsResult?.data?.siteSettings;
+
+const schemas = [localBusinessSchema(settings), webSiteSchema(settings)];
 
 type BlockData = Record<string, unknown> & { __typename: string };
 const blocks: BlockData[] = (page?.blocks ?? []) as BlockData[];
@@ -23,6 +26,7 @@ const afterWidget = diffIdx >= 0 ? blocks.slice(diffIdx + 1) : [];
   title={page?.seo?.metaTitle ?? settings?.defaultSeoTitle ?? 'Contour'}
   description={page?.seo?.metaDescription ?? settings?.defaultSeoDescription ?? ''}
   ogImage={page?.seo?.ogImage ?? settings?.defaultOgImage ?? ''}
+  schemas={schemas}
 >
   {beforeWidget.map((block) => {
     const Component = blockComponents[block.__typename] as unknown;
