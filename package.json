@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "tinacms dev -c \"astro dev\"",
     "build": "tinacms build --local --skip-cloud-checks -c \"astro build\"",
-    "build:cloud": "tinacms build --content=local -c \"astro build\"",
+    "build:cloud": "NODE_OPTIONS=--max-old-space-size=4096 tinacms build --content=local -c \"astro build\"",
     "preview": "astro preview",
     "astro": "astro"
   },
