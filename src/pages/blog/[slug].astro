@@ -3,6 +3,7 @@ export const prerender = true;
 import Layout from '../../components/layout/Layout.astro';
 import TinaMarkdown from '@tinacms/astro/TinaMarkdown.astro';
 import { getPost } from '../../lib/data';
+import { articleSchema, breadcrumbSchema } from '../../lib/schema';
 import client from '../../../tina/__generated__/client';
 
 export async function getStaticPaths() {
@@ -17,11 +18,21 @@ export async function getStaticPaths() {
 const { slug } = Astro.params;
 const postResult = await getPost(slug ?? '');
 const post = postResult?.data?.posts;
+
+const schemas = [
+  articleSchema(post),
+  breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Blog', path: '/blog' },
+    { name: post?.title ?? '', path: `/blog/${slug}` },
+  ]),
+];
 ---
 
 <Layout
   title={post?.title ? `${post.title} — Contour` : 'Contour'}
   description={post?.excerpt ?? ''}
+  schemas={schemas}
 >
   <article class="post-page surface-dark">
     <div class="container section">

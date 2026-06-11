@@ -17,7 +17,7 @@ Block-based page model. Pages in the `pages` collection are composed from an ord
 
 The PageSpeed audit widget (`src/components/blocks/PageSpeedWidget.astro`) is hardcoded into `index.astro` between the differentiators and trust-signal blocks. It is not an editor-composable block.
 
-Visual editing uses `<TinaIsland>`, `tinaField()` markers, and `experimental_createIslandRoute` — no React, no `client:tina` directive (that path is retired).
+There is no visual (click-on-page) editing — the islands layer (`<TinaIsland>`, `tinaField()` markers, `experimental_createIslandRoute`, `@astrojs/node` adapter) was removed in commit `19235d1` when the build switched to pure static output. Editing is form-based via `/admin` everywhere: in production it commits to GitHub through TinaCloud; in local dev (`pnpm dev`) it writes content files directly with HMR. A vestigial `tinaField` prop type remains in `Hero.astro`. Restoring visual editing would require reviving the islands files from `19235d1^` (dev-only may be possible without an adapter; unverified).
 
 ## Visual system
 
