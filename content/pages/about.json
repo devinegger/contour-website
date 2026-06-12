@@ -7,13 +7,13 @@
   },
   "blocks": [
     {
-      "_template": "about_story",
       "opening": "We build fast, modern websites and local marketing for businesses in Greenville, SC and beyond. No ticket system — we answer personally.",
-      "storyBody": "Contour is a growing business trying to get beyond where it is. That's the same reason every client comes to us.\n\nDevin builds websites. Karen teaches violin. We're craftspeople in our own rights — we know what it takes to do skilled work for someone, to care about the outcome more than the invoice. We've both been hired for what we're good at, and we've both felt what it's like when someone shows up and just handles it.\n\nThat's what we're building here: a firm that handles a side of your business — cleanly, reliably, without requiring your attention — so you can stay focused on the work only you can do.",
-      "howWeWork": "We survey before we build. Every engagement starts with a real discovery conversation — we learn your business, your customers, and where you're trying to go before we touch a line of code or write a word of copy.\n\nThen we build to that. Not a template dropped on you, not a generic five-page site with your logo swapped in — a site shaped to your situation.\n\nAfter that, we get out of your way. You own your site and your domain, always. If something needs attention, you call us — not a support queue.\n\nA good website is the kind of thing you stop thinking about. That's the goal — get it right, hand it back, move on.",
+      "storyBody": "Contour is a growing business trying to get beyond where it is. That's the same reason every client comes to us.\n\nDevin builds websites. Karen teaches violin. We're craftspeople in our own rights — we know what it takes to do skilled work for someone, to care about the outcome more than the invoice. We've both been hired for what we're good at, and we've both felt what it's like when someone shows up and just handles it.\n\nThat's what we're building here: a firm that handles a side of your business — cleanly, reliably, without requiring your attention — so you can stay focused on the work only you can do.\n\n![](/uploads/juni.jpg)\n",
+      "howWeWork": "We survey before we build. Every engagement starts with a real discovery conversation — we learn your business, your customers, and where you're trying to go before we touch a line of code or write a word of copy.\n\nThen we build to that. Not a template dropped on you, not a generic five-page site with your logo swapped in — a site shaped to your situation.\n\nAfter that, we get out of your way. You own your site and your domain, always. If something needs attention, you call us — not a support queue.\n\nA good website is the kind of thing you stop thinking about. That's the goal — get it right, hand it back, move on.\n",
       "locationLine": "Located in Travelers Rest, SC. Serving the Greenville Area, Upstate South Carolina, Western North Carolina — and anywhere your business is located.",
       "ctaLabel": "Let's see if we're a fit.",
-      "ctaUrl": "/contact"
+      "ctaUrl": "/contact",
+      "_template": "about_story"
     }
   ]
 }
