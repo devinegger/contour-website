@@ -7,20 +7,19 @@
   },
   "blocks": [
     {
-      "_template": "hero",
       "headline": "Your website should work for your business. Not the other way around.",
-      "subheading": "Fast, modern websites — built, hosted, and tended for you — for businesses in the Greenville area and beyond.",
+      "subheading": "Fast, modern websites — built and hosted for you — for businesses in the Greenville area and beyond.",
       "primaryCtaLabel": "Get a Free Site Review",
       "primaryCtaUrl": "/contact",
       "secondaryCtaLabel": "Book a Call",
       "secondaryCtaUrl": "/contact",
-      "trustAnchor": "No pitch, no pressure — just an honest read on where you stand."
+      "trustAnchor": "No pitch, no pressure — just an honest read on where you stand.",
+      "_template": "hero"
     },
     {
       "_template": "services_preview"
     },
     {
-      "_template": "differentiators",
       "items": [
         {
           "headline": "Craftsmanship",
@@ -34,18 +33,19 @@
           "headline": "A firm, not a vendor",
           "body": "Firm mindset: \"Don't prescribe before you diagnose.\" We survey the situation, build what it actually needs, then get out of the way."
         }
-      ]
+      ],
+      "_template": "differentiators"
     },
     {
-      "_template": "trust_signal",
-      "statement": "Those scores above? This site, live, right now — built on the exact stack we build for clients."
+      "statement": "Those scores above? This site, live, right now — built on the exact stack we build for clients.",
+      "_template": "trust_signal"
     },
     {
-      "_template": "cta_strip",
       "headline": "Ready when you are.",
       "ctaLabel": "Book a Call",
       "ctaUrl": "/contact",
-      "background": "dark"
+      "background": "dark",
+      "_template": "cta_strip"
     }
   ]
 }
