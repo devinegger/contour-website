@@ -20,7 +20,7 @@ The PageSpeed audit widget (`src/components/blocks/PageSpeedWidget.astro`) is ha
 **Visual editing** is live (restored on the `cloudflare-migration` branch using the `@tinacms/astro` 0.5.x patterns from `tinacms/tina-astro-starter`). The pieces:
 
 - `src/lib/islands.ts` — island registry (`page`, `nav`, `footer`). One entry per editable region; the bridge re-renders these on every form keystroke.
-- `src/pages/tina-island/[name].ts` — the single dynamic route (`prerender = false`) serving island re-renders. POST-only with the bridge's preview content type; the Cloudflare adapter runs it as a Worker function. Everything else stays prerendered static HTML (`output: 'static'`).
+- `src/pages/tina-island/[name].ts` — dynamic route (`prerender = false`) serving island re-renders. POST-only with the bridge's preview content type; the Cloudflare adapter runs it as a Worker function. The only other dynamic route is `src/pages/api/pagespeed.ts` (PSI proxy, key via `PAGESPEED_API_KEY` secret). Everything else stays prerendered static HTML (`output: 'static'`).
 - `<TinaIsland>` wrappers in `index.astro` / `[...slug].astro` (page blocks, `primary`) and `Layout.astro` (nav, footer). Wrappers use `.tina-island-contents` (`display: contents`) so the sticky nav and full-bleed sections keep their layout.
 - `ui.router` on the `pages`/`posts` collections in `tina/config.ts` routes the admin into the iframe visual editor (`/admin/index.html#/~/...`) instead of the bare form.
 
@@ -66,6 +66,8 @@ Content files live in `content/`.
 - Build scripts: `pnpm build` is the fully-local build; `pnpm build:cloud` is `tinacms build --content=local -c "astro build"` — admin auths against TinaCloud, content bakes from the local checkout. The `-c` subcommand form matters: `TINA_LOCAL_URL` is set in-process, so chaining with `&&` would make `astro build` query TinaCloud instead.
 - **Never commit a token-baked `tina/__generated__/client.ts`.** Cloud builds — and any build/dev run with `TINA_TOKEN` in the environment — bake the read-only token into it, and the repo is public. Before committing generated-file churn, regenerate with `TINA_TOKEN= npx tinacms build --local --skip-cloud-checks` or discard with `git checkout -- tina/__generated__/`.
 - Local builds while `pnpm dev` is running: pass `--port 4002 --datalayer-port 9001`
+- Tests: `pnpm test` runs Playwright (mobile + desktop projects) against the built preview; the webServer builds first, or keep `pnpm preview` running to skip the rebuild
+- Global CSS guarantees: `.hide-mobile`/`.hide-desktop` and `[hidden]` use `!important` — Astro's scoped styles (`.foo[data-astro-cid]`) otherwise outrank global utilities and the UA's hidden rule
 - Form endpoint is a placeholder (`https://forms.contour-digital.com/contact`) until the Cloudflare Worker is wired at Assembly
 - Blog routes are scaffolded but the blog is not in the nav until seed posts exist
 - TinaCloud project exists (creds in gitignored `.env`); `tina/config.ts` resolves the branch from `GITHUB_BRANCH` / `WORKERS_CI_BRANCH`, falling back to `main`
@@ -76,5 +78,6 @@ Content files live in `content/`.
 - TinaCloud Site URLs for the `workers.dev` URL and `contour-digital.com`
 - DNS cutover from Sevalla (blocked on the editing-UX acceptance test)
 - Real form endpoint
+- `PAGESPEED_API_KEY` secret (Google PSI API key) — until set, the PageSpeed widget returns "not configured yet" on submit
 - favicon.ico still predates the canon C-mark (favicon.svg is current)
 - Individual service pages (/services/[slug]) — v2

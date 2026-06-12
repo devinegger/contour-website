@@ -11,6 +11,7 @@
     "build": "tinacms build --local --skip-cloud-checks -c \"astro build\"",
     "build:cloud": "NODE_OPTIONS=--max-old-space-size=4096 tinacms build --content=local -c \"astro build\"",
     "preview": "astro preview",
+    "test": "playwright test",
     "astro": "astro"
   },
   "dependencies": {
@@ -20,6 +21,7 @@
     "astro": "^6.4.4"
   },
   "devDependencies": {
+    "@playwright/test": "^1.60.0",
     "@tinacms/cli": "^2.4.4",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",

@@ -10,3 +10,5 @@ tina/__generated__/.cache/
 
 # Claude Design handoff archives
 *-handoff.zip
+test-results/
+playwright-report/
