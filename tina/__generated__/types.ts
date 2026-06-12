@@ -244,6 +244,64 @@ export type PagesSeo = {
   ogImage?: Maybe<Scalars['String']['output']>;
 };
 
+export type PagesBlocksCallout = {
+  __typename?: 'PagesBlocksCallout';
+  text?: Maybe<Scalars['String']['output']>;
+  linkLabel?: Maybe<Scalars['String']['output']>;
+  linkUrl?: Maybe<Scalars['String']['output']>;
+  background?: Maybe<Scalars['String']['output']>;
+};
+
+export type PagesBlocksContent = {
+  __typename?: 'PagesBlocksContent';
+  heading?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
+  background?: Maybe<Scalars['String']['output']>;
+};
+
+export type PagesBlocksFeaturesItems = {
+  __typename?: 'PagesBlocksFeaturesItems';
+  title?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['String']['output']>;
+};
+
+export type PagesBlocksFeatures = {
+  __typename?: 'PagesBlocksFeatures';
+  headline?: Maybe<Scalars['String']['output']>;
+  intro?: Maybe<Scalars['String']['output']>;
+  items?: Maybe<Array<Maybe<PagesBlocksFeaturesItems>>>;
+  background?: Maybe<Scalars['String']['output']>;
+};
+
+export type PagesBlocksSplit = {
+  __typename?: 'PagesBlocksSplit';
+  headline?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
+  image?: Maybe<Scalars['String']['output']>;
+  imageAlt?: Maybe<Scalars['String']['output']>;
+  imagePosition?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaUrl?: Maybe<Scalars['String']['output']>;
+  background?: Maybe<Scalars['String']['output']>;
+};
+
+export type PagesBlocksVideo = {
+  __typename?: 'PagesBlocksVideo';
+  headline?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+  background?: Maybe<Scalars['String']['output']>;
+};
+
+export type PagesBlocksImage = {
+  __typename?: 'PagesBlocksImage';
+  image?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+  width?: Maybe<Scalars['String']['output']>;
+  background?: Maybe<Scalars['String']['output']>;
+};
+
 export type PagesBlocksHero = {
   __typename?: 'PagesBlocksHero';
   headline?: Maybe<Scalars['String']['output']>;
@@ -357,7 +415,7 @@ export type PagesBlocksContact_Form = {
   locationLine?: Maybe<Scalars['String']['output']>;
 };
 
-export type PagesBlocks = PagesBlocksHero | PagesBlocksServices_Preview | PagesBlocksDifferentiators | PagesBlocksTrust_Signal | PagesBlocksCta_Strip | PagesBlocksServices_Full | PagesBlocksCost_Comparison | PagesBlocksSecondary_Services | PagesBlocksFaq | PagesBlocksRich_Text | PagesBlocksAbout_Story | PagesBlocksContact_Form;
+export type PagesBlocks = PagesBlocksCallout | PagesBlocksContent | PagesBlocksFeatures | PagesBlocksSplit | PagesBlocksVideo | PagesBlocksImage | PagesBlocksHero | PagesBlocksServices_Preview | PagesBlocksDifferentiators | PagesBlocksTrust_Signal | PagesBlocksCta_Strip | PagesBlocksServices_Full | PagesBlocksCost_Comparison | PagesBlocksSecondary_Services | PagesBlocksFaq | PagesBlocksRich_Text | PagesBlocksAbout_Story | PagesBlocksContact_Form;
 
 export type Pages = Node & Document & {
   __typename?: 'Pages';
@@ -388,6 +446,63 @@ export type PagesSeoFilter = {
   metaTitle?: InputMaybe<StringFilter>;
   metaDescription?: InputMaybe<StringFilter>;
   ogImage?: InputMaybe<ImageFilter>;
+};
+
+export type PagesBlocksCalloutFilter = {
+  text?: InputMaybe<StringFilter>;
+  linkLabel?: InputMaybe<StringFilter>;
+  linkUrl?: InputMaybe<StringFilter>;
+  background?: InputMaybe<StringFilter>;
+};
+
+export type RichTextFilter = {
+  startsWith?: InputMaybe<Scalars['String']['input']>;
+  eq?: InputMaybe<Scalars['String']['input']>;
+  exists?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type PagesBlocksContentFilter = {
+  heading?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
+  background?: InputMaybe<StringFilter>;
+};
+
+export type PagesBlocksFeaturesItemsFilter = {
+  title?: InputMaybe<StringFilter>;
+  body?: InputMaybe<StringFilter>;
+};
+
+export type PagesBlocksFeaturesFilter = {
+  headline?: InputMaybe<StringFilter>;
+  intro?: InputMaybe<StringFilter>;
+  items?: InputMaybe<PagesBlocksFeaturesItemsFilter>;
+  background?: InputMaybe<StringFilter>;
+};
+
+export type PagesBlocksSplitFilter = {
+  headline?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
+  image?: InputMaybe<ImageFilter>;
+  imageAlt?: InputMaybe<StringFilter>;
+  imagePosition?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaUrl?: InputMaybe<StringFilter>;
+  background?: InputMaybe<StringFilter>;
+};
+
+export type PagesBlocksVideoFilter = {
+  headline?: InputMaybe<StringFilter>;
+  url?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+  background?: InputMaybe<StringFilter>;
+};
+
+export type PagesBlocksImageFilter = {
+  image?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+  width?: InputMaybe<StringFilter>;
+  background?: InputMaybe<StringFilter>;
 };
 
 export type PagesBlocksHeroFilter = {
@@ -466,12 +581,6 @@ export type PagesBlocksFaqFilter = {
   _placeholder?: InputMaybe<StringFilter>;
 };
 
-export type RichTextFilter = {
-  startsWith?: InputMaybe<Scalars['String']['input']>;
-  eq?: InputMaybe<Scalars['String']['input']>;
-  exists?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
 export type PagesBlocksRich_TextFilter = {
   body?: InputMaybe<RichTextFilter>;
 };
@@ -494,6 +603,12 @@ export type PagesBlocksContact_FormFilter = {
 };
 
 export type PagesBlocksFilter = {
+  callout?: InputMaybe<PagesBlocksCalloutFilter>;
+  content?: InputMaybe<PagesBlocksContentFilter>;
+  features?: InputMaybe<PagesBlocksFeaturesFilter>;
+  split?: InputMaybe<PagesBlocksSplitFilter>;
+  video?: InputMaybe<PagesBlocksVideoFilter>;
+  image?: InputMaybe<PagesBlocksImageFilter>;
   hero?: InputMaybe<PagesBlocksHeroFilter>;
   services_preview?: InputMaybe<PagesBlocksServices_PreviewFilter>;
   differentiators?: InputMaybe<PagesBlocksDifferentiatorsFilter>;
@@ -847,6 +962,57 @@ export type PagesSeoMutation = {
   ogImage?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type PagesBlocksCalloutMutation = {
+  text?: InputMaybe<Scalars['String']['input']>;
+  linkLabel?: InputMaybe<Scalars['String']['input']>;
+  linkUrl?: InputMaybe<Scalars['String']['input']>;
+  background?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PagesBlocksContentMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+  background?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PagesBlocksFeaturesItemsMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PagesBlocksFeaturesMutation = {
+  headline?: InputMaybe<Scalars['String']['input']>;
+  intro?: InputMaybe<Scalars['String']['input']>;
+  items?: InputMaybe<Array<InputMaybe<PagesBlocksFeaturesItemsMutation>>>;
+  background?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PagesBlocksSplitMutation = {
+  headline?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
+  imageAlt?: InputMaybe<Scalars['String']['input']>;
+  imagePosition?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaUrl?: InputMaybe<Scalars['String']['input']>;
+  background?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PagesBlocksVideoMutation = {
+  headline?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+  background?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PagesBlocksImageMutation = {
+  image?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+  width?: InputMaybe<Scalars['String']['input']>;
+  background?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type PagesBlocksHeroMutation = {
   headline?: InputMaybe<Scalars['String']['input']>;
   subheading?: InputMaybe<Scalars['String']['input']>;
@@ -945,6 +1111,12 @@ export type PagesBlocksContact_FormMutation = {
 };
 
 export type PagesBlocksMutation = {
+  callout?: InputMaybe<PagesBlocksCalloutMutation>;
+  content?: InputMaybe<PagesBlocksContentMutation>;
+  features?: InputMaybe<PagesBlocksFeaturesMutation>;
+  split?: InputMaybe<PagesBlocksSplitMutation>;
+  video?: InputMaybe<PagesBlocksVideoMutation>;
+  image?: InputMaybe<PagesBlocksImageMutation>;
   hero?: InputMaybe<PagesBlocksHeroMutation>;
   services_preview?: InputMaybe<PagesBlocksServices_PreviewMutation>;
   differentiators?: InputMaybe<PagesBlocksDifferentiatorsMutation>;
@@ -1014,7 +1186,7 @@ export type SiteSettingsMutation = {
   defaultOgImage?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type PagesPartsFragment = { __typename: 'Pages', title: string, slug: string, seo?: { __typename: 'PagesSeo', metaTitle?: string | null, metaDescription?: string | null, ogImage?: string | null } | null, blocks?: Array<{ __typename: 'PagesBlocksHero', headline?: string | null, subheading?: string | null, primaryCtaLabel?: string | null, primaryCtaUrl?: string | null, secondaryCtaLabel?: string | null, secondaryCtaUrl?: string | null, trustAnchor?: string | null } | { __typename: 'PagesBlocksServices_preview', _placeholder?: string | null } | { __typename: 'PagesBlocksDifferentiators', items?: Array<{ __typename: 'PagesBlocksDifferentiatorsItems', headline?: string | null, body?: string | null } | null> | null } | { __typename: 'PagesBlocksTrust_signal', statement?: string | null, badgeSlot?: string | null } | { __typename: 'PagesBlocksCta_strip', headline?: string | null, ctaLabel?: string | null, ctaUrl?: string | null, background?: string | null } | { __typename: 'PagesBlocksServices_full', _placeholder?: string | null } | { __typename: 'PagesBlocksCost_comparison', headline?: string | null, intro?: string | null, rows?: Array<{ __typename: 'PagesBlocksCost_comparisonRows', label?: string | null, competitorCost?: string | null, contourCost?: string | null } | null> | null } | { __typename: 'PagesBlocksSecondary_services', card1?: { __typename: 'PagesBlocksSecondary_servicesCard1', headline?: string | null, description?: string | null, price?: string | null, ctaLabel?: string | null, ctaUrl?: string | null } | null, card2?: { __typename: 'PagesBlocksSecondary_servicesCard2', headline?: string | null, description?: string | null, price?: string | null, ctaLabel?: string | null, ctaUrl?: string | null } | null } | { __typename: 'PagesBlocksFaq', _placeholder?: string | null } | { __typename: 'PagesBlocksRich_text', body?: any | null } | { __typename: 'PagesBlocksAbout_story', opening?: string | null, storyBody?: any | null, howWeWork?: any | null, locationLine?: string | null, ctaLabel?: string | null, ctaUrl?: string | null } | { __typename: 'PagesBlocksContact_form', pageHeader?: string | null, responseTimeLine?: string | null, bookingLinkLabel?: string | null, bookingLinkUrl?: string | null, locationLine?: string | null } | null> | null };
+export type PagesPartsFragment = { __typename: 'Pages', title: string, slug: string, seo?: { __typename: 'PagesSeo', metaTitle?: string | null, metaDescription?: string | null, ogImage?: string | null } | null, blocks?: Array<{ __typename: 'PagesBlocksCallout', text?: string | null, linkLabel?: string | null, linkUrl?: string | null, background?: string | null } | { __typename: 'PagesBlocksContent', heading?: string | null, body?: any | null, background?: string | null } | { __typename: 'PagesBlocksFeatures', headline?: string | null, intro?: string | null, background?: string | null, items?: Array<{ __typename: 'PagesBlocksFeaturesItems', title?: string | null, body?: string | null } | null> | null } | { __typename: 'PagesBlocksSplit', headline?: string | null, body?: any | null, image?: string | null, imageAlt?: string | null, imagePosition?: string | null, ctaLabel?: string | null, ctaUrl?: string | null, background?: string | null } | { __typename: 'PagesBlocksVideo', headline?: string | null, url?: string | null, caption?: string | null, background?: string | null } | { __typename: 'PagesBlocksImage', image?: string | null, alt?: string | null, caption?: string | null, width?: string | null, background?: string | null } | { __typename: 'PagesBlocksHero', headline?: string | null, subheading?: string | null, primaryCtaLabel?: string | null, primaryCtaUrl?: string | null, secondaryCtaLabel?: string | null, secondaryCtaUrl?: string | null, trustAnchor?: string | null } | { __typename: 'PagesBlocksServices_preview', _placeholder?: string | null } | { __typename: 'PagesBlocksDifferentiators', items?: Array<{ __typename: 'PagesBlocksDifferentiatorsItems', headline?: string | null, body?: string | null } | null> | null } | { __typename: 'PagesBlocksTrust_signal', statement?: string | null, badgeSlot?: string | null } | { __typename: 'PagesBlocksCta_strip', headline?: string | null, ctaLabel?: string | null, ctaUrl?: string | null, background?: string | null } | { __typename: 'PagesBlocksServices_full', _placeholder?: string | null } | { __typename: 'PagesBlocksCost_comparison', headline?: string | null, intro?: string | null, rows?: Array<{ __typename: 'PagesBlocksCost_comparisonRows', label?: string | null, competitorCost?: string | null, contourCost?: string | null } | null> | null } | { __typename: 'PagesBlocksSecondary_services', card1?: { __typename: 'PagesBlocksSecondary_servicesCard1', headline?: string | null, description?: string | null, price?: string | null, ctaLabel?: string | null, ctaUrl?: string | null } | null, card2?: { __typename: 'PagesBlocksSecondary_servicesCard2', headline?: string | null, description?: string | null, price?: string | null, ctaLabel?: string | null, ctaUrl?: string | null } | null } | { __typename: 'PagesBlocksFaq', _placeholder?: string | null } | { __typename: 'PagesBlocksRich_text', body?: any | null } | { __typename: 'PagesBlocksAbout_story', opening?: string | null, storyBody?: any | null, howWeWork?: any | null, locationLine?: string | null, ctaLabel?: string | null, ctaUrl?: string | null } | { __typename: 'PagesBlocksContact_form', pageHeader?: string | null, responseTimeLine?: string | null, bookingLinkLabel?: string | null, bookingLinkUrl?: string | null, locationLine?: string | null } | null> | null };
 
 export type PostsPartsFragment = { __typename: 'Posts', title: string, slug: string, date?: string | null, excerpt?: string | null, body?: any | null };
 
@@ -1029,7 +1201,7 @@ export type PagesQueryVariables = Exact<{
 }>;
 
 
-export type PagesQuery = { __typename?: 'Query', pages: { __typename: 'Pages', id: string, title: string, slug: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, seo?: { __typename: 'PagesSeo', metaTitle?: string | null, metaDescription?: string | null, ogImage?: string | null } | null, blocks?: Array<{ __typename: 'PagesBlocksHero', headline?: string | null, subheading?: string | null, primaryCtaLabel?: string | null, primaryCtaUrl?: string | null, secondaryCtaLabel?: string | null, secondaryCtaUrl?: string | null, trustAnchor?: string | null } | { __typename: 'PagesBlocksServices_preview', _placeholder?: string | null } | { __typename: 'PagesBlocksDifferentiators', items?: Array<{ __typename: 'PagesBlocksDifferentiatorsItems', headline?: string | null, body?: string | null } | null> | null } | { __typename: 'PagesBlocksTrust_signal', statement?: string | null, badgeSlot?: string | null } | { __typename: 'PagesBlocksCta_strip', headline?: string | null, ctaLabel?: string | null, ctaUrl?: string | null, background?: string | null } | { __typename: 'PagesBlocksServices_full', _placeholder?: string | null } | { __typename: 'PagesBlocksCost_comparison', headline?: string | null, intro?: string | null, rows?: Array<{ __typename: 'PagesBlocksCost_comparisonRows', label?: string | null, competitorCost?: string | null, contourCost?: string | null } | null> | null } | { __typename: 'PagesBlocksSecondary_services', card1?: { __typename: 'PagesBlocksSecondary_servicesCard1', headline?: string | null, description?: string | null, price?: string | null, ctaLabel?: string | null, ctaUrl?: string | null } | null, card2?: { __typename: 'PagesBlocksSecondary_servicesCard2', headline?: string | null, description?: string | null, price?: string | null, ctaLabel?: string | null, ctaUrl?: string | null } | null } | { __typename: 'PagesBlocksFaq', _placeholder?: string | null } | { __typename: 'PagesBlocksRich_text', body?: any | null } | { __typename: 'PagesBlocksAbout_story', opening?: string | null, storyBody?: any | null, howWeWork?: any | null, locationLine?: string | null, ctaLabel?: string | null, ctaUrl?: string | null } | { __typename: 'PagesBlocksContact_form', pageHeader?: string | null, responseTimeLine?: string | null, bookingLinkLabel?: string | null, bookingLinkUrl?: string | null, locationLine?: string | null } | null> | null } };
+export type PagesQuery = { __typename?: 'Query', pages: { __typename: 'Pages', id: string, title: string, slug: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, seo?: { __typename: 'PagesSeo', metaTitle?: string | null, metaDescription?: string | null, ogImage?: string | null } | null, blocks?: Array<{ __typename: 'PagesBlocksCallout', text?: string | null, linkLabel?: string | null, linkUrl?: string | null, background?: string | null } | { __typename: 'PagesBlocksContent', heading?: string | null, body?: any | null, background?: string | null } | { __typename: 'PagesBlocksFeatures', headline?: string | null, intro?: string | null, background?: string | null, items?: Array<{ __typename: 'PagesBlocksFeaturesItems', title?: string | null, body?: string | null } | null> | null } | { __typename: 'PagesBlocksSplit', headline?: string | null, body?: any | null, image?: string | null, imageAlt?: string | null, imagePosition?: string | null, ctaLabel?: string | null, ctaUrl?: string | null, background?: string | null } | { __typename: 'PagesBlocksVideo', headline?: string | null, url?: string | null, caption?: string | null, background?: string | null } | { __typename: 'PagesBlocksImage', image?: string | null, alt?: string | null, caption?: string | null, width?: string | null, background?: string | null } | { __typename: 'PagesBlocksHero', headline?: string | null, subheading?: string | null, primaryCtaLabel?: string | null, primaryCtaUrl?: string | null, secondaryCtaLabel?: string | null, secondaryCtaUrl?: string | null, trustAnchor?: string | null } | { __typename: 'PagesBlocksServices_preview', _placeholder?: string | null } | { __typename: 'PagesBlocksDifferentiators', items?: Array<{ __typename: 'PagesBlocksDifferentiatorsItems', headline?: string | null, body?: string | null } | null> | null } | { __typename: 'PagesBlocksTrust_signal', statement?: string | null, badgeSlot?: string | null } | { __typename: 'PagesBlocksCta_strip', headline?: string | null, ctaLabel?: string | null, ctaUrl?: string | null, background?: string | null } | { __typename: 'PagesBlocksServices_full', _placeholder?: string | null } | { __typename: 'PagesBlocksCost_comparison', headline?: string | null, intro?: string | null, rows?: Array<{ __typename: 'PagesBlocksCost_comparisonRows', label?: string | null, competitorCost?: string | null, contourCost?: string | null } | null> | null } | { __typename: 'PagesBlocksSecondary_services', card1?: { __typename: 'PagesBlocksSecondary_servicesCard1', headline?: string | null, description?: string | null, price?: string | null, ctaLabel?: string | null, ctaUrl?: string | null } | null, card2?: { __typename: 'PagesBlocksSecondary_servicesCard2', headline?: string | null, description?: string | null, price?: string | null, ctaLabel?: string | null, ctaUrl?: string | null } | null } | { __typename: 'PagesBlocksFaq', _placeholder?: string | null } | { __typename: 'PagesBlocksRich_text', body?: any | null } | { __typename: 'PagesBlocksAbout_story', opening?: string | null, storyBody?: any | null, howWeWork?: any | null, locationLine?: string | null, ctaLabel?: string | null, ctaUrl?: string | null } | { __typename: 'PagesBlocksContact_form', pageHeader?: string | null, responseTimeLine?: string | null, bookingLinkLabel?: string | null, bookingLinkUrl?: string | null, locationLine?: string | null } | null> | null } };
 
 export type PagesConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -1041,7 +1213,7 @@ export type PagesConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PagesConnectionQuery = { __typename?: 'Query', pagesConnection: { __typename?: 'PagesConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PagesConnectionEdges', cursor: string, node?: { __typename: 'Pages', id: string, title: string, slug: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, seo?: { __typename: 'PagesSeo', metaTitle?: string | null, metaDescription?: string | null, ogImage?: string | null } | null, blocks?: Array<{ __typename: 'PagesBlocksHero', headline?: string | null, subheading?: string | null, primaryCtaLabel?: string | null, primaryCtaUrl?: string | null, secondaryCtaLabel?: string | null, secondaryCtaUrl?: string | null, trustAnchor?: string | null } | { __typename: 'PagesBlocksServices_preview', _placeholder?: string | null } | { __typename: 'PagesBlocksDifferentiators', items?: Array<{ __typename: 'PagesBlocksDifferentiatorsItems', headline?: string | null, body?: string | null } | null> | null } | { __typename: 'PagesBlocksTrust_signal', statement?: string | null, badgeSlot?: string | null } | { __typename: 'PagesBlocksCta_strip', headline?: string | null, ctaLabel?: string | null, ctaUrl?: string | null, background?: string | null } | { __typename: 'PagesBlocksServices_full', _placeholder?: string | null } | { __typename: 'PagesBlocksCost_comparison', headline?: string | null, intro?: string | null, rows?: Array<{ __typename: 'PagesBlocksCost_comparisonRows', label?: string | null, competitorCost?: string | null, contourCost?: string | null } | null> | null } | { __typename: 'PagesBlocksSecondary_services', card1?: { __typename: 'PagesBlocksSecondary_servicesCard1', headline?: string | null, description?: string | null, price?: string | null, ctaLabel?: string | null, ctaUrl?: string | null } | null, card2?: { __typename: 'PagesBlocksSecondary_servicesCard2', headline?: string | null, description?: string | null, price?: string | null, ctaLabel?: string | null, ctaUrl?: string | null } | null } | { __typename: 'PagesBlocksFaq', _placeholder?: string | null } | { __typename: 'PagesBlocksRich_text', body?: any | null } | { __typename: 'PagesBlocksAbout_story', opening?: string | null, storyBody?: any | null, howWeWork?: any | null, locationLine?: string | null, ctaLabel?: string | null, ctaUrl?: string | null } | { __typename: 'PagesBlocksContact_form', pageHeader?: string | null, responseTimeLine?: string | null, bookingLinkLabel?: string | null, bookingLinkUrl?: string | null, locationLine?: string | null } | null> | null } | null } | null> | null } };
+export type PagesConnectionQuery = { __typename?: 'Query', pagesConnection: { __typename?: 'PagesConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PagesConnectionEdges', cursor: string, node?: { __typename: 'Pages', id: string, title: string, slug: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, seo?: { __typename: 'PagesSeo', metaTitle?: string | null, metaDescription?: string | null, ogImage?: string | null } | null, blocks?: Array<{ __typename: 'PagesBlocksCallout', text?: string | null, linkLabel?: string | null, linkUrl?: string | null, background?: string | null } | { __typename: 'PagesBlocksContent', heading?: string | null, body?: any | null, background?: string | null } | { __typename: 'PagesBlocksFeatures', headline?: string | null, intro?: string | null, background?: string | null, items?: Array<{ __typename: 'PagesBlocksFeaturesItems', title?: string | null, body?: string | null } | null> | null } | { __typename: 'PagesBlocksSplit', headline?: string | null, body?: any | null, image?: string | null, imageAlt?: string | null, imagePosition?: string | null, ctaLabel?: string | null, ctaUrl?: string | null, background?: string | null } | { __typename: 'PagesBlocksVideo', headline?: string | null, url?: string | null, caption?: string | null, background?: string | null } | { __typename: 'PagesBlocksImage', image?: string | null, alt?: string | null, caption?: string | null, width?: string | null, background?: string | null } | { __typename: 'PagesBlocksHero', headline?: string | null, subheading?: string | null, primaryCtaLabel?: string | null, primaryCtaUrl?: string | null, secondaryCtaLabel?: string | null, secondaryCtaUrl?: string | null, trustAnchor?: string | null } | { __typename: 'PagesBlocksServices_preview', _placeholder?: string | null } | { __typename: 'PagesBlocksDifferentiators', items?: Array<{ __typename: 'PagesBlocksDifferentiatorsItems', headline?: string | null, body?: string | null } | null> | null } | { __typename: 'PagesBlocksTrust_signal', statement?: string | null, badgeSlot?: string | null } | { __typename: 'PagesBlocksCta_strip', headline?: string | null, ctaLabel?: string | null, ctaUrl?: string | null, background?: string | null } | { __typename: 'PagesBlocksServices_full', _placeholder?: string | null } | { __typename: 'PagesBlocksCost_comparison', headline?: string | null, intro?: string | null, rows?: Array<{ __typename: 'PagesBlocksCost_comparisonRows', label?: string | null, competitorCost?: string | null, contourCost?: string | null } | null> | null } | { __typename: 'PagesBlocksSecondary_services', card1?: { __typename: 'PagesBlocksSecondary_servicesCard1', headline?: string | null, description?: string | null, price?: string | null, ctaLabel?: string | null, ctaUrl?: string | null } | null, card2?: { __typename: 'PagesBlocksSecondary_servicesCard2', headline?: string | null, description?: string | null, price?: string | null, ctaLabel?: string | null, ctaUrl?: string | null } | null } | { __typename: 'PagesBlocksFaq', _placeholder?: string | null } | { __typename: 'PagesBlocksRich_text', body?: any | null } | { __typename: 'PagesBlocksAbout_story', opening?: string | null, storyBody?: any | null, howWeWork?: any | null, locationLine?: string | null, ctaLabel?: string | null, ctaUrl?: string | null } | { __typename: 'PagesBlocksContact_form', pageHeader?: string | null, responseTimeLine?: string | null, bookingLinkLabel?: string | null, bookingLinkUrl?: string | null, locationLine?: string | null } | null> | null } | null } | null> | null } };
 
 export type PostsQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -1132,6 +1304,50 @@ export const PagesPartsFragmentDoc = gql`
   }
   blocks {
     __typename
+    ... on PagesBlocksCallout {
+      text
+      linkLabel
+      linkUrl
+      background
+    }
+    ... on PagesBlocksContent {
+      heading
+      body
+      background
+    }
+    ... on PagesBlocksFeatures {
+      headline
+      intro
+      items {
+        __typename
+        title
+        body
+      }
+      background
+    }
+    ... on PagesBlocksSplit {
+      headline
+      body
+      image
+      imageAlt
+      imagePosition
+      ctaLabel
+      ctaUrl
+      background
+    }
+    ... on PagesBlocksVideo {
+      headline
+      url
+      caption
+      background
+    }
+    ... on PagesBlocksImage {
+      image
+      alt
+      caption
+      width
+      background
+    }
     ... on PagesBlocksHero {
       headline
       subheading

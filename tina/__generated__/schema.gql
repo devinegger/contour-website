@@ -105,6 +105,57 @@ type PagesSeo {
   ogImage: String
 }
 
+type PagesBlocksCallout {
+  text: String
+  linkLabel: String
+  linkUrl: String
+  background: String
+}
+
+type PagesBlocksContent {
+  heading: String
+  body: JSON
+  background: String
+}
+
+type PagesBlocksFeaturesItems {
+  title: String
+  body: String
+}
+
+type PagesBlocksFeatures {
+  headline: String
+  intro: String
+  items: [PagesBlocksFeaturesItems]
+  background: String
+}
+
+type PagesBlocksSplit {
+  headline: String
+  body: JSON
+  image: String
+  imageAlt: String
+  imagePosition: String
+  ctaLabel: String
+  ctaUrl: String
+  background: String
+}
+
+type PagesBlocksVideo {
+  headline: String
+  url: String
+  caption: String
+  background: String
+}
+
+type PagesBlocksImage {
+  image: String
+  alt: String
+  caption: String
+  width: String
+  background: String
+}
+
 type PagesBlocksHero {
   headline: String
   subheading: String
@@ -202,7 +253,7 @@ type PagesBlocksContact_form {
   locationLine: String
 }
 
-union PagesBlocks = PagesBlocksHero | PagesBlocksServices_preview | PagesBlocksDifferentiators | PagesBlocksTrust_signal | PagesBlocksCta_strip | PagesBlocksServices_full | PagesBlocksCost_comparison | PagesBlocksSecondary_services | PagesBlocksFaq | PagesBlocksRich_text | PagesBlocksAbout_story | PagesBlocksContact_form
+union PagesBlocks = PagesBlocksCallout | PagesBlocksContent | PagesBlocksFeatures | PagesBlocksSplit | PagesBlocksVideo | PagesBlocksImage | PagesBlocksHero | PagesBlocksServices_preview | PagesBlocksDifferentiators | PagesBlocksTrust_signal | PagesBlocksCta_strip | PagesBlocksServices_full | PagesBlocksCost_comparison | PagesBlocksSecondary_services | PagesBlocksFaq | PagesBlocksRich_text | PagesBlocksAbout_story | PagesBlocksContact_form
 
 type Pages implements Node & Document {
   title: String!
@@ -232,6 +283,63 @@ input PagesSeoFilter {
   metaTitle: StringFilter
   metaDescription: StringFilter
   ogImage: ImageFilter
+}
+
+input PagesBlocksCalloutFilter {
+  text: StringFilter
+  linkLabel: StringFilter
+  linkUrl: StringFilter
+  background: StringFilter
+}
+
+input RichTextFilter {
+  startsWith: String
+  eq: String
+  exists: Boolean
+}
+
+input PagesBlocksContentFilter {
+  heading: StringFilter
+  body: RichTextFilter
+  background: StringFilter
+}
+
+input PagesBlocksFeaturesItemsFilter {
+  title: StringFilter
+  body: StringFilter
+}
+
+input PagesBlocksFeaturesFilter {
+  headline: StringFilter
+  intro: StringFilter
+  items: PagesBlocksFeaturesItemsFilter
+  background: StringFilter
+}
+
+input PagesBlocksSplitFilter {
+  headline: StringFilter
+  body: RichTextFilter
+  image: ImageFilter
+  imageAlt: StringFilter
+  imagePosition: StringFilter
+  ctaLabel: StringFilter
+  ctaUrl: StringFilter
+  background: StringFilter
+}
+
+input PagesBlocksVideoFilter {
+  headline: StringFilter
+  url: StringFilter
+  caption: StringFilter
+  background: StringFilter
+}
+
+input PagesBlocksImageFilter {
+  image: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+  width: StringFilter
+  background: StringFilter
 }
 
 input PagesBlocksHeroFilter {
@@ -310,12 +418,6 @@ input PagesBlocksFaqFilter {
   _placeholder: StringFilter
 }
 
-input RichTextFilter {
-  startsWith: String
-  eq: String
-  exists: Boolean
-}
-
 input PagesBlocksRich_textFilter {
   body: RichTextFilter
 }
@@ -338,6 +440,12 @@ input PagesBlocksContact_formFilter {
 }
 
 input PagesBlocksFilter {
+  callout: PagesBlocksCalloutFilter
+  content: PagesBlocksContentFilter
+  features: PagesBlocksFeaturesFilter
+  split: PagesBlocksSplitFilter
+  video: PagesBlocksVideoFilter
+  image: PagesBlocksImageFilter
   hero: PagesBlocksHeroFilter
   services_preview: PagesBlocksServices_previewFilter
   differentiators: PagesBlocksDifferentiatorsFilter
@@ -581,6 +689,57 @@ input PagesSeoMutation {
   ogImage: String
 }
 
+input PagesBlocksCalloutMutation {
+  text: String
+  linkLabel: String
+  linkUrl: String
+  background: String
+}
+
+input PagesBlocksContentMutation {
+  heading: String
+  body: JSON
+  background: String
+}
+
+input PagesBlocksFeaturesItemsMutation {
+  title: String
+  body: String
+}
+
+input PagesBlocksFeaturesMutation {
+  headline: String
+  intro: String
+  items: [PagesBlocksFeaturesItemsMutation]
+  background: String
+}
+
+input PagesBlocksSplitMutation {
+  headline: String
+  body: JSON
+  image: String
+  imageAlt: String
+  imagePosition: String
+  ctaLabel: String
+  ctaUrl: String
+  background: String
+}
+
+input PagesBlocksVideoMutation {
+  headline: String
+  url: String
+  caption: String
+  background: String
+}
+
+input PagesBlocksImageMutation {
+  image: String
+  alt: String
+  caption: String
+  width: String
+  background: String
+}
+
 input PagesBlocksHeroMutation {
   headline: String
   subheading: String
@@ -679,6 +838,12 @@ input PagesBlocksContact_formMutation {
 }
 
 input PagesBlocksMutation {
+  callout: PagesBlocksCalloutMutation
+  content: PagesBlocksContentMutation
+  features: PagesBlocksFeaturesMutation
+  split: PagesBlocksSplitMutation
+  video: PagesBlocksVideoMutation
+  image: PagesBlocksImageMutation
   hero: PagesBlocksHeroMutation
   services_preview: PagesBlocksServices_previewMutation
   differentiators: PagesBlocksDifferentiatorsMutation

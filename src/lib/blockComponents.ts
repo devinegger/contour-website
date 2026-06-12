@@ -10,6 +10,12 @@ import Faq from '../components/blocks/Faq.astro';
 import RichText from '../components/blocks/RichText.astro';
 import AboutStory from '../components/blocks/AboutStory.astro';
 import ContactForm from '../components/blocks/ContactForm.astro';
+import Callout from '../components/blocks/Callout.astro';
+import Content from '../components/blocks/Content.astro';
+import Features from '../components/blocks/Features.astro';
+import Split from '../components/blocks/Split.astro';
+import Video from '../components/blocks/Video.astro';
+import ImageBlock from '../components/blocks/ImageBlock.astro';
 
 // Keys are the __typename values returned by the Tina GraphQL API.
 // Pattern: Pages + Blocks + {PascalCase template name}
@@ -26,4 +32,10 @@ export const blockComponents: Record<string, unknown> = {
   'PagesBlocksRich_text': RichText,
   'PagesBlocksAbout_story': AboutStory,
   'PagesBlocksContact_form': ContactForm,
+  'PagesBlocksCallout': Callout,
+  'PagesBlocksContent': Content,
+  'PagesBlocksFeatures': Features,
+  'PagesBlocksSplit': Split,
+  'PagesBlocksVideo': Video,
+  'PagesBlocksImage': ImageBlock,
 };

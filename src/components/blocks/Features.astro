@@ -1,0 +1,100 @@
+---
+interface FeatureItem {
+  title?: string;
+  body?: string;
+}
+
+interface Props {
+  headline?: string;
+  intro?: string;
+  items?: (FeatureItem | null)[];
+  background?: 'light' | 'dark';
+}
+
+const { headline, intro, items = [], background = 'light' } = Astro.props;
+const isDark = background === 'dark';
+const features = (items ?? []).filter((item): item is FeatureItem => Boolean(item));
+---
+
+<section class={`features ${isDark ? 'surface-dark' : 'surface-light'}`}>
+  <div class="container section">
+    {(headline || intro) && (
+      <div class="features-header">
+        {headline && <h2 class="features-headline">{headline}</h2>}
+        {intro && <p class="features-intro">{intro}</p>}
+      </div>
+    )}
+    <div class="features-grid">
+      {features.map((item) => (
+        <div class={`feature-card ${isDark ? 'feature-card--dark' : 'feature-card--light'}`}>
+          {item.title && <h3 class="feature-title">{item.title}</h3>}
+          {item.body && <p class="feature-body">{item.body}</p>}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .features-header {
+    text-align: center;
+    max-width: var(--measure);
+    margin-inline: auto;
+    margin-bottom: var(--space-7);
+  }
+
+  .features-headline {
+    font-family: var(--font-heading);
+    font-size: var(--fs-h2);
+    font-weight: var(--fw-heading);
+    line-height: var(--lh-heading);
+  }
+
+  .features-intro {
+    margin-top: var(--space-3);
+    font-size: 1.0625rem;
+    opacity: 0.85;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  @media (min-width: 800px) {
+    .features-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .feature-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-6);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-on-light);
+  }
+
+  .feature-card--light {
+    background: var(--surface-card-light);
+  }
+
+  .feature-card--dark {
+    background: var(--surface-card);
+    border-color: var(--border-on-dark);
+  }
+
+  .feature-title {
+    font-family: var(--font-heading);
+    font-size: var(--fs-h3);
+    font-weight: var(--fw-heading);
+  }
+
+  .feature-body {
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
+    opacity: 0.85;
+  }
+</style>

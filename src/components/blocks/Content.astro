@@ -1,0 +1,40 @@
+---
+import TinaMarkdown from '@tinacms/astro/TinaMarkdown.astro';
+
+interface Props {
+  heading?: string;
+  body?: unknown;
+  background?: 'light' | 'dark';
+}
+
+const { heading, body, background = 'light' } = Astro.props;
+const isDark = background === 'dark';
+---
+
+<section class={`content-block ${isDark ? 'surface-dark' : 'surface-light'}`}>
+  <div class="container section">
+    {heading && <h2 class="content-heading">{heading}</h2>}
+    <div class="prose content-body">
+      {body && <TinaMarkdown content={body} />}
+    </div>
+  </div>
+</section>
+
+<style>
+  .content-heading {
+    font-family: var(--font-heading);
+    font-size: var(--fs-h2);
+    font-weight: var(--fw-heading);
+    margin-bottom: var(--space-5);
+  }
+
+  .content-body {
+    font-size: 1.0625rem;
+  }
+
+  .content-body :global(h1),
+  .content-body :global(h2),
+  .content-body :global(h3) {
+    font-family: var(--font-heading);
+  }
+</style>

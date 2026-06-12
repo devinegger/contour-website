@@ -60,6 +60,185 @@ export default defineConfig({
             list: true,
             ui: { visualSelector: true },
             templates: [
+              // ─── Generic block kit (pulled from tina-astro-starter) ───
+              // callout
+              {
+                name: 'callout',
+                label: 'Callout',
+                ui: {
+                  previewSrc: '/tina-previews/callout.svg',
+                  defaultItem: {
+                    text: 'A short, highlighted message goes here.',
+                    background: 'light',
+                  },
+                },
+                fields: [
+                  { name: 'text', label: 'Text', type: 'string', ui: { component: 'textarea' } },
+                  { name: 'linkLabel', label: 'Link label (optional)', type: 'string' },
+                  { name: 'linkUrl', label: 'Link URL (optional)', type: 'string' },
+                  {
+                    name: 'background',
+                    label: 'Background',
+                    type: 'string',
+                    options: ['light', 'dark'],
+                    ui: { component: 'select' },
+                  },
+                ],
+              },
+              // content
+              {
+                name: 'content',
+                label: 'Content',
+                ui: {
+                  previewSrc: '/tina-previews/content.svg',
+                  defaultItem: {
+                    heading: 'Section heading',
+                    background: 'light',
+                  },
+                },
+                fields: [
+                  { name: 'heading', label: 'Heading (optional)', type: 'string' },
+                  { name: 'body', label: 'Body', type: 'rich-text' },
+                  {
+                    name: 'background',
+                    label: 'Background',
+                    type: 'string',
+                    options: ['light', 'dark'],
+                    ui: { component: 'select' },
+                  },
+                ],
+              },
+              // features
+              {
+                name: 'features',
+                label: 'Features',
+                ui: {
+                  previewSrc: '/tina-previews/features.svg',
+                  defaultItem: {
+                    headline: 'Why it works',
+                    items: [
+                      { title: 'Feature one', body: 'Describe the benefit here.' },
+                      { title: 'Feature two', body: 'Describe the benefit here.' },
+                      { title: 'Feature three', body: 'Describe the benefit here.' },
+                    ],
+                    background: 'light',
+                  },
+                },
+                fields: [
+                  { name: 'headline', label: 'Headline (optional)', type: 'string' },
+                  { name: 'intro', label: 'Intro (optional)', type: 'string', ui: { component: 'textarea' } },
+                  {
+                    name: 'items',
+                    label: 'Items',
+                    type: 'object',
+                    list: true,
+                    ui: {
+                      itemProps: (item: { title?: string }) => ({ label: item?.title }),
+                      defaultItem: { title: 'New feature', body: 'Describe the benefit here.' },
+                    },
+                    fields: [
+                      { name: 'title', label: 'Title', type: 'string' },
+                      { name: 'body', label: 'Body', type: 'string', ui: { component: 'textarea' } },
+                    ],
+                  },
+                  {
+                    name: 'background',
+                    label: 'Background',
+                    type: 'string',
+                    options: ['light', 'dark'],
+                    ui: { component: 'select' },
+                  },
+                ],
+              },
+              // split
+              {
+                name: 'split',
+                label: 'Split (Image + Text)',
+                ui: {
+                  previewSrc: '/tina-previews/split.svg',
+                  defaultItem: {
+                    headline: 'A headline that sits beside your image',
+                    imagePosition: 'left',
+                    background: 'light',
+                  },
+                },
+                fields: [
+                  { name: 'headline', label: 'Headline', type: 'string' },
+                  { name: 'body', label: 'Body', type: 'rich-text' },
+                  { name: 'image', label: 'Image', type: 'image' },
+                  { name: 'imageAlt', label: 'Image alt text', type: 'string' },
+                  {
+                    name: 'imagePosition',
+                    label: 'Image position',
+                    type: 'string',
+                    options: ['left', 'right'],
+                    ui: { component: 'select' },
+                  },
+                  { name: 'ctaLabel', label: 'CTA label (optional)', type: 'string' },
+                  { name: 'ctaUrl', label: 'CTA URL (optional)', type: 'string' },
+                  {
+                    name: 'background',
+                    label: 'Background',
+                    type: 'string',
+                    options: ['light', 'dark'],
+                    ui: { component: 'select' },
+                  },
+                ],
+              },
+              // video
+              {
+                name: 'video',
+                label: 'Video',
+                ui: {
+                  previewSrc: '/tina-previews/video.svg',
+                  defaultItem: {
+                    background: 'light',
+                  },
+                },
+                fields: [
+                  { name: 'headline', label: 'Headline (optional)', type: 'string' },
+                  { name: 'url', label: 'Video URL (YouTube or Vimeo)', type: 'string' },
+                  { name: 'caption', label: 'Caption (optional)', type: 'string' },
+                  {
+                    name: 'background',
+                    label: 'Background',
+                    type: 'string',
+                    options: ['light', 'dark'],
+                    ui: { component: 'select' },
+                  },
+                ],
+              },
+              // image
+              {
+                name: 'image',
+                label: 'Image',
+                ui: {
+                  previewSrc: '/tina-previews/image.svg',
+                  defaultItem: {
+                    width: 'contained',
+                    background: 'light',
+                  },
+                },
+                fields: [
+                  { name: 'image', label: 'Image', type: 'image' },
+                  { name: 'alt', label: 'Alt text', type: 'string' },
+                  { name: 'caption', label: 'Caption (optional)', type: 'string' },
+                  {
+                    name: 'width',
+                    label: 'Width',
+                    type: 'string',
+                    options: ['contained', 'full-bleed'],
+                    ui: { component: 'select' },
+                  },
+                  {
+                    name: 'background',
+                    label: 'Background',
+                    type: 'string',
+                    options: ['light', 'dark'],
+                    ui: { component: 'select' },
+                  },
+                ],
+              },
               // hero
               {
                 name: 'hero',
