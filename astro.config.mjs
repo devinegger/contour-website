@@ -21,9 +21,10 @@ export default defineConfig({
       filter: (page) => !page.includes('/admin'),
     }),
   ],
-  redirects: {
-    '/admin': '/admin/index.html',
-  },
+  // No /admin redirect needed: Workers assets html_handling serves
+  // admin/index.html for /admin/, and tinaAdminDevRedirect covers astro dev.
+  // An Astro redirect here would emit a _redirects entry that loops against
+  // the assets trailing-slash rewrite.
   vite: {
     plugins: [tinaAdminDevRedirect()],
     // Bundle @tinacms/astro into the SSR build instead of resolving it
