@@ -16,6 +16,13 @@ const {
 } = Astro.props;
 
 const showBooking = Boolean(bookingLinkLabel && bookingLinkUrl);
+
+// Cloudflare Turnstile sitekey (public). Currently the official test key,
+// which renders a widget that always passes — swap for the real sitekey
+// once the widget is created in the Cloudflare dash (Turnstile → Add widget,
+// hostname contour-digital.com), and set the matching TURNSTILE_SECRET on
+// the contour-forms Worker.
+const TURNSTILE_SITEKEY = '1x00000000000000000000AA';
 ---
 
 <section class="contact-section surface-dark">
@@ -34,6 +41,19 @@ const showBooking = Boolean(bookingLinkLabel && bookingLinkUrl);
         action="https://forms.contour-digital.com/contact"
         novalidate
       >
+        <p class="form-status form-status-ok" id="form-status-ok" hidden role="status">
+          Thanks — your message is on its way. You'll hear from us promptly.
+        </p>
+        <p class="form-status form-status-error" id="form-status-error" hidden role="alert">
+          Something went wrong sending your message. Please try again, or email us directly.
+        </p>
+
+        <!-- Honeypot: humans never see or fill this -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="company">Company</label>
+          <input type="text" id="company" name="company" tabindex="-1" autocomplete="off" />
+        </div>
+
         <div class="form-field">
           <label for="name" class="form-label">Name <span class="required" aria-hidden="true">*</span></label>
           <input
@@ -97,6 +117,8 @@ const showBooking = Boolean(bookingLinkLabel && bookingLinkUrl);
             placeholder="What's going on with your website? What would a win look like?"
           ></textarea>
         </div>
+
+        <div class="cf-turnstile" data-sitekey={TURNSTILE_SITEKEY} data-theme="dark"></div>
 
         <div class="form-submit-area">
           <button type="submit" class="btn btn-primary form-submit">Get in Touch</button>
@@ -260,4 +282,45 @@ const showBooking = Boolean(bookingLinkLabel && bookingLinkUrl);
     text-decoration: underline;
     text-underline-offset: 2px;
   }
+
+  .form-status {
+    padding: 0.875rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.9375rem;
+  }
+
+  .form-status-ok {
+    border: 1px solid var(--status-good);
+    color: var(--text-on-dark);
+  }
+
+  .form-status-error {
+    border: 1px solid var(--status-critical);
+    color: var(--text-on-dark);
+  }
+
+  /* Honeypot lives off-screen, not display:none — bots skip hidden fields */
+  .hp-field {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
 </style>
+
+<script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+<script>
+  // The forms Worker redirects back here with ?sent=1 or ?error=<code>.
+  const params = new URLSearchParams(window.location.search);
+  const ok = document.getElementById('form-status-ok');
+  const err = document.getElementById('form-status-error');
+  if (params.has('sent') && ok) {
+    ok.hidden = false;
+    ok.scrollIntoView({ block: 'center' });
+  } else if (params.has('error') && err) {
+    err.hidden = false;
+    err.scrollIntoView({ block: 'center' });
+  }
+</script>
