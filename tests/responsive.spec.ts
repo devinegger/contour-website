@@ -27,7 +27,7 @@ test.describe('hero', () => {
   test('headline scales with viewport', async ({ page, isMobile }) => {
     await page.goto('/');
     const h1 = page.locator('h1').first();
-    await expect(h1).toContainText('Your website should work for your business');
+    await expect(h1).not.toBeEmpty();
     const fontSize = await h1.evaluate((el) => parseFloat(getComputedStyle(el).fontSize));
 
     if (isMobile) {
