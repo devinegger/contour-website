@@ -12,3 +12,6 @@ tina/__generated__/.cache/
 *-handoff.zip
 test-results/
 playwright-report/
+
+# Local Claude Code config
+.claude/
