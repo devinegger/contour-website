@@ -34,7 +34,7 @@ const services = allServices
           {service.tagline && <p class="card-tagline">{service.tagline}</p>}
           {service.price && <p class="card-price">{service.price}</p>}
           <a href="/services" class="card-cta btn btn-secondary btn-sm">
-            Learn more
+            Learn more<span class="sr-only"> about {service.name}</span>
           </a>
         </article>
       ))}
@@ -43,6 +43,10 @@ const services = allServices
 </section>
 
 <style>
+  .eyebrow {
+    color: var(--teal-dim);
+  }
+
   .preview-heading {
     font-family: var(--font-heading);
     font-size: var(--fs-h2);
@@ -90,7 +94,7 @@ const services = allServices
     font-weight: var(--fw-label);
     text-transform: uppercase;
     letter-spacing: var(--ls-eyebrow);
-    color: var(--accent);
+    color: var(--teal-dim);
     line-height: 1;
   }
 
@@ -117,5 +121,10 @@ const services = allServices
   .card-cta {
     align-self: flex-start;
     margin-top: 0.5rem;
+    color: var(--teal-dim);
+  }
+
+  .card-cta:hover {
+    color: var(--teal-dim);
   }
 </style>

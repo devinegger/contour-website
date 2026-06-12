@@ -295,8 +295,8 @@ a:hover { color: var(--accent-hover); }
 .btn:active { transform: translateY(0); }
 .btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
 
-.btn-primary { background: var(--teal); color: var(--stone); border-color: var(--teal); }
-.btn-primary:hover { background: var(--teal-light); border-color: var(--teal-light); color: var(--stone); }
+.btn-primary { background: var(--teal-dim); color: var(--stone); border-color: var(--teal-dim); }
+.btn-primary:hover { background: var(--teal); border-color: var(--teal); color: var(--stone); }
 
 .btn-secondary { background: transparent; color: var(--accent); border-color: var(--border-on-dark-strong); }
 .btn-secondary:hover { background: color-mix(in srgb, var(--teal) 10%, transparent); border-color: var(--teal); color: var(--accent); }
@@ -354,7 +354,7 @@ a:hover { color: var(--accent-hover); }
   position: absolute;
   top: -40px;
   left: 0;
-  background: var(--accent);
+  background: var(--teal-dim);
   color: var(--stone);
   padding: 0.5rem 1rem;
   z-index: 9999;

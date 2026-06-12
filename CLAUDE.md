@@ -50,14 +50,9 @@ Collections: `pages`, `posts`, `services`, `faqs`
 Singleton: `siteSettings`
 Content files live in `content/`.
 
-## Locked copy — do not change these in code or content
+## Content ownership
 
-- Hero headline: "Your website should work for your business. Not the other way around." *(updated during Content Writing phase — original "morning coffee" line retired)*
-- WP Migration card headline: "Have a WordPress site you're ready to leave in the dust?"
-- Custom Build card headline: "Don't have a site yet…?"
-- Location line (pages): "Located in Travelers Rest, SC. Serving the Greenville Area, Upstate South Carolina, Western North Carolina — and anywhere your business is located."
-- Location line (footer, shortened): "Located in Travelers Rest, SC. Serving the Greenville Area — and anywhere your business is located."
-- Global brand rule: the word "trades" does not appear anywhere in copy or UI strings
+The site is live. Copy is no longer locked to specific wording — content edits (headlines, taglines, location lines, etc.) are Karen's call via the Tina admin, not a dev concern. Don't enforce or restore specific copy strings from prior phases unless asked.
 
 ## Key conventions
 
