@@ -1,9 +1,25 @@
 /* ============================================================
    Contour — Global styles
    Canon design system (Contour Design System handoff).
-   Headings: Fraunces. Body/UI: DM Sans (loaded in Layout.astro).
+   Headings: Fraunces. Body/UI: DM Sans (self-hosted below).
    Dark mode is the primary presentation. Never pure black/white.
    ============================================================ */
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/fraunces-variable.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 100 1000;
+  font-display: swap;
+  src: url('/fonts/dm-sans-variable.woff2') format('woff2');
+}
 
 :root {
   /* --- Base palette: Slate (dark surfaces, heavy type) --- */
