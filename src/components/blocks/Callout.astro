@@ -1,0 +1,64 @@
+---
+interface Props {
+  text?: string;
+  linkLabel?: string;
+  linkUrl?: string;
+  background?: 'light' | 'dark';
+}
+
+const { text, linkLabel, linkUrl, background = 'light' } = Astro.props;
+const isDark = background === 'dark';
+---
+
+<section class={`callout ${isDark ? 'surface-dark' : 'surface-light'}`}>
+  <div class="container">
+    <div class={`callout-box ${isDark ? 'callout-box--dark' : 'callout-box--light'}`}>
+      {text && <p class="callout-text">{text}</p>}
+      {linkLabel && linkUrl && (
+        <a href={linkUrl} class={`btn btn-sm ${isDark ? 'btn-secondary' : 'btn-primary'}`}>
+          {linkLabel}
+        </a>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .callout {
+    padding: var(--space-6) var(--container-padding);
+  }
+
+  .callout-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+    padding: var(--space-5) var(--space-6);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-on-light);
+  }
+
+  .callout-box--dark {
+    border-color: var(--border-on-dark);
+    background: color-mix(in srgb, var(--stone) 4%, transparent);
+  }
+
+  .callout-box--light {
+    background: var(--surface-card-light);
+  }
+
+  @media (min-width: 700px) {
+    .callout-box {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-6);
+    }
+  }
+
+  .callout-text {
+    font-size: var(--fs-body);
+    line-height: var(--lh-snug);
+    max-width: var(--measure);
+  }
+</style>

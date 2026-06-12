@@ -18,6 +18,50 @@ export const PagesPartsFragmentDoc = gql`
   }
   blocks {
     __typename
+    ... on PagesBlocksCallout {
+      text
+      linkLabel
+      linkUrl
+      background
+    }
+    ... on PagesBlocksContent {
+      heading
+      body
+      background
+    }
+    ... on PagesBlocksFeatures {
+      headline
+      intro
+      items {
+        __typename
+        title
+        body
+      }
+      background
+    }
+    ... on PagesBlocksSplit {
+      headline
+      body
+      image
+      imageAlt
+      imagePosition
+      ctaLabel
+      ctaUrl
+      background
+    }
+    ... on PagesBlocksVideo {
+      headline
+      url
+      caption
+      background
+    }
+    ... on PagesBlocksImage {
+      image
+      alt
+      caption
+      width
+      background
+    }
     ... on PagesBlocksHero {
       headline
       subheading
