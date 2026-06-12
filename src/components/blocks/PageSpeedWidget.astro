@@ -1,5 +1,5 @@
 ---
-// No server-side props — this is a fully client-side component
+// Scores come from /api/pagespeed (Worker route) — see src/pages/api/pagespeed.ts
 const gauges = [
   { id: 'performance', label: 'Performance' },
   { id: 'accessibility', label: 'Accessibility' },
@@ -344,25 +344,24 @@ const CIRC = 2 * Math.PI * RADIUS;
       setLoading(true);
 
       try {
-        const categoryParams = '&category=PERFORMANCE&category=ACCESSIBILITY&category=BEST_PRACTICES&category=SEO';
-        const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&strategy=mobile${categoryParams}`;
-        const res = await fetch(apiUrl);
+        // Server-side proxy (src/pages/api/pagespeed.ts) — holds the API
+        // key and edge-caches results. PSI analysis takes ~20-40s.
+        const res = await fetch(`/api/pagespeed?url=${encodeURIComponent(url)}`);
+        const data = await res.json().catch(() => null);
         if (!res.ok) {
-          throw new Error(`PageSpeed API returned ${res.status}`);
+          throw new Error(data?.error ?? `PageSpeed returned ${res.status}`);
         }
-        const data = await res.json();
-        const categories = data?.lighthouseResult?.categories ?? {};
+        const scores = data?.scores ?? {};
 
         for (const { id, key } of CATEGORIES) {
-          const score = Math.round((categories?.[key]?.score ?? 0) * 100);
-          setGauge(id, score);
+          setGauge(id, scores[key] ?? 0);
         }
 
         if (resultUrlEl) resultUrlEl.textContent = `${url} · measured on mobile`;
         if (resultEl) resultEl.hidden = false;
       } catch (err) {
         const msg = err instanceof Error ? err.message : String(err);
-        showError(`Couldn't fetch your score — ${msg}. Try again or check your URL.`);
+        showError(`Couldn't fetch your score — ${msg}`);
       } finally {
         setLoading(false);
       }

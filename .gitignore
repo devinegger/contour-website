@@ -1,6 +1,7 @@
 node_modules/
 dist/
 .astro/
+.wrangler/
 tina/__generated__/.cache/
 .env
 .env.local
@@ -9,3 +10,8 @@ tina/__generated__/.cache/
 
 # Claude Design handoff archives
 *-handoff.zip
+test-results/
+playwright-report/
+
+# Local Claude Code config
+.claude/

@@ -76,9 +76,9 @@
   --fw-ui:      400;
   --fw-label:   500;
 
-  /* Type scale — Display 56-72 / H1 40-56 / H2 28-36 / H3 20-24
-     / body 16 / caption 13-14 / UI label 11-13 */
-  --fs-display: clamp(3.5rem, 1.8rem + 5vw, 4.5rem);
+  /* Type scale — Display 38-72 (38 on phones, 72 from ~1020px) / H1 40-56
+     / H2 28-36 / H3 20-24 / body 16 / caption 13-14 / UI label 11-13 */
+  --fs-display: clamp(2.375rem, 1rem + 5.5vw, 4.5rem);
   --fs-h1:      clamp(2.5rem, 1.6rem + 3.2vw, 3.5rem);
   --fs-h2:      clamp(1.75rem, 1.3rem + 1.8vw, 2.25rem);
   --fs-h3:      clamp(1.25rem, 1.1rem + 0.7vw, 1.5rem);
@@ -356,11 +356,20 @@ a:hover { color: var(--accent-hover); }
   }
 }
 
-/* Responsive helpers */
+/* Responsive helpers — !important so they beat Astro's scoped component
+   styles (.foo[data-astro-cid] outranks a plain global class). */
 @media (max-width: 768px) {
-  .hide-mobile { display: none; }
+  .hide-mobile { display: none !important; }
 }
 
 @media (min-width: 769px) {
-  .hide-desktop { display: none; }
+  .hide-desktop { display: none !important; }
 }
+
+/* The hidden attribute must always win — component display rules
+   (e.g. display: flex) silently override the UA's [hidden] style. */
+[hidden] { display: none !important; }
+
+/* TinaIsland wrappers must not create a layout box — the sticky nav and
+   full-bleed sections sit directly under <body>/<main>. */
+.tina-island-contents { display: contents; }

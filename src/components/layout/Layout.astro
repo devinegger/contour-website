@@ -1,8 +1,10 @@
 ---
 import Nav from './Nav.astro';
 import Footer from './Footer.astro';
+import TinaIsland from '@tinacms/astro/TinaIsland.astro';
 import '../../styles/global.css';
 import { getSiteSettings } from '../../lib/data';
+import { islands } from '../../lib/islands';
 
 interface Props {
   title?: string;
@@ -12,10 +14,11 @@ interface Props {
 }
 
 const settings = await getSiteSettings();
+const site = settings?.data?.siteSettings;
 const {
-  title = settings?.data?.siteSettings?.defaultSeoTitle ?? 'Contour',
-  description = settings?.data?.siteSettings?.defaultSeoDescription ?? '',
-  ogImage = settings?.data?.siteSettings?.defaultOgImage ?? '',
+  title = site?.defaultSeoTitle ?? 'Contour',
+  description = site?.defaultSeoDescription ?? '',
+  ogImage = site?.defaultOgImage ?? '',
   schemas = [],
 } = Astro.props;
 ---
@@ -44,10 +47,14 @@ const {
   </head>
   <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    <Nav />
+    <TinaIsland name="nav" wrapper={islands.nav.wrapper}>
+      <Nav settings={site} />
+    </TinaIsland>
     <main id="main-content">
       <slot />
     </main>
-    <Footer />
+    <TinaIsland name="footer" wrapper={islands.footer.wrapper}>
+      <Footer settings={site} />
+    </TinaIsland>
   </body>
 </html>

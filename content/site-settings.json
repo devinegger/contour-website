@@ -1,17 +1,35 @@
 {
   "businessName": "Contour",
-  "tagline": "Web design and local marketing for growing businesses.",
+  "tagline": "Web design and local SEO for growing businesses.",
   "locationLine": "Located in Travelers Rest, SC. Serving the Greenville Area — and anywhere your business is located.",
-  "defaultSeoTitle": "Contour — Web Design & Local Marketing for Growing Businesses",
-  "defaultSeoDescription": "Fast, modern websites and local marketing for businesses in Greenville, SC and beyond.",
   "navLinks": [
-    { "label": "Services", "url": "/services" },
-    { "label": "About",    "url": "/about"    },
-    { "label": "Contact",  "url": "/contact"  }
+    {
+      "label": "Services",
+      "url": "/services"
+    },
+    {
+      "label": "About",
+      "url": "/about"
+    },
+    {
+      "label": "Contact",
+      "url": "/contact"
+    }
   ],
   "footerLinks": [
-    { "label": "Services", "url": "/services" },
-    { "label": "About",    "url": "/about"    },
-    { "label": "Contact",  "url": "/contact"  }
-  ]
+    {
+      "label": "Services",
+      "url": "/services"
+    },
+    {
+      "label": "About",
+      "url": "/about"
+    },
+    {
+      "label": "Contact",
+      "url": "/contact"
+    }
+  ],
+  "defaultSeoTitle": "Contour — Web Design & Local SEO for Growing Businesses",
+  "defaultSeoDescription": "Fast, modern websites and local SEO for businesses in Greenville, SC and beyond."
 }
