@@ -72,7 +72,9 @@ export const PagesPartsFragmentDoc = gql`
       trustAnchor
     }
     ... on PagesBlocksServices_preview {
-      _placeholder
+      eyebrow
+      heading
+      intro
     }
     ... on PagesBlocksDifferentiators {
       items {

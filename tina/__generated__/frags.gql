@@ -64,7 +64,9 @@ fragment PagesParts on Pages {
       trustAnchor
     }
     ... on PagesBlocksServices_preview {
-      _placeholder
+      eyebrow
+      heading
+      intro
     }
     ... on PagesBlocksDifferentiators {
       items {

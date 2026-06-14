@@ -167,7 +167,9 @@ type PagesBlocksHero {
 }
 
 type PagesBlocksServices_preview {
-  _placeholder: String
+  eyebrow: String
+  heading: String
+  intro: String
 }
 
 type PagesBlocksDifferentiatorsItems {
@@ -353,7 +355,9 @@ input PagesBlocksHeroFilter {
 }
 
 input PagesBlocksServices_previewFilter {
-  _placeholder: StringFilter
+  eyebrow: StringFilter
+  heading: StringFilter
+  intro: StringFilter
 }
 
 input PagesBlocksDifferentiatorsItemsFilter {
@@ -751,7 +755,9 @@ input PagesBlocksHeroMutation {
 }
 
 input PagesBlocksServices_previewMutation {
-  _placeholder: String
+  eyebrow: String
+  heading: String
+  intro: String
 }
 
 input PagesBlocksDifferentiatorsItemsMutation {

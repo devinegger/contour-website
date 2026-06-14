@@ -1,6 +1,19 @@
 ---
 import { getServices } from '../../lib/data';
 
+interface Props {
+  eyebrow?: string;
+  heading?: string;
+  intro?: string;
+}
+
+// Tina passes absent fields as null (not undefined), so default params
+// won't apply — use `||` so empty/null falls back to the canned copy.
+const eyebrow = Astro.props.eyebrow || 'Plans';
+const heading = Astro.props.heading || 'Simple, clear plans';
+const intro =
+  Astro.props.intro || 'Pick the tier that fits where you are. Move up as you grow.';
+
 const servicesResult = await getServices();
 const allServices = servicesResult?.data?.servicesConnection?.edges ?? [];
 const tiers = ['baseline', 'elevated', 'crest'];
@@ -15,9 +28,9 @@ const services = allServices
 
 <section class="services-preview surface-light">
   <div class="container section">
-    <p class="eyebrow">Plans</p>
-    <h2 class="preview-heading">Simple, clear plans</h2>
-    <p class="preview-intro">Pick the tier that fits where you are. Move up as you grow.</p>
+    <p class="eyebrow">{eyebrow}</p>
+    <h2 class="preview-heading">{heading}</h2>
+    <p class="preview-intro">{intro}</p>
     <div class="preview-cards">
       {services.map((service: {
         name: string;
