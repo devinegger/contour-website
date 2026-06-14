@@ -1,9 +1,14 @@
 {
   "title": "How We're Different",
   "slug": "how-were-different",
+  "seo": {
+    "metaTitle": "Why Choose Static Websites?  Faster, More Secure & AI-Ready",
+    "metaDescription": "See how our modern websites help Greenville businesses improve performance, increase visibility, and stay ahead as search evolves with AI."
+  },
   "blocks": [
     {
       "heading": "Section heading",
+      "body": "",
       "background": "light",
       "_template": "content"
     }
