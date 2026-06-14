@@ -246,15 +246,16 @@ export default defineConfig({
                 fields: [
                   {
                     name: 'headline',
-                    label: 'Hero headline (LOCKED — approved copy: do not change)',
+                    label: 'Hero headline',
                     type: 'string',
+                    ui: { component: 'textarea' },
                   },
-                  { name: 'subheading', label: 'Subheading', type: 'string' },
+                  { name: 'subheading', label: 'Subheading', type: 'string', ui: { component: 'textarea' } },
                   { name: 'primaryCtaLabel', label: 'Primary CTA label', type: 'string' },
                   { name: 'primaryCtaUrl', label: 'Primary CTA URL', type: 'string' },
                   { name: 'secondaryCtaLabel', label: 'Secondary CTA label', type: 'string' },
                   { name: 'secondaryCtaUrl', label: 'Secondary CTA URL', type: 'string' },
-                  { name: 'trustAnchor', label: 'Trust anchor line', type: 'string' },
+                  { name: 'trustAnchor', label: 'Trust anchor line', type: 'string', ui: { component: 'textarea' } },
                 ],
               },
               // services-preview
@@ -358,8 +359,9 @@ export default defineConfig({
                     fields: [
                       {
                         name: 'headline',
-                        label: 'Headline (LOCKED — do not change)',
+                        label: 'Headline',
                         type: 'string',
+                        ui: { component: 'textarea' },
                       },
                       { name: 'description', label: 'Description', type: 'string', ui: { component: 'textarea' } },
                       { name: 'price', label: 'Price', type: 'string' },
@@ -374,8 +376,9 @@ export default defineConfig({
                     fields: [
                       {
                         name: 'headline',
-                        label: 'Headline (LOCKED — do not change)',
+                        label: 'Headline',
                         type: 'string',
+                        ui: { component: 'textarea' },
                       },
                       { name: 'description', label: 'Description', type: 'string', ui: { component: 'textarea' } },
                       { name: 'price', label: 'Price', type: 'string' },
@@ -416,8 +419,9 @@ export default defineConfig({
                   { name: 'howWeWork', label: 'How we work', type: 'rich-text' },
                   {
                     name: 'locationLine',
-                    label: 'Location line (LOCKED — do not change)',
+                    label: 'Location line',
                     type: 'string',
+                    ui: { component: 'textarea' },
                   },
                   { name: 'ctaLabel', label: 'CTA label', type: 'string' },
                   { name: 'ctaUrl', label: 'CTA URL', type: 'string' },
@@ -429,13 +433,14 @@ export default defineConfig({
                 label: 'Contact Form',
                 fields: [
                   { name: 'pageHeader', label: 'Page header', type: 'string' },
-                  { name: 'responseTimeLine', label: 'Response time line', type: 'string' },
+                  { name: 'responseTimeLine', label: 'Response time line', type: 'string', ui: { component: 'textarea' } },
                   { name: 'bookingLinkLabel', label: 'Booking link label', type: 'string' },
                   { name: 'bookingLinkUrl', label: 'Booking link URL', type: 'string' },
                   {
                     name: 'locationLine',
-                    label: 'Location line (LOCKED — do not change)',
+                    label: 'Location line',
                     type: 'string',
+                    ui: { component: 'textarea' },
                   },
                 ],
               },
@@ -519,8 +524,9 @@ export default defineConfig({
           { name: 'tagline', label: 'Tagline', type: 'string' },
           {
             name: 'locationLine',
-            label: 'Location line (LOCKED — do not change)',
+            label: 'Location line',
             type: 'string',
+            ui: { component: 'textarea' },
           },
           {
             name: 'navLinks',
