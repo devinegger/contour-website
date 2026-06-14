@@ -1,0 +1,25 @@
+{
+  "title": "Our Work",
+  "slug": "ourwork",
+  "blocks": [
+    {
+      "headline": "Why it works",
+      "items": [
+        {
+          "title": "Feature one",
+          "body": "Describe the benefit here."
+        },
+        {
+          "title": "Feature two",
+          "body": "Describe the benefit here."
+        },
+        {
+          "title": "Feature three",
+          "body": "Describe the benefit here."
+        }
+      ],
+      "background": "light",
+      "_template": "features"
+    }
+  ]
+}
