@@ -1,6 +1,10 @@
 {
   "title": "Our Work",
   "slug": "our-work",
+  "seo": {
+    "metaTitle": "Website Development Portfolio",
+    "metaDescription": "Browse our website development portfolio featuring fast, mobile-friendly websites built for Greenville and Upstate South Carolina businesses and beyond"
+  },
   "blocks": [
     {
       "headline": "Why it works",
