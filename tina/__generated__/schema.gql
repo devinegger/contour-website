@@ -170,6 +170,7 @@ type PagesBlocksServices_preview {
   eyebrow: String
   heading: String
   intro: String
+  footnote: JSON
 }
 
 type PagesBlocksDifferentiatorsItems {
@@ -358,6 +359,7 @@ input PagesBlocksServices_previewFilter {
   eyebrow: StringFilter
   heading: StringFilter
   intro: StringFilter
+  footnote: RichTextFilter
 }
 
 input PagesBlocksDifferentiatorsItemsFilter {
@@ -758,6 +760,7 @@ input PagesBlocksServices_previewMutation {
   eyebrow: String
   heading: String
   intro: String
+  footnote: JSON
 }
 
 input PagesBlocksDifferentiatorsItemsMutation {

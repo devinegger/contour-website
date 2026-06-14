@@ -1,10 +1,12 @@
 ---
+import TinaMarkdown from '@tinacms/astro/TinaMarkdown.astro';
 import { getServices } from '../../lib/data';
 
 interface Props {
   eyebrow?: string;
   heading?: string;
   intro?: string;
+  footnote?: unknown;
 }
 
 // Tina passes absent fields as null (not undefined), so default params
@@ -13,6 +15,7 @@ const eyebrow = Astro.props.eyebrow || 'Plans';
 const heading = Astro.props.heading || 'Simple, clear plans';
 const intro =
   Astro.props.intro || 'Pick the tier that fits where you are. Move up as you grow.';
+const { footnote } = Astro.props;
 
 const servicesResult = await getServices();
 const allServices = servicesResult?.data?.servicesConnection?.edges ?? [];
@@ -52,6 +55,11 @@ const services = allServices
         </article>
       ))}
     </div>
+    {footnote && (
+      <div class="preview-footnote prose">
+        <TinaMarkdown content={footnote} />
+      </div>
+    )}
   </div>
 </section>
 
@@ -138,6 +146,21 @@ const services = allServices
   }
 
   .card-cta:hover {
+    color: var(--teal-dim);
+  }
+
+  .preview-footnote {
+    margin-top: 2.5rem;
+    color: var(--text-on-light-muted);
+    font-size: 1.0625rem;
+  }
+
+  .preview-footnote :global(h2),
+  .preview-footnote :global(h3) {
+    color: var(--text-on-light);
+  }
+
+  .preview-footnote :global(a) {
     color: var(--teal-dim);
   }
 </style>

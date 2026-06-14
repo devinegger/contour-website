@@ -269,6 +269,11 @@ var config_default = defineConfig({
                     label: "Intro",
                     type: "string",
                     ui: { component: "textarea" }
+                  },
+                  {
+                    name: "footnote",
+                    label: "Content after cards",
+                    type: "rich-text"
                   }
                 ]
               },

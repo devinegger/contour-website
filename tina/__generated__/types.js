@@ -75,6 +75,7 @@ export const PagesPartsFragmentDoc = gql`
       eyebrow
       heading
       intro
+      footnote
     }
     ... on PagesBlocksDifferentiators {
       items {

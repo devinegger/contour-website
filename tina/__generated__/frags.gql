@@ -67,6 +67,7 @@ fragment PagesParts on Pages {
       eyebrow
       heading
       intro
+      footnote
     }
     ... on PagesBlocksDifferentiators {
       items {
