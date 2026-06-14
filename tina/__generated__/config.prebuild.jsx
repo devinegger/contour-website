@@ -487,7 +487,7 @@ var config_default = defineConfig({
             options: ["baseline", "elevated", "crest", "wp-migration", "custom-build"],
             ui: { component: "select" }
           },
-          { name: "tagline", label: "Tagline", type: "string" },
+          { name: "tagline", label: "Tagline", type: "string", ui: { component: "textarea" } },
           { name: "description", label: "Description", type: "rich-text" },
           { name: "price", label: "Price", type: "string" },
           { name: "setupFee", label: "Setup fee", type: "string" },
