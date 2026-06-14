@@ -264,10 +264,25 @@ export default defineConfig({
                 label: 'Services Preview',
                 fields: [
                   {
-                    name: '_placeholder',
-                    label: 'No editable fields — pulls from services collection',
+                    name: 'eyebrow',
+                    label: 'Eyebrow',
                     type: 'string',
-                    ui: { component: 'hidden' },
+                  },
+                  {
+                    name: 'heading',
+                    label: 'Heading',
+                    type: 'string',
+                  },
+                  {
+                    name: 'intro',
+                    label: 'Intro',
+                    type: 'string',
+                    ui: { component: 'textarea' },
+                  },
+                  {
+                    name: 'footnote',
+                    label: 'Content after cards',
+                    type: 'rich-text',
                   },
                 ],
               },

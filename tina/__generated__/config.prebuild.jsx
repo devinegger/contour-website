@@ -255,10 +255,25 @@ var config_default = defineConfig({
                 label: "Services Preview",
                 fields: [
                   {
-                    name: "_placeholder",
-                    label: "No editable fields \u2014 pulls from services collection",
+                    name: "eyebrow",
+                    label: "Eyebrow",
+                    type: "string"
+                  },
+                  {
+                    name: "heading",
+                    label: "Heading",
+                    type: "string"
+                  },
+                  {
+                    name: "intro",
+                    label: "Intro",
                     type: "string",
-                    ui: { component: "hidden" }
+                    ui: { component: "textarea" }
+                  },
+                  {
+                    name: "footnote",
+                    label: "Content after cards",
+                    type: "rich-text"
                   }
                 ]
               },
