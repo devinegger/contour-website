@@ -527,6 +527,9 @@ export default defineConfig({
             label: 'Nav links',
             type: 'object',
             list: true,
+            ui: {
+              itemProps: (item) => ({ label: item?.label || 'New nav link' }),
+            },
             fields: [
               { name: 'label', label: 'Label', type: 'string' },
               { name: 'url', label: 'URL', type: 'string' },
@@ -537,6 +540,9 @@ export default defineConfig({
             label: 'Footer links',
             type: 'object',
             list: true,
+            ui: {
+              itemProps: (item) => ({ label: item?.label || 'New footer link' }),
+            },
             fields: [
               { name: 'label', label: 'Label', type: 'string' },
               { name: 'url', label: 'URL', type: 'string' },
