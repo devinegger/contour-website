@@ -511,7 +511,7 @@ var config_default = defineConfig({
           { name: "tagline", label: "Tagline", type: "string" },
           {
             name: "locationLine",
-            label: "Location line",
+            label: "Footer content",
             type: "string",
             ui: { component: "textarea" }
           },
