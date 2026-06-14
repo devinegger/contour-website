@@ -1,0 +1,11 @@
+{
+  "title": "How We're Different",
+  "slug": "howweredifferent",
+  "blocks": [
+    {
+      "heading": "Section heading",
+      "background": "light",
+      "_template": "content"
+    }
+  ]
+}
