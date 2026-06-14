@@ -17,6 +17,12 @@
       "_template": "hero"
     },
     {
+      "heading": "",
+      "body": "## More Than Just Web Design\n\nA great website does more than look professional—it helps customers find you, trust you, and take action. That’s the goal of our Greenville website development services.\n\nEvery website we build is designed around your business goals and your customers' needs. We focus on clear messaging, intuitive navigation, fast load times, and mobile-friendly design so visitors can quickly find the information they're looking for.\n\nOur websites are built using modern static website technology, with clean, streamlined code that delivers faster load times, improved security, and a reliable experience across all devices. This well-structured foundation helps search engines and AI-powered search tools better understand your content, making it easier for potential customers to find your business online.\n\nFrom local SEO and AI search visibility to user experience and conversion-focused design, we build websites that work hard behind the scenes to help your business grow.\n",
+      "background": "dark",
+      "_template": "content"
+    },
+    {
       "_template": "services_preview"
     },
     {
