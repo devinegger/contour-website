@@ -166,6 +166,7 @@ export const ServicesPartsFragmentDoc = gql`
   slug
   tier
   tagline
+  previewSnippet
   description
   price
   setupFee

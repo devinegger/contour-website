@@ -40,20 +40,24 @@ const services = allServices
         slug: string;
         tier: string;
         tagline?: string;
+        previewSnippet?: string;
         price?: string;
-      }) => (
+      }) => {
+        const cardText = service.previewSnippet || service.tagline;
+        return (
         <article class="preview-card">
           {service.tier && service.tier.toLowerCase() !== service.name.toLowerCase() && (
             <span class="card-tier">{service.tier}</span>
           )}
           <h3 class="card-name">{service.name}</h3>
-          {service.tagline && <p class="card-tagline">{service.tagline}</p>}
+          {cardText && <p class="card-tagline">{cardText}</p>}
           {service.price && <p class="card-price">{service.price}</p>}
           <a href="/services" class="card-cta btn btn-secondary btn-sm">
             Learn more<span class="sr-only"> about {service.name}</span>
           </a>
         </article>
-      ))}
+        );
+      })}
     </div>
     {footnote && (
       <div class="preview-footnote prose">

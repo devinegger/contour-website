@@ -696,6 +696,7 @@ export type Services = Node & Document & {
   slug: Scalars['String']['output'];
   tier?: Maybe<Scalars['String']['output']>;
   tagline?: Maybe<Scalars['String']['output']>;
+  previewSnippet?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['JSON']['output']>;
   price?: Maybe<Scalars['String']['output']>;
   setupFee?: Maybe<Scalars['String']['output']>;
@@ -712,6 +713,7 @@ export type ServicesFilter = {
   slug?: InputMaybe<StringFilter>;
   tier?: InputMaybe<StringFilter>;
   tagline?: InputMaybe<StringFilter>;
+  previewSnippet?: InputMaybe<StringFilter>;
   description?: InputMaybe<RichTextFilter>;
   price?: InputMaybe<StringFilter>;
   setupFee?: InputMaybe<StringFilter>;
@@ -1160,6 +1162,7 @@ export type ServicesMutation = {
   slug?: InputMaybe<Scalars['String']['input']>;
   tier?: InputMaybe<Scalars['String']['input']>;
   tagline?: InputMaybe<Scalars['String']['input']>;
+  previewSnippet?: InputMaybe<Scalars['String']['input']>;
   description?: InputMaybe<Scalars['JSON']['input']>;
   price?: InputMaybe<Scalars['String']['input']>;
   setupFee?: InputMaybe<Scalars['String']['input']>;
@@ -1199,7 +1202,7 @@ export type PagesPartsFragment = { __typename: 'Pages', title: string, slug: str
 
 export type PostsPartsFragment = { __typename: 'Posts', title: string, slug: string, date?: string | null, excerpt?: string | null, body?: any | null };
 
-export type ServicesPartsFragment = { __typename: 'Services', name: string, slug: string, tier?: string | null, tagline?: string | null, description?: any | null, price?: string | null, setupFee?: string | null, inclusions?: Array<string | null> | null, ctaLabel?: string | null, ctaUrl?: string | null };
+export type ServicesPartsFragment = { __typename: 'Services', name: string, slug: string, tier?: string | null, tagline?: string | null, previewSnippet?: string | null, description?: any | null, price?: string | null, setupFee?: string | null, inclusions?: Array<string | null> | null, ctaLabel?: string | null, ctaUrl?: string | null };
 
 export type FaqsPartsFragment = { __typename: 'Faqs', question: string, answer?: any | null, order?: number | null };
 
@@ -1248,7 +1251,7 @@ export type ServicesQueryVariables = Exact<{
 }>;
 
 
-export type ServicesQuery = { __typename?: 'Query', services: { __typename: 'Services', id: string, name: string, slug: string, tier?: string | null, tagline?: string | null, description?: any | null, price?: string | null, setupFee?: string | null, inclusions?: Array<string | null> | null, ctaLabel?: string | null, ctaUrl?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type ServicesQuery = { __typename?: 'Query', services: { __typename: 'Services', id: string, name: string, slug: string, tier?: string | null, tagline?: string | null, previewSnippet?: string | null, description?: any | null, price?: string | null, setupFee?: string | null, inclusions?: Array<string | null> | null, ctaLabel?: string | null, ctaUrl?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type ServicesConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -1260,7 +1263,7 @@ export type ServicesConnectionQueryVariables = Exact<{
 }>;
 
 
-export type ServicesConnectionQuery = { __typename?: 'Query', servicesConnection: { __typename?: 'ServicesConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'ServicesConnectionEdges', cursor: string, node?: { __typename: 'Services', id: string, name: string, slug: string, tier?: string | null, tagline?: string | null, description?: any | null, price?: string | null, setupFee?: string | null, inclusions?: Array<string | null> | null, ctaLabel?: string | null, ctaUrl?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type ServicesConnectionQuery = { __typename?: 'Query', servicesConnection: { __typename?: 'ServicesConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'ServicesConnectionEdges', cursor: string, node?: { __typename: 'Services', id: string, name: string, slug: string, tier?: string | null, tagline?: string | null, previewSnippet?: string | null, description?: any | null, price?: string | null, setupFee?: string | null, inclusions?: Array<string | null> | null, ctaLabel?: string | null, ctaUrl?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export type FaqsQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -1461,6 +1464,7 @@ export const ServicesPartsFragmentDoc = gql`
   slug
   tier
   tagline
+  previewSnippet
   description
   price
   setupFee
