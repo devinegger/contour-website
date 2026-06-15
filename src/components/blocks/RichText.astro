@@ -1,5 +1,5 @@
 ---
-import TinaMarkdown from '@tinacms/astro/TinaMarkdown.astro';
+import Prose from '../Prose.astro';
 
 interface Props {
   body?: unknown;
@@ -11,7 +11,7 @@ const { body } = Astro.props;
 <section class="richtext surface-light">
   <div class="container richtext-section">
     <div class="prose richtext-body">
-      {body && <TinaMarkdown content={body} />}
+      {body && <Prose content={body} />}
     </div>
   </div>
 </section>

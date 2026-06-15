@@ -1,40 +1,49 @@
 ---
+import RichImage from '../RichImage.astro';
+import { cfImage, cfSrcset, type ImageSizeName } from '../../lib/image';
+
 interface Props {
   image?: string;
   alt?: string;
   caption?: string;
   width?: 'contained' | 'full-bleed';
+  /** Display size when contained (ignored for full-bleed). */
+  size?: ImageSizeName;
   background?: 'light' | 'dark';
 }
 
-const { image, alt, caption, width = 'contained', background = 'light' } = Astro.props;
+const {
+  image,
+  alt,
+  caption,
+  width = 'contained',
+  size = 'large',
+  background = 'light',
+} = Astro.props;
 const isDark = background === 'dark';
 const isFullBleed = width === 'full-bleed';
+
+// Full-bleed spans the viewport, so request a wide variant and let CSS size it.
+const fullSrc = cfImage(image, { width: 1600 });
+const fullSrcset = cfSrcset(image, 1600);
 ---
 
 <section class={`image-block ${isDark ? 'surface-dark' : 'surface-light'}`}>
   <div class={isFullBleed ? '' : 'container section'}>
     {image && (
-      <figure class={isFullBleed ? 'image-figure--full' : 'image-figure'}>
-        <img src={image} alt={alt ?? ''} loading="lazy" class={isFullBleed ? '' : 'image-figure-img'} />
-        {caption && <figcaption class="image-caption">{caption}</figcaption>}
-      </figure>
+      isFullBleed ? (
+        <figure class="image-figure--full">
+          <img src={fullSrc} srcset={fullSrcset} alt={alt ?? ''} loading="lazy" />
+          {caption && <figcaption class="image-caption">{caption}</figcaption>}
+        </figure>
+      ) : (
+        <RichImage src={image} alt={alt} caption={caption} size={size} class="image-figure" />
+      )
     )}
   </div>
 </section>
 
 <style>
-  .image-figure {
-    margin: 0;
-  }
-
-  .image-figure-img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: var(--radius-md);
-  }
-
   .image-figure--full {
     margin: 0;
   }

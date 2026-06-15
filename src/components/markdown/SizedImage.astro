@@ -1,0 +1,16 @@
+---
+// Custom rich-text embed (`sizedImage` template). Lets editors insert an image
+// inline AND pick its display size. Field values are spread as props.
+import RichImage from '../RichImage.astro';
+import type { ImageSizeName } from '../../lib/image';
+
+interface Props {
+  src?: string;
+  alt?: string;
+  caption?: string;
+  size?: ImageSizeName;
+}
+
+const { src, alt, caption, size = 'large' } = Astro.props;
+---
+<RichImage src={src} alt={alt} caption={caption} size={size} />

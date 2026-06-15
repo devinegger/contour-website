@@ -1,5 +1,5 @@
 ---
-import TinaMarkdown from '@tinacms/astro/TinaMarkdown.astro';
+import Prose from '../Prose.astro';
 import { getServices } from '../../lib/data';
 
 interface Props {
@@ -61,7 +61,7 @@ const services = allServices
     </div>
     {footnote && (
       <div class="preview-footnote prose">
-        <TinaMarkdown content={footnote} />
+        <Prose content={footnote} />
       </div>
     )}
   </div>

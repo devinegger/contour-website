@@ -1,0 +1,16 @@
+---
+// Override for plain markdown images (`![alt](src)`) inside rich-text.
+// TinaMarkdown passes { url, alt, caption }. We don't get a per-image size
+// here, so render at the default ("large") constrained width — still
+// optimized/responsive once resizing is enabled.
+import RichImage from '../RichImage.astro';
+
+interface Props {
+  url?: string;
+  alt?: string;
+  caption?: string;
+}
+
+const { url, alt, caption } = Astro.props;
+---
+<RichImage src={url} alt={alt} caption={caption} size="large" />

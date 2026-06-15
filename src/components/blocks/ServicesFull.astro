@@ -1,6 +1,6 @@
 ---
 import { getServices } from '../../lib/data';
-import TinaMarkdown from '@tinacms/astro/TinaMarkdown.astro';
+import Prose from '../Prose.astro';
 
 const servicesResult = await getServices();
 const allServices = servicesResult?.data?.servicesConnection?.edges ?? [];
@@ -51,7 +51,7 @@ const secondary = services.filter(s => secondaryTiers.includes(s.tier));
             </div>
             {service.description && (
               <div class="service-desc prose">
-                <TinaMarkdown content={service.description} />
+                <Prose content={service.description} />
               </div>
             )}
             {service.inclusions && service.inclusions.length > 0 && (

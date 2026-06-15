@@ -1,0 +1,22 @@
+---
+// Shared rich-text renderer. Wraps TinaMarkdown with the project's custom
+// component map so every rich-text field gets:
+//   - markdown images (`img`) routed through Cloudflare resizing, and
+//   - the `sizedImage` embed for editor-controlled image sizing.
+// Use this instead of importing TinaMarkdown directly.
+import TinaMarkdown from '@tinacms/astro/TinaMarkdown.astro';
+import MarkdownImage from './markdown/MarkdownImage.astro';
+import SizedImage from './markdown/SizedImage.astro';
+
+interface Props {
+  content: unknown;
+}
+
+const { content } = Astro.props;
+
+const components = {
+  img: MarkdownImage,
+  sizedImage: SizedImage,
+};
+---
+<TinaMarkdown content={content} components={components} />

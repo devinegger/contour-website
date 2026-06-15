@@ -1,5 +1,5 @@
 ---
-import TinaMarkdown from '@tinacms/astro/TinaMarkdown.astro';
+import Prose from '../Prose.astro';
 
 interface Props {
   opening?: string;
@@ -25,7 +25,7 @@ const { opening, storyBody, howWeWork, locationLine, ctaLabel, ctaUrl } = Astro.
 
       {storyBody && (
         <div class="story-section prose">
-          <TinaMarkdown content={storyBody} />
+          <Prose content={storyBody} />
         </div>
       )}
 
@@ -34,7 +34,7 @@ const { opening, storyBody, howWeWork, locationLine, ctaLabel, ctaUrl } = Astro.
       {howWeWork && (
         <div class="story-section prose">
           <h2 class="story-subhead">How we work</h2>
-          <TinaMarkdown content={howWeWork} />
+          <Prose content={howWeWork} />
         </div>
       )}
 

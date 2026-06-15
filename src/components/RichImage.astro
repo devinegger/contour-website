@@ -1,0 +1,54 @@
+---
+import { cfImage, cfSrcset, sizeToMaxWidth, sizeToVariantWidth, type ImageSizeName } from '../lib/image';
+
+interface Props {
+  src?: string;
+  alt?: string;
+  caption?: string;
+  /** Named display size; controls both CSS max-width and the requested variant. */
+  size?: ImageSizeName;
+  loading?: 'lazy' | 'eager';
+  /** Skip the <figure>/max-width wrapper (e.g. full-bleed contexts that size the img directly). */
+  bare?: boolean;
+  class?: string;
+}
+
+const { src, alt = '', caption, size, loading = 'lazy', bare = false, class: className } = Astro.props;
+
+const variantWidth = sizeToVariantWidth(size);
+const maxWidth = sizeToMaxWidth(size); // null for `full`
+const finalSrc = cfImage(src, { width: variantWidth });
+const srcset = cfSrcset(src, variantWidth);
+---
+{src && (
+  bare ? (
+    <img src={finalSrc} srcset={srcset} alt={alt} loading={loading} class={className} />
+  ) : (
+    <figure
+      class:list={['rich-image', className]}
+      style={maxWidth ? `max-width:${maxWidth}px` : undefined}
+    >
+      <img src={finalSrc} srcset={srcset} alt={alt} loading={loading} />
+      {caption && <figcaption class="rich-image-caption">{caption}</figcaption>}
+    </figure>
+  )
+)}
+
+<style>
+  .rich-image {
+    margin: 0 0 var(--space-5);
+  }
+
+  .rich-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+  }
+
+  .rich-image-caption {
+    margin-top: var(--space-3);
+    font-size: var(--fs-caption);
+    opacity: 0.7;
+  }
+</style>

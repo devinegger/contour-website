@@ -60,6 +60,7 @@ export const PagesPartsFragmentDoc = gql`
       alt
       caption
       width
+      size
       background
     }
     ... on PagesBlocksHero {

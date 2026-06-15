@@ -52,6 +52,7 @@ fragment PagesParts on Pages {
       alt
       caption
       width
+      size
       background
     }
     ... on PagesBlocksHero {

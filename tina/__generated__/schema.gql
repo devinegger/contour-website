@@ -153,6 +153,7 @@ type PagesBlocksImage {
   alt: String
   caption: String
   width: String
+  size: String
   background: String
 }
 
@@ -295,15 +296,20 @@ input PagesBlocksCalloutFilter {
   background: StringFilter
 }
 
-input RichTextFilter {
-  startsWith: String
-  eq: String
-  exists: Boolean
+input PagesBlocksContentBodySizedImageFilter {
+  src: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+  size: StringFilter
+}
+
+input PagesBlocksContentBodyFilter {
+  sizedImage: PagesBlocksContentBodySizedImageFilter
 }
 
 input PagesBlocksContentFilter {
   heading: StringFilter
-  body: RichTextFilter
+  body: PagesBlocksContentBodyFilter
   background: StringFilter
 }
 
@@ -319,9 +325,20 @@ input PagesBlocksFeaturesFilter {
   background: StringFilter
 }
 
+input PagesBlocksSplitBodySizedImageFilter {
+  src: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+  size: StringFilter
+}
+
+input PagesBlocksSplitBodyFilter {
+  sizedImage: PagesBlocksSplitBodySizedImageFilter
+}
+
 input PagesBlocksSplitFilter {
   headline: StringFilter
-  body: RichTextFilter
+  body: PagesBlocksSplitBodyFilter
   image: ImageFilter
   imageAlt: StringFilter
   imagePosition: StringFilter
@@ -342,6 +359,7 @@ input PagesBlocksImageFilter {
   alt: StringFilter
   caption: StringFilter
   width: StringFilter
+  size: StringFilter
   background: StringFilter
 }
 
@@ -355,11 +373,22 @@ input PagesBlocksHeroFilter {
   trustAnchor: StringFilter
 }
 
+input PagesBlocksServices_previewFootnoteSizedImageFilter {
+  src: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+  size: StringFilter
+}
+
+input PagesBlocksServices_previewFootnoteFilter {
+  sizedImage: PagesBlocksServices_previewFootnoteSizedImageFilter
+}
+
 input PagesBlocksServices_previewFilter {
   eyebrow: StringFilter
   heading: StringFilter
   intro: StringFilter
-  footnote: RichTextFilter
+  footnote: PagesBlocksServices_previewFootnoteFilter
 }
 
 input PagesBlocksDifferentiatorsItemsFilter {
@@ -424,14 +453,47 @@ input PagesBlocksFaqFilter {
   _placeholder: StringFilter
 }
 
+input PagesBlocksRich_textBodySizedImageFilter {
+  src: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+  size: StringFilter
+}
+
+input PagesBlocksRich_textBodyFilter {
+  sizedImage: PagesBlocksRich_textBodySizedImageFilter
+}
+
 input PagesBlocksRich_textFilter {
-  body: RichTextFilter
+  body: PagesBlocksRich_textBodyFilter
+}
+
+input PagesBlocksAbout_storyStoryBodySizedImageFilter {
+  src: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+  size: StringFilter
+}
+
+input PagesBlocksAbout_storyStoryBodyFilter {
+  sizedImage: PagesBlocksAbout_storyStoryBodySizedImageFilter
+}
+
+input PagesBlocksAbout_storyHowWeWorkSizedImageFilter {
+  src: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+  size: StringFilter
+}
+
+input PagesBlocksAbout_storyHowWeWorkFilter {
+  sizedImage: PagesBlocksAbout_storyHowWeWorkSizedImageFilter
 }
 
 input PagesBlocksAbout_storyFilter {
   opening: StringFilter
-  storyBody: RichTextFilter
-  howWeWork: RichTextFilter
+  storyBody: PagesBlocksAbout_storyStoryBodyFilter
+  howWeWork: PagesBlocksAbout_storyHowWeWorkFilter
   locationLine: StringFilter
   ctaLabel: StringFilter
   ctaUrl: StringFilter
@@ -503,6 +565,12 @@ input DatetimeFilter {
   in: [String]
 }
 
+input RichTextFilter {
+  startsWith: String
+  eq: String
+  exists: Boolean
+}
+
 input PostsFilter {
   title: StringFilter
   slug: StringFilter
@@ -539,13 +607,24 @@ type Services implements Node & Document {
   _values: JSON!
 }
 
+input ServicesDescriptionSizedImageFilter {
+  src: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+  size: StringFilter
+}
+
+input ServicesDescriptionFilter {
+  sizedImage: ServicesDescriptionSizedImageFilter
+}
+
 input ServicesFilter {
   name: StringFilter
   slug: StringFilter
   tier: StringFilter
   tagline: StringFilter
   previewSnippet: StringFilter
-  description: RichTextFilter
+  description: ServicesDescriptionFilter
   price: StringFilter
   setupFee: StringFilter
   inclusions: StringFilter
@@ -573,6 +652,17 @@ type Faqs implements Node & Document {
   _values: JSON!
 }
 
+input FaqsAnswerSizedImageFilter {
+  src: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+  size: StringFilter
+}
+
+input FaqsAnswerFilter {
+  sizedImage: FaqsAnswerSizedImageFilter
+}
+
 input NumberFilter {
   lt: Float
   lte: Float
@@ -585,7 +675,7 @@ input NumberFilter {
 
 input FaqsFilter {
   question: StringFilter
-  answer: RichTextFilter
+  answer: FaqsAnswerFilter
   order: NumberFilter
 }
 
@@ -745,6 +835,7 @@ input PagesBlocksImageMutation {
   alt: String
   caption: String
   width: String
+  size: String
   background: String
 }
 
