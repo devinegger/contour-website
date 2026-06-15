@@ -156,6 +156,7 @@ fragment ServicesParts on Services {
   slug
   tier
   tagline
+  previewSnippet
   description
   price
   setupFee

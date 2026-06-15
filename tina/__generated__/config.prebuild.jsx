@@ -487,7 +487,14 @@ var config_default = defineConfig({
             options: ["baseline", "elevated", "crest", "wp-migration", "custom-build"],
             ui: { component: "select" }
           },
-          { name: "tagline", label: "Tagline", type: "string", ui: { component: "textarea" } },
+          { name: "tagline", label: "Tagline", type: "string" },
+          {
+            name: "previewSnippet",
+            label: "Preview snippet",
+            type: "string",
+            ui: { component: "textarea" },
+            description: "Optional. If set, overrides the tagline on the home services-preview card. Accepts line breaks."
+          },
           { name: "description", label: "Description", type: "rich-text" },
           { name: "price", label: "Price", type: "string" },
           { name: "setupFee", label: "Setup fee", type: "string" },

@@ -527,6 +527,7 @@ type Services implements Node & Document {
   slug: String!
   tier: String
   tagline: String
+  previewSnippet: String
   description: JSON
   price: String
   setupFee: String
@@ -543,6 +544,7 @@ input ServicesFilter {
   slug: StringFilter
   tier: StringFilter
   tagline: StringFilter
+  previewSnippet: StringFilter
   description: RichTextFilter
   price: StringFilter
   setupFee: StringFilter
@@ -887,6 +889,7 @@ input ServicesMutation {
   slug: String
   tier: String
   tagline: String
+  previewSnippet: String
   description: JSON
   price: String
   setupFee: String
