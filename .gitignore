@@ -3,6 +3,9 @@ dist/
 .astro/
 .wrangler/
 tina/__generated__/.cache/
+# Regenerated on every build; bakes the TinaCloud token from env when present.
+# Never commit it (the repo is public). Build scripts recreate it before astro runs.
+tina/__generated__/client.ts
 .env
 .env.local
 .env.*.local
