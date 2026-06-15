@@ -30,12 +30,30 @@ export interface CfImageOptions {
 export const imageResizingEnabled = RESIZING_ENABLED;
 
 /**
+ * Normalize a media src to its same-zone `/uploads/` path.
+ *
+ * Cloud builds (TinaCloud) rewrite media fields to absolute
+ * `https://assets.tina.io/<project>/<path>` URLs, but the same bytes are
+ * committed to the repo at `/uploads/<path>` (Tina `publicFolder: public`,
+ * `mediaRoot: uploads`) and served from our own zone — which is what
+ * Cloudflare can transform. Map the Tina CDN URL back to that path. Local
+ * builds already use `/uploads/...`, so they pass through unchanged.
+ */
+export function toZoneUploadPath(src: string): string {
+  const m = src.match(/^https?:\/\/assets\.tina\.io\/[^/]+\/(.+)$/);
+  return m ? `/uploads/${m[1]}` : src;
+}
+
+/**
  * Build a transformed image URL, or return the raw `src` when resizing is off
- * or the source isn't a same-zone upload (absolute/remote URLs pass through).
+ * or the source isn't a same-zone upload (other absolute/remote URLs pass
+ * through).
  */
 export function cfImage(src: string | undefined | null, opts: CfImageOptions = {}): string {
   if (!src) return '';
-  if (!RESIZING_ENABLED || !src.startsWith('/')) return src;
+  if (!RESIZING_ENABLED) return src;
+  const zonePath = toZoneUploadPath(src);
+  if (!zonePath.startsWith('/')) return src;
   const { width, height, quality = 80, fit = 'scale-down', format = 'auto' } = opts;
   const params = [
     width && `width=${Math.round(width)}`,
@@ -46,7 +64,7 @@ export function cfImage(src: string | undefined | null, opts: CfImageOptions = {
   ]
     .filter(Boolean)
     .join(',');
-  return `/cdn-cgi/image/${params}${src}`;
+  return `/cdn-cgi/image/${params}${zonePath}`;
 }
 
 /**
@@ -59,7 +77,8 @@ export function cfSrcset(
   width: number,
   opts: CfImageOptions = {}
 ): string | undefined {
-  if (!src || !RESIZING_ENABLED || !src.startsWith('/')) return undefined;
+  if (!src || !RESIZING_ENABLED) return undefined;
+  if (!toZoneUploadPath(src).startsWith('/')) return undefined;
   return [
     `${cfImage(src, { ...opts, width })} 1x`,
     `${cfImage(src, { ...opts, width: width * 2 })} 2x`,
