@@ -7,7 +7,7 @@
   },
   "blocks": [
     {
-      "headline": "Why it works",
+      "headline": "See Some of Our Websites",
       "items": [
         {
           "title": "Feature one",
@@ -19,6 +19,10 @@
         },
         {
           "title": "Feature three",
+          "body": "Describe the benefit here."
+        },
+        {
+          "title": "New feature",
           "body": "Describe the benefit here."
         }
       ],
