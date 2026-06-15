@@ -1,5 +1,5 @@
 ---
-import TinaMarkdown from '@tinacms/astro/TinaMarkdown.astro';
+import Prose from '../Prose.astro';
 
 interface Props {
   heading?: string;
@@ -15,7 +15,7 @@ const isDark = background === 'dark';
   <div class="container section">
     {heading && <h2 class="content-heading">{heading}</h2>}
     <div class="prose content-body">
-      {body && <TinaMarkdown content={body} />}
+      {body && <Prose content={body} />}
     </div>
   </div>
 </section>

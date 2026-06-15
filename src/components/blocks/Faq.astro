@@ -1,6 +1,6 @@
 ---
 import { getFaqs } from '../../lib/data';
-import TinaMarkdown from '@tinacms/astro/TinaMarkdown.astro';
+import Prose from '../Prose.astro';
 
 const faqsResult = await getFaqs();
 const allFaqs = faqsResult?.data?.faqsConnection?.edges ?? [];
@@ -41,7 +41,7 @@ const faqs = allFaqs
             hidden={i !== 0}
           >
             <div class="faq-answer-inner prose">
-              {faq.answer && <TinaMarkdown content={faq.answer} />}
+              {faq.answer && <Prose content={faq.answer} />}
             </div>
           </dd>
         </div>

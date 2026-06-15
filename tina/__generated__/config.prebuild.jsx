@@ -1,5 +1,27 @@
 // tina/config.ts
 import { defineConfig } from "tinacms";
+var imageSizeField = {
+  name: "size",
+  label: "Display size",
+  type: "string",
+  options: [
+    { value: "small", label: "Small (480px)" },
+    { value: "medium", label: "Medium (768px)" },
+    { value: "large", label: "Large (1024px)" },
+    { value: "full", label: "Full width" }
+  ],
+  ui: { component: "select" }
+};
+var sizedImageTemplate = {
+  name: "sizedImage",
+  label: "Image",
+  fields: [
+    { name: "src", label: "Image", type: "image" },
+    { name: "alt", label: "Alt text", type: "string" },
+    { name: "caption", label: "Caption (optional)", type: "string" },
+    imageSizeField
+  ]
+};
 var config_default = defineConfig({
   branch: process.env.GITHUB_BRANCH ?? process.env.WORKERS_CI_BRANCH ?? // Cloudflare Workers Builds
   process.env.VERCEL_GIT_COMMIT_REF ?? "main",
@@ -89,7 +111,7 @@ var config_default = defineConfig({
                 },
                 fields: [
                   { name: "heading", label: "Heading (optional)", type: "string" },
-                  { name: "body", label: "Body", type: "rich-text" },
+                  { name: "body", label: "Body", type: "rich-text", templates: [sizedImageTemplate] },
                   {
                     name: "background",
                     label: "Background",
@@ -155,7 +177,7 @@ var config_default = defineConfig({
                 },
                 fields: [
                   { name: "headline", label: "Headline", type: "string" },
-                  { name: "body", label: "Body", type: "rich-text" },
+                  { name: "body", label: "Body", type: "rich-text", templates: [sizedImageTemplate] },
                   { name: "image", label: "Image", type: "image" },
                   { name: "imageAlt", label: "Image alt text", type: "string" },
                   {
@@ -207,6 +229,7 @@ var config_default = defineConfig({
                   previewSrc: "/tina-previews/image.svg",
                   defaultItem: {
                     width: "contained",
+                    size: "large",
                     background: "light"
                   }
                 },
@@ -216,10 +239,17 @@ var config_default = defineConfig({
                   { name: "caption", label: "Caption (optional)", type: "string" },
                   {
                     name: "width",
-                    label: "Width",
+                    label: "Layout",
                     type: "string",
-                    options: ["contained", "full-bleed"],
+                    options: [
+                      { value: "contained", label: "Contained" },
+                      { value: "full-bleed", label: "Full bleed (edge to edge)" }
+                    ],
                     ui: { component: "select" }
+                  },
+                  {
+                    ...imageSizeField,
+                    description: 'Max display width when Layout is "Contained". Ignored for full-bleed.'
                   },
                   {
                     name: "background",
@@ -273,7 +303,8 @@ var config_default = defineConfig({
                   {
                     name: "footnote",
                     label: "Content after cards",
-                    type: "rich-text"
+                    type: "rich-text",
+                    templates: [sizedImageTemplate]
                   }
                 ]
               },
@@ -412,7 +443,7 @@ var config_default = defineConfig({
                 name: "rich_text",
                 label: "Rich Text",
                 fields: [
-                  { name: "body", label: "Body", type: "rich-text" }
+                  { name: "body", label: "Body", type: "rich-text", templates: [sizedImageTemplate] }
                 ]
               },
               // about-story
@@ -421,8 +452,8 @@ var config_default = defineConfig({
                 label: "About Story",
                 fields: [
                   { name: "opening", label: "Opening", type: "string", ui: { component: "textarea" } },
-                  { name: "storyBody", label: "Story body", type: "rich-text" },
-                  { name: "howWeWork", label: "How we work", type: "rich-text" },
+                  { name: "storyBody", label: "Story body", type: "rich-text", templates: [sizedImageTemplate] },
+                  { name: "howWeWork", label: "How we work", type: "rich-text", templates: [sizedImageTemplate] },
                   {
                     name: "locationLine",
                     label: "Location line",
@@ -495,7 +526,7 @@ var config_default = defineConfig({
             ui: { component: "textarea" },
             description: "Optional. If set, overrides the tagline on the home services-preview card. Accepts line breaks."
           },
-          { name: "description", label: "Description", type: "rich-text" },
+          { name: "description", label: "Description", type: "rich-text", templates: [sizedImageTemplate] },
           { name: "price", label: "Price", type: "string" },
           { name: "setupFee", label: "Setup fee", type: "string" },
           {
@@ -516,7 +547,7 @@ var config_default = defineConfig({
         format: "json",
         fields: [
           { name: "question", label: "Question", type: "string", required: true },
-          { name: "answer", label: "Answer", type: "rich-text" },
+          { name: "answer", label: "Answer", type: "rich-text", templates: [sizedImageTemplate] },
           { name: "order", label: "Sort order", type: "number" }
         ]
       },

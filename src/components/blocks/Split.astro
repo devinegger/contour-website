@@ -1,5 +1,6 @@
 ---
-import TinaMarkdown from '@tinacms/astro/TinaMarkdown.astro';
+import Prose from '../Prose.astro';
+import { cfImage, cfSrcset } from '../../lib/image';
 
 interface Props {
   headline?: string;
@@ -25,18 +26,22 @@ const {
 
 const isDark = background === 'dark';
 const imageFirst = imagePosition !== 'right';
+
+// The split image fills ~half the container; request an 800px-wide variant.
+const imageSrc = cfImage(image, { width: 800 });
+const imageSrcset = cfSrcset(image, 800);
 ---
 
 <section class={`split ${isDark ? 'surface-dark' : 'surface-light'}`}>
   <div class="container section split-grid">
     <div class={`split-media ${imageFirst ? '' : 'split-media--second'}`}>
-      {image && <img src={image} alt={imageAlt ?? ''} loading="lazy" />}
+      {image && <img src={imageSrc} srcset={imageSrcset} alt={imageAlt ?? ''} loading="lazy" />}
     </div>
     <div class={`split-content ${imageFirst ? '' : 'split-content--first'}`}>
       {headline && <h2 class="split-headline">{headline}</h2>}
       {body && (
         <div class="prose split-body">
-          <TinaMarkdown content={body} />
+          <Prose content={body} />
         </div>
       )}
       {ctaLabel && ctaUrl && (
