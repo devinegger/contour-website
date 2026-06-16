@@ -18,3 +18,7 @@ playwright-report/
 
 # Local Claude Code config
 .claude/
+
+# Pricing reference PDF + its generator (local-only, not part of the site)
+Contour-Pricing-Reference.pdf
+scripts/build_pricing_pdf.py

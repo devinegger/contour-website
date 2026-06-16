@@ -38,15 +38,15 @@
       "items": [
         {
           "title": "Feature one",
-          "body": "Describe the benefit here."
+          "richBody": "Describe the benefit here."
         },
         {
           "title": "Feature two",
-          "body": "Describe the benefit here."
+          "richBody": "Describe the benefit here."
         },
         {
           "title": "Feature three",
-          "body": "Describe the benefit here."
+          "richBody": "Describe the benefit here."
         }
       ],
       "background": "light",

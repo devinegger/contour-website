@@ -35,7 +35,7 @@ export const PagesPartsFragmentDoc = gql`
       items {
         __typename
         title
-        body
+        richBody
       }
       background
     }

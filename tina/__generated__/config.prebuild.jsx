@@ -130,9 +130,9 @@ var config_default = defineConfig({
                   defaultItem: {
                     headline: "Why it works",
                     items: [
-                      { title: "Feature one", body: "Describe the benefit here." },
-                      { title: "Feature two", body: "Describe the benefit here." },
-                      { title: "Feature three", body: "Describe the benefit here." }
+                      { title: "Feature one", richBody: "Describe the benefit here." },
+                      { title: "Feature two", richBody: "Describe the benefit here." },
+                      { title: "Feature three", richBody: "Describe the benefit here." }
                     ],
                     background: "light"
                   }
@@ -147,11 +147,11 @@ var config_default = defineConfig({
                     list: true,
                     ui: {
                       itemProps: (item) => ({ label: item?.title }),
-                      defaultItem: { title: "New feature", body: "Describe the benefit here." }
+                      defaultItem: { title: "New feature", richBody: "Describe the benefit here." }
                     },
                     fields: [
                       { name: "title", label: "Title", type: "string" },
-                      { name: "body", label: "Body", type: "string", ui: { component: "textarea" } }
+                      { name: "richBody", label: "Body", type: "rich-text" }
                     ]
                   },
                   {
