@@ -1,5 +1,6 @@
 {
   "title": "Services",
+  "h1": "Services",
   "slug": "services",
   "seo": {
     "metaTitle": "Services & Pricing — Contour | Web Design Greenville SC",
@@ -18,11 +19,31 @@
       "headline": "What does it actually cost?",
       "intro": "A typical WordPress setup — managed hosting, a security plugin, a maintenance retainer, someone handling basic SEO — adds up fast. And it's still slow, still fragile, and still needs someone keeping the lights on. Here's the same list, our way.",
       "rows": [
-        { "label": "Website hosting", "competitorCost": "$20–80/mo", "contourCost": "Included" },
-        { "label": "Website maintenance", "competitorCost": "$99–299/mo", "contourCost": "Included" },
-        { "label": "Security & updates", "competitorCost": "$49–149/mo", "contourCost": "Included" },
-        { "label": "SEO basics", "competitorCost": "$200–500/mo", "contourCost": "Included" },
-        { "label": "Total", "competitorCost": "$368–1,028/mo", "contourCost": "From $97/mo" }
+        {
+          "label": "Website hosting",
+          "competitorCost": "$20–80/mo",
+          "contourCost": "Included"
+        },
+        {
+          "label": "Website maintenance",
+          "competitorCost": "$99–299/mo",
+          "contourCost": "Included"
+        },
+        {
+          "label": "Security & updates",
+          "competitorCost": "$49–149/mo",
+          "contourCost": "Included"
+        },
+        {
+          "label": "SEO basics",
+          "competitorCost": "$200–500/mo",
+          "contourCost": "Included"
+        },
+        {
+          "label": "Total",
+          "competitorCost": "$368–1,028/mo",
+          "contourCost": "From $97/mo"
+        }
       ]
     },
     {

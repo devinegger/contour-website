@@ -1,6 +1,7 @@
 fragment PagesParts on Pages {
   __typename
   title
+  h1
   slug
   seo {
     __typename

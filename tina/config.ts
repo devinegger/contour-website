@@ -63,6 +63,14 @@ export default defineConfig({
         label: 'Pages',
         path: 'content/pages',
         format: 'json',
+        // Seed every page created via the admin "add file" flow with the
+        // required meta fields, so an H1 is present from the moment the page
+        // exists (combined with `required: true` on the field below).
+        defaultItem: () => ({
+          title: 'New page',
+          h1: 'New page heading',
+          slug: 'new-page',
+        }),
         ui: {
           // Visual editing: the admin opens the document's live page in an
           // iframe instead of the bare form. Filenames match slug fields.
@@ -71,6 +79,14 @@ export default defineConfig({
         },
         fields: [
           { name: 'title', label: 'Page title', type: 'string', required: true },
+          {
+            name: 'h1',
+            label: 'Page heading (H1)',
+            type: 'string',
+            required: true,
+            description:
+              'The single main heading for this page. On pages that open with a Hero or Contact form, that block already renders the visible H1, so this value is not shown there — but it stays required so every new page leads with a real heading.',
+          },
           { name: 'slug', label: 'Slug', type: 'string', required: true },
           {
             name: 'seo',
