@@ -261,6 +261,7 @@ union PagesBlocks = PagesBlocksCallout | PagesBlocksContent | PagesBlocksFeature
 
 type Pages implements Node & Document {
   title: String!
+  h1: String!
   slug: String!
   seo: PagesSeo
   blocks: [PagesBlocks]
@@ -536,6 +537,7 @@ input PagesBlocksFilter {
 
 input PagesFilter {
   title: StringFilter
+  h1: StringFilter
   slug: StringFilter
   seo: PagesSeoFilter
   blocks: PagesBlocksFilter
@@ -962,6 +964,7 @@ input PagesBlocksMutation {
 
 input PagesMutation {
   title: String
+  h1: String
   slug: String
   seo: PagesSeoMutation
   blocks: [PagesBlocksMutation]

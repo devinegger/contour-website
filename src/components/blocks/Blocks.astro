@@ -13,12 +13,29 @@ type BlockData = Record<string, unknown> & { __typename: string };
 const { page } = Astro.props;
 const blocks = (page?.blocks ?? []).filter(Boolean) as BlockData[];
 
+// Every page needs exactly one visible <h1>. The Hero and Contact form blocks
+// each render their own <h1>; for any page that opens without one of those, we
+// render the page-level meta `h1` at the top so the page still leads with a
+// real heading (instead of starting at an <h2>). Whitelist, not block order.
+const H1_HOSTING_BLOCKS = ['PagesBlocksHero', 'PagesBlocksContact_form'];
+const hasHostingBlock = blocks.some((b) => H1_HOSTING_BLOCKS.includes(b.__typename));
+const pageH1 = (page as { h1?: string | null } | null)?.h1;
+const showMetaH1 = !hasHostingBlock && Boolean(pageH1);
+
 // PageSpeedWidget is hardcoded into the home page between the
 // differentiators and trust-signal blocks — it is not editor-composable.
 const isHome = page?._sys?.filename === 'home';
 const diffIdx = blocks.findIndex((b) => b.__typename === 'PagesBlocksDifferentiators');
 const widgetAfter = isHome ? (diffIdx >= 0 ? diffIdx : blocks.length - 1) : -1;
 ---
+
+{showMetaH1 && (
+  <section class="page-header surface-light">
+    <div class="container">
+      <h1 class="page-header-title" data-tina-field={tinaField(page, 'h1')}>{pageH1}</h1>
+    </div>
+  </section>
+)}
 
 {blocks.map((block, i) => {
   const Component = blockComponents[block.__typename] as unknown;
@@ -33,3 +50,20 @@ const widgetAfter = isHome ? (diffIdx >= 0 ? diffIdx : blocks.length - 1) : -1;
     </>
   );
 })}
+
+<style>
+  /* The injected page-level H1 sits on a light band that merges into the
+     first content block (all the pages that use it open on surface-light).
+     Only top padding — the following block's own .section padding supplies
+     the gap beneath the heading. */
+  .page-header {
+    padding-block-start: var(--section-padding);
+  }
+
+  .page-header-title {
+    font-family: var(--font-heading);
+    font-size: var(--fs-h1);
+    font-weight: var(--fw-heading);
+    line-height: var(--lh-heading);
+  }
+</style>

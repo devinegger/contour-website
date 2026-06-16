@@ -9,6 +9,7 @@ export const PagesPartsFragmentDoc = gql`
     fragment PagesParts on Pages {
   __typename
   title
+  h1
   slug
   seo {
     __typename
@@ -544,7 +545,7 @@ const generateRequester = (client) => {
 export const ExperimentalGetTinaClient = () => getSdk(
   generateRequester(
     createClient({
-      url: "http://localhost:4001/graphql",
+      url: "http://localhost:4002/graphql",
       queries
     })
   )
