@@ -27,7 +27,7 @@ fragment PagesParts on Pages {
       items {
         __typename
         title
-        body
+        richBody
       }
       background
     }
