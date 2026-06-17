@@ -17,12 +17,12 @@ const {
 
 const showBooking = Boolean(bookingLinkLabel && bookingLinkUrl);
 
-// Cloudflare Turnstile sitekey (public). Currently the official test key,
-// which renders a widget that always passes — swap for the real sitekey
-// once the widget is created in the Cloudflare dash (Turnstile → Add widget,
-// hostname contour-digital.com), and set the matching TURNSTILE_SECRET on
-// the contour-forms Worker.
-const TURNSTILE_SITEKEY = '1x00000000000000000000AA';
+// Cloudflare Turnstile sitekey (public). Production widget for
+// contour-digital.com (Managed mode). The matching TURNSTILE_SECRET lives in
+// the Cloudflare dash and must be wired into the form-handling Worker for
+// server-side siteverify — until then the widget renders but the token is not
+// validated server-side (tracked with the forms Worker work, MWC-46 Part B).
+const TURNSTILE_SITEKEY = '0x4AAAAAADmMUiPfqAFYqzkO';
 ---
 
 <section class="contact-section surface-dark">
