@@ -103,7 +103,11 @@ export default defineConfig({
             label: 'Blocks',
             type: 'object',
             list: true,
-            ui: { visualSelector: true },
+            ui: {
+              visualSelector: true,
+              itemProps: (item: { blockTitle?: string }) =>
+                item?.blockTitle ? { label: item.blockTitle } : {},
+            },
             templates: [
               // ─── Generic block kit (pulled from tina-astro-starter) ───
               // callout
@@ -170,6 +174,12 @@ export default defineConfig({
                   },
                 },
                 fields: [
+                  {
+                    name: 'blockTitle',
+                    label: 'Block Title (admin only)',
+                    type: 'string',
+                    description: 'This will only be seen here in the admin, not on the page.',
+                  },
                   { name: 'headline', label: 'Headline (optional)', type: 'string' },
                   { name: 'richIntro', label: 'Intro (optional)', type: 'rich-text' },
                   {
@@ -191,17 +201,8 @@ export default defineConfig({
                         ui: { component: 'select' },
                       },
                       { name: 'url', label: 'Link URL (optional)', type: 'string' },
-                      {
-                        name: 'image',
-                        label: 'Image',
-                        type: 'image',
-                        description: 'If set, this image replaces the body text below.',
-                      },
-                      {
-                        name: 'richBody',
-                        label: 'Body (used if no image is selected)',
-                        type: 'rich-text',
-                      },
+                      { name: 'image', label: 'Image', type: 'image' },
+                      { name: 'richBody', label: 'Body', type: 'rich-text' },
                     ],
                   },
                   {

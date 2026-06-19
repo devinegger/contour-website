@@ -46,7 +46,7 @@ const features = (items ?? []).filter((item): item is FeatureItem => Boolean(ite
               )}
             </h3>
           )}
-          {item.image ? (
+          {item.image && (
             item.url ? (
               <a href={item.url} target="_blank" rel="noopener noreferrer" class="feature-media">
                 <img
@@ -65,12 +65,11 @@ const features = (items ?? []).filter((item): item is FeatureItem => Boolean(ite
                 loading="lazy"
               />
             )
-          ) : (
-            item.richBody && (
-              <div class="prose feature-body">
-                <Prose content={item.richBody} />
-              </div>
-            )
+          )}
+          {item.richBody && (
+            <div class="prose feature-body">
+              <Prose content={item.richBody} />
+            </div>
           )}
         </div>
       ))}

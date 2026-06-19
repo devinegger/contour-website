@@ -31,6 +31,7 @@ export const PagesPartsFragmentDoc = gql`
       background
     }
     ... on PagesBlocksFeatures {
+      blockTitle
       headline
       richIntro
       items {
