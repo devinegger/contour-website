@@ -39,6 +39,13 @@
           "url": "https://aggieplumbing.com/",
           "image": "/uploads/Aggie-Plumbing-Service.png",
           "richBody": "* Designed a trust-focused online presence featuring service guarantees, local expertise, and clear quote request pathways.\n* Created a mobile-friendly scalable service-page framework that supports local search visibility across multiple plumbing specialties and service areas.\n"
+        },
+        {
+          "title": "Epic Egg",
+          "titleAlign": "center",
+          "url": "https://epiceggrestaurants.com/",
+          "image": "/uploads/Epic-Egg.png",
+          "richBody": "* Built a website for a growing restaurant group that makes it easy for customers to find locations, view menus, and order online\n"
         }
       ],
       "background": "light",
