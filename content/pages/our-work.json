@@ -1,6 +1,6 @@
 {
   "title": "Our Work",
-  "h1": "Our work",
+  "h1": "Browse some of our Previous Websites",
   "slug": "our-work",
   "seo": {
     "metaTitle": "Website Development Portfolio",
@@ -9,26 +9,20 @@
   "blocks": [
     {
       "headline": "See Some of Our Websites",
+      "richIntro": "Our Work\n\nA great website does more than look good—it helps your business grow.\n\nWith over 15 years of experience, Devin has built websites for businesses across a variety of industries, focusing on performance, user experience, and results. Every site is designed to attract customers, generate leads, and support your business goals.\n\nExplore some of our recent projects below.",
       "items": [
         {
-          "title": "Feature one",
-          "richBody": "Describe the benefit here."
+          "title": "Hunter Law, LLC",
+          "url": "https://hunterlawllc.com/",
+          "image": "/uploads/Hunter-Law.png"
         },
         {
           "title": "Feature two",
-          "richBody": "Describe the benefit here."
+          "richBody": ""
         },
         {
           "title": "Feature three",
-          "richBody": "Describe the benefit here."
-        },
-        {
-          "title": "New feature",
-          "richBody": "Describe the benefit here."
-        },
-        {
-          "title": "New feature",
-          "richBody": "Describe the benefit here."
+          "richBody": ""
         }
       ],
       "background": "light",
@@ -39,15 +33,15 @@
       "items": [
         {
           "title": "Feature one",
-          "richBody": "Describe the benefit here."
+          "richBody": "Describe the benefit here.\n"
         },
         {
           "title": "Feature two",
-          "richBody": "Describe the benefit here."
+          "richBody": "Describe the benefit here.\n"
         },
         {
           "title": "Feature three",
-          "richBody": "Describe the benefit here."
+          "richBody": "Describe the benefit here.\n"
         }
       ],
       "background": "light",
