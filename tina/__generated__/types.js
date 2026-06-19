@@ -36,6 +36,7 @@ export const PagesPartsFragmentDoc = gql`
       items {
         __typename
         title
+        titleAlign
         url
         image
         richBody

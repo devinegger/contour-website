@@ -120,6 +120,7 @@ type PagesBlocksContent {
 
 type PagesBlocksFeaturesItems {
   title: String
+  titleAlign: String
   url: String
   image: String
   richBody: JSON
@@ -324,6 +325,7 @@ input RichTextFilter {
 
 input PagesBlocksFeaturesItemsFilter {
   title: StringFilter
+  titleAlign: StringFilter
   url: StringFilter
   image: ImageFilter
   richBody: RichTextFilter
@@ -808,6 +810,7 @@ input PagesBlocksContentMutation {
 
 input PagesBlocksFeaturesItemsMutation {
   title: String
+  titleAlign: String
   url: String
   image: String
   richBody: JSON

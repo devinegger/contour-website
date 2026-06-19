@@ -28,6 +28,7 @@ fragment PagesParts on Pages {
       items {
         __typename
         title
+        titleAlign
         url
         image
         richBody

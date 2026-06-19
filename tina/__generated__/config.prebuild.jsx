@@ -166,6 +166,13 @@ var config_default = defineConfig({
                     },
                     fields: [
                       { name: "title", label: "Title", type: "string" },
+                      {
+                        name: "titleAlign",
+                        label: "Title alignment",
+                        type: "string",
+                        options: ["left", "center", "right"],
+                        ui: { component: "select" }
+                      },
                       { name: "url", label: "Link URL (optional)", type: "string" },
                       {
                         name: "image",
