@@ -8,13 +8,15 @@
   },
   "blocks": [
     {
-      "headline": "See Some of Our Websites",
-      "richIntro": "Our Work\n\nA great website does more than look good—it helps your business grow.\n\nWith over 15 years of experience, Devin has built websites for businesses across a variety of industries, focusing on performance, user experience, and results. Every site is designed to attract customers, generate leads, and support your business goals.\n\nExplore some of our recent projects below.",
+      "headline": "",
+      "richIntro": "***A great website does more than look good—it helps your business grow.***\n\nWith over 15 years of experience, Devin has built websites for businesses across a variety of industries, focusing on performance, user experience, and results. Every site is designed to attract customers, generate leads, and support your business goals.\n\n**Explore some of our recent projects below.**\n",
       "items": [
         {
           "title": "Hunter Law, LLC",
+          "titleAlign": "center",
           "url": "https://hunterlawllc.com/",
-          "image": "/uploads/Hunter-Law.png"
+          "image": "/uploads/Hunter-Law.png",
+          "richBody": ""
         },
         {
           "title": "Feature two",
@@ -23,25 +25,6 @@
         {
           "title": "Feature three",
           "richBody": ""
-        }
-      ],
-      "background": "light",
-      "_template": "features"
-    },
-    {
-      "headline": "Why it works",
-      "items": [
-        {
-          "title": "Feature one",
-          "richBody": "Describe the benefit here.\n"
-        },
-        {
-          "title": "Feature two",
-          "richBody": "Describe the benefit here.\n"
-        },
-        {
-          "title": "Feature three",
-          "richBody": "Describe the benefit here.\n"
         }
       ],
       "background": "light",
