@@ -1,39 +1,75 @@
 ---
 import Prose from '../Prose.astro';
+import { cfImage, cfSrcset } from '../../lib/image';
 
 interface FeatureItem {
   title?: string;
+  url?: string;
+  image?: string;
   richBody?: unknown;
 }
 
 interface Props {
   headline?: string;
-  intro?: string;
+  richIntro?: unknown;
   items?: (FeatureItem | null)[];
   background?: 'light' | 'dark';
 }
 
-const { headline, intro, items = [], background = 'light' } = Astro.props;
+const { headline, richIntro, items = [], background = 'light' } = Astro.props;
 const isDark = background === 'dark';
 const features = (items ?? []).filter((item): item is FeatureItem => Boolean(item));
 ---
 
 <section class={`features ${isDark ? 'surface-dark' : 'surface-light'}`}>
   <div class="container section">
-    {(headline || intro) && (
+    {(headline || richIntro) && (
       <div class="features-header">
         {headline && <h2 class="features-headline">{headline}</h2>}
-        {intro && <p class="features-intro">{intro}</p>}
+        {richIntro && (
+          <div class="prose features-intro">
+            <Prose content={richIntro} />
+          </div>
+        )}
       </div>
     )}
     <div class="features-grid">
       {features.map((item) => (
-        <div class={`feature-card ${isDark ? 'feature-card--dark' : 'feature-card--light'}`}>
-          {item.title && <h3 class="feature-title">{item.title}</h3>}
-          {item.richBody && (
-            <div class="prose feature-body">
-              <Prose content={item.richBody} />
-            </div>
+        <div class="feature-item">
+          {item.title && (
+            <h3 class="feature-title">
+              {item.url ? (
+                <a href={item.url} target="_blank" rel="noopener noreferrer">{item.title}</a>
+              ) : (
+                item.title
+              )}
+            </h3>
+          )}
+          {item.image ? (
+            item.url ? (
+              <a href={item.url} target="_blank" rel="noopener noreferrer" class="feature-media">
+                <img
+                  src={cfImage(item.image, { width: 800 })}
+                  srcset={cfSrcset(item.image, 800)}
+                  alt={item.title ?? ''}
+                  loading="lazy"
+                />
+              </a>
+            ) : (
+              <img
+                class="feature-media"
+                src={cfImage(item.image, { width: 800 })}
+                srcset={cfSrcset(item.image, 800)}
+                alt={item.title ?? ''}
+                loading="lazy"
+              />
+            )
+          ) : (
+            item.richBody && (
+              <div class="prose feature-body">
+                <Prose content={item.richBody} />
+              </div>
+            )
           )}
         </div>
       ))}
@@ -65,37 +101,52 @@ const features = (items ?? []).filter((item): item is FeatureItem => Boolean(ite
   .features-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--space-5);
+    gap: var(--space-6);
   }
 
-  @media (min-width: 800px) {
+  @media (min-width: 700px) {
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1100px) {
     .features-grid {
       grid-template-columns: repeat(3, 1fr);
     }
   }
 
-  .feature-card {
+  .feature-item {
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
-    padding: var(--space-6);
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border-on-light);
-  }
-
-  .feature-card--light {
-    background: var(--surface-card-light);
-  }
-
-  .feature-card--dark {
-    background: var(--surface-card);
-    border-color: var(--border-on-dark);
   }
 
   .feature-title {
     font-family: var(--font-heading);
     font-size: var(--fs-h3);
     font-weight: var(--fw-heading);
+  }
+
+  .feature-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .feature-title a:hover {
+    text-decoration: underline;
+  }
+
+  .feature-media {
+    display: block;
+    width: 100%;
+  }
+
+  .feature-media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
   }
 
   .feature-body {

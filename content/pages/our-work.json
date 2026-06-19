@@ -9,11 +9,12 @@
   "blocks": [
     {
       "headline": "See Some of Our Websites",
-      "intro": "Our Work\n\nA great website does more than look good—it helps your business grow.\n\nWith over 15 years of experience, Devin has built websites for businesses across a variety of industries, focusing on performance, user experience, and results. Every site is designed to attract customers, generate leads, and support your business goals.\n\nExplore some of our recent projects below.",
+      "richIntro": "Our Work\n\nA great website does more than look good—it helps your business grow.\n\nWith over 15 years of experience, Devin has built websites for businesses across a variety of industries, focusing on performance, user experience, and results. Every site is designed to attract customers, generate leads, and support your business goals.\n\nExplore some of our recent projects below.",
       "items": [
         {
           "title": "Hunter Law, LLC",
-          "richBody": "![](/uploads/Hunter-Law.png)[Hunter Law, LLC](https://hunterlawllc.com/)\n"
+          "url": "https://hunterlawllc.com/",
+          "image": "/uploads/Hunter-Law.png"
         },
         {
           "title": "Feature two",
