@@ -21,7 +21,10 @@
         },
         {
           "title": "Feature two",
-          "richBody": ""
+          "titleAlign": "center",
+          "url": "https://connectingsigns.com/",
+          "image": "/uploads/Connecting-Signs.png",
+          "richBody": "* Designed a lead-generation-focused user experience with clear navigation, project showcases, and prominent quote requests.\n* Organized products, services, and project galleries into a search-friendly structure that improves both visibility and user experience.\n"
         },
         {
           "title": "Feature three",
