@@ -17,7 +17,7 @@
           "titleAlign": "center",
           "url": "https://hunterlawllc.com/",
           "image": "/uploads/Hunter-Law.png",
-          "richBody": "* Developed an SEO-focused site structure with dedicated practice area pages, intuitive navigation, and strategic internal linking.\n* Designed the site to convert visitors into consultations through clear calls-to-action, trust-building content, and streamlined contact pathways.\n* Built a mobile-friendly, performance-focused website that helps prospective clients quickly find relevant legal services and connect with the firm.\n\n"
+          "richBody": "* Developed an SEO-focused site structure with dedicated practice area pages, intuitive navigation, and strategic internal linking.\n* Designed the site to convert visitors into consultations through clear calls-to-action, trust-building content, and streamlined contact pathways.\n* Built a mobile-friendly, performance-focused website that helps prospective clients quickly find relevant legal services and connect with the firm.\n"
         },
         {
           "title": "Connecting Signs",
@@ -27,8 +27,11 @@
           "richBody": "* Designed a lead-generation-focused user experience with clear navigation, project showcases, and prominent quote requests.\n* Organized products, services, and project galleries into a search-friendly structure that improves both visibility and user experience.\n"
         },
         {
-          "title": "Feature three",
-          "richBody": ""
+          "title": "NorthStar Homes",
+          "titleAlign": "center",
+          "url": "https://northstar-homes.com/",
+          "image": "/uploads/NorthStar-Homes.png",
+          "richBody": "* Built a searchable home model database that helps prospective buyers easily explore floor plans and customization options\n* Designed a lead-focused experience that guides visitors from inspiration to inquiry.\n"
         }
       ],
       "background": "light",
