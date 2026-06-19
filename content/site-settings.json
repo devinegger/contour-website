@@ -4,16 +4,12 @@
   "locationLine": "Contour Digital: Website and SEO Services, LLC \nLocated in Travelers Rest, SC. Serving the Greenville Area\n📞 515-321-8386\n📧 Grow@Contour-digital.com",
   "navLinks": [
     {
-      "label": "Services",
-      "url": "/services"
-    },
-    {
       "label": "About",
       "url": "/about"
     },
     {
-      "label": "Contact",
-      "url": "/contact"
+      "label": "Services",
+      "url": "/services"
     },
     {
       "label": "Our Work",
@@ -22,20 +18,16 @@
     {
       "label": "How We're Different",
       "url": "/how-were-different"
+    },
+    {
+      "label": "Contact",
+      "url": "/contact"
     }
   ],
   "footerLinks": [
     {
       "label": "Services",
       "url": "/services"
-    },
-    {
-      "label": "About",
-      "url": "/about"
-    },
-    {
-      "label": "Contact",
-      "url": "/contact"
     },
     {
       "label": "Our Work",
