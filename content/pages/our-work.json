@@ -9,26 +9,19 @@
   "blocks": [
     {
       "headline": "See Some of Our Websites",
+      "intro": "Our Work\n\nA great website does more than look good—it helps your business grow.\n\nWith over 15 years of experience, Devin has built websites for businesses across a variety of industries, focusing on performance, user experience, and results. Every site is designed to attract customers, generate leads, and support your business goals.\n\nExplore some of our recent projects below.",
       "items": [
         {
           "title": "Feature one",
-          "body": "Describe the benefit here."
+          "richBody": "![](/uploads/Hunter-Law.png)\n"
         },
         {
           "title": "Feature two",
-          "body": "Describe the benefit here."
+          "richBody": ""
         },
         {
           "title": "Feature three",
-          "body": "Describe the benefit here."
-        },
-        {
-          "title": "New feature",
-          "body": "Describe the benefit here."
-        },
-        {
-          "title": "New feature",
-          "body": "Describe the benefit here."
+          "richBody": ""
         }
       ],
       "background": "light",
@@ -39,15 +32,15 @@
       "items": [
         {
           "title": "Feature one",
-          "richBody": "Describe the benefit here."
+          "richBody": "Describe the benefit here.\n"
         },
         {
           "title": "Feature two",
-          "richBody": "Describe the benefit here."
+          "richBody": "Describe the benefit here.\n"
         },
         {
           "title": "Feature three",
-          "richBody": "Describe the benefit here."
+          "richBody": "Describe the benefit here.\n"
         }
       ],
       "background": "light",
