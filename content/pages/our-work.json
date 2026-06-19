@@ -67,6 +67,13 @@
           "url": "https://coloradodenttech.com/",
           "image": "/uploads/Dent-Tech.png",
           "richBody": "* Built a mobile-friendly website that clearly explains hail and dent repair services and makes it easy for customers to request estimates and get help with insurance.\n"
+        },
+        {
+          "title": "Children Youth Community RI",
+          "titleAlign": "center",
+          "url": "https://cycri.org/",
+          "image": "/uploads/CYCRI.png",
+          "richBody": "* Built a clear, content-rich website that organizes programs, leadership, and resources to communicate the organization’s mission, impact, and community work.\n"
         }
       ],
       "background": "light",
