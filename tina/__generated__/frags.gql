@@ -23,6 +23,7 @@ fragment PagesParts on Pages {
       background
     }
     ... on PagesBlocksFeatures {
+      blockTitle
       headline
       richIntro
       items {

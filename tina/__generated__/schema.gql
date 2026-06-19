@@ -127,6 +127,7 @@ type PagesBlocksFeaturesItems {
 }
 
 type PagesBlocksFeatures {
+  blockTitle: String
   headline: String
   richIntro: JSON
   items: [PagesBlocksFeaturesItems]
@@ -332,6 +333,7 @@ input PagesBlocksFeaturesItemsFilter {
 }
 
 input PagesBlocksFeaturesFilter {
+  blockTitle: StringFilter
   headline: StringFilter
   richIntro: RichTextFilter
   items: PagesBlocksFeaturesItemsFilter
@@ -817,6 +819,7 @@ input PagesBlocksFeaturesItemsMutation {
 }
 
 input PagesBlocksFeaturesMutation {
+  blockTitle: String
   headline: String
   richIntro: JSON
   items: [PagesBlocksFeaturesItemsMutation]
