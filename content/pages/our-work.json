@@ -46,6 +46,13 @@
           "url": "https://epiceggrestaurants.com/",
           "image": "/uploads/Epic-Egg.png",
           "richBody": "* Built a website for a growing restaurant group that makes it easy for customers to find locations, view menus, and order online\n"
+        },
+        {
+          "title": "BRD Vet RX",
+          "titleAlign": "center",
+          "url": "https://brdvetrx.com/",
+          "image": "/uploads/BRD-Vet-RX.png",
+          "richBody": "* Built an order-driven website that makes it easy for customers to quickly purchase products and easily place repeat orders contributing to high-volume sales performance.\n"
         }
       ],
       "background": "light",
