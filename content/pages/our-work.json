@@ -60,6 +60,13 @@
           "url": "https://flowertribeco.com/",
           "image": "/uploads/FlowerTribe.png",
           "richBody": "* Built a beautiful, modern website that showcases floral arrangements and makes it easy for customers to place orders online.\n"
+        },
+        {
+          "title": "Dent Tech",
+          "titleAlign": "center",
+          "url": "https://coloradodenttech.com/",
+          "image": "/uploads/Dent-Tech.png",
+          "richBody": "* Built a mobile-friendly website that clearly explains hail and dent repair services and makes it easy for customers to request estimates and get help with insurance.\n"
         }
       ],
       "background": "light",
