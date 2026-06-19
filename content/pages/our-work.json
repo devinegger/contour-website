@@ -1,6 +1,6 @@
 {
   "title": "Our Work",
-  "h1": "Our work",
+  "h1": "Browse some of our Previous Websites",
   "slug": "our-work",
   "seo": {
     "metaTitle": "Website Development Portfolio",
@@ -13,7 +13,7 @@
       "items": [
         {
           "title": "Feature one",
-          "richBody": "![](/uploads/Hunter-Law.png)\n"
+          "richBody": "![](/uploads/Hunter-Law.png)[Hunter Law, LLC](https://hunterlawllc.com/)\n"
         },
         {
           "title": "Feature two",
