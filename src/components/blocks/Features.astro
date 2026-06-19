@@ -4,6 +4,7 @@ import { cfImage, cfSrcset } from '../../lib/image';
 
 interface FeatureItem {
   title?: string;
+  titleAlign?: 'left' | 'center' | 'right';
   url?: string;
   image?: string;
   richBody?: unknown;
@@ -37,7 +38,7 @@ const features = (items ?? []).filter((item): item is FeatureItem => Boolean(ite
       {features.map((item) => (
         <div class="feature-item">
           {item.title && (
-            <h3 class="feature-title">
+            <h3 class="feature-title" style={`text-align: ${item.titleAlign ?? 'left'};`}>
               {item.url ? (
                 <a href={item.url} target="_blank" rel="noopener noreferrer">{item.title}</a>
               ) : (
