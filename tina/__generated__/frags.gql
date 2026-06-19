@@ -24,10 +24,12 @@ fragment PagesParts on Pages {
     }
     ... on PagesBlocksFeatures {
       headline
-      intro
+      richIntro
       items {
         __typename
         title
+        url
+        image
         richBody
       }
       background

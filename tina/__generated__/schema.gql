@@ -120,12 +120,14 @@ type PagesBlocksContent {
 
 type PagesBlocksFeaturesItems {
   title: String
+  url: String
+  image: String
   richBody: JSON
 }
 
 type PagesBlocksFeatures {
   headline: String
-  intro: String
+  richIntro: JSON
   items: [PagesBlocksFeaturesItems]
   background: String
 }
@@ -322,12 +324,14 @@ input RichTextFilter {
 
 input PagesBlocksFeaturesItemsFilter {
   title: StringFilter
+  url: StringFilter
+  image: ImageFilter
   richBody: RichTextFilter
 }
 
 input PagesBlocksFeaturesFilter {
   headline: StringFilter
-  intro: StringFilter
+  richIntro: RichTextFilter
   items: PagesBlocksFeaturesItemsFilter
   background: StringFilter
 }
@@ -804,12 +808,14 @@ input PagesBlocksContentMutation {
 
 input PagesBlocksFeaturesItemsMutation {
   title: String
+  url: String
+  image: String
   richBody: JSON
 }
 
 input PagesBlocksFeaturesMutation {
   headline: String
-  intro: String
+  richIntro: JSON
   items: [PagesBlocksFeaturesItemsMutation]
   background: String
 }

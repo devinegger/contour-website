@@ -154,7 +154,7 @@ var config_default = defineConfig({
                 },
                 fields: [
                   { name: "headline", label: "Headline (optional)", type: "string" },
-                  { name: "intro", label: "Intro (optional)", type: "string", ui: { component: "textarea" } },
+                  { name: "richIntro", label: "Intro (optional)", type: "rich-text" },
                   {
                     name: "items",
                     label: "Items",
@@ -166,7 +166,18 @@ var config_default = defineConfig({
                     },
                     fields: [
                       { name: "title", label: "Title", type: "string" },
-                      { name: "richBody", label: "Body", type: "rich-text" }
+                      { name: "url", label: "Link URL (optional)", type: "string" },
+                      {
+                        name: "image",
+                        label: "Image",
+                        type: "image",
+                        description: "If set, this image replaces the body text below."
+                      },
+                      {
+                        name: "richBody",
+                        label: "Body (used if no image is selected)",
+                        type: "rich-text"
+                      }
                     ]
                   },
                   {
