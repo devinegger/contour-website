@@ -13,11 +13,11 @@
       "richIntro": "**We're proud to showcase some of the businesses that have trusted Devin with their online presence over the years.**\n\nWith over 15 years of experience, Devin has built websites for businesses across a variety of industries, focusing on performance, user experience, and results. Every site is designed to attract customers, generate leads, and support your business goals.\n\n**Explore some of our recent projects below.**\n",
       "items": [
         {
-          "title": "Hunter Law, LLC",
+          "title": "Dent Tech",
           "titleAlign": "center",
-          "url": "https://hunterlawllc.com/",
-          "image": "/uploads/Hunter-Law.png",
-          "richBody": "*  Developed a SEO-optimized law firm website with dedicated service pages, clear navigation, and strong calls-to-action that help turn visitors into clients.\n"
+          "url": "https://coloradodenttech.com/",
+          "image": "/uploads/Dent-Tech.png",
+          "richBody": "* Built a mobile-friendly website that clearly explains hail and dent repair services and makes it easy for customers to request estimates and get help with insurance.\n"
         },
         {
           "title": "Connecting Signs",
@@ -62,18 +62,18 @@
           "richBody": "* Built a beautiful, modern website that showcases floral arrangements and makes it easy for customers to place orders online.\n"
         },
         {
-          "title": "Dent Tech",
+          "title": "Hunter Law, LLC",
           "titleAlign": "center",
-          "url": "https://coloradodenttech.com/",
-          "image": "/uploads/Dent-Tech.png",
-          "richBody": "* Built a mobile-friendly website that clearly explains hail and dent repair services and makes it easy for customers to request estimates and get help with insurance.\n"
+          "url": "https://hunterlawllc.com/",
+          "image": "/uploads/Hunter-Law.png",
+          "richBody": "*  Developed a SEO-optimized law firm website with dedicated service pages, clear navigation, and strong calls-to-action that help turn visitors into clients.\n"
         },
         {
           "title": "Children Youth Community RI",
           "titleAlign": "center",
           "url": "https://cycri.org/",
           "image": "/uploads/CYCRI.png",
-          "richBody": "* Built a clear, content-rich website that organizes programs, leadership, and resources to communicate the organization’s mission, impact, and community work.\n"
+          "richBody": "Built a clear, content-rich website that organizes programs, leadership, and resources to communicate the organization’s mission, impact, and community work. Included a custom loading experience and built a flexible website structure that allows every section to be easily updated and maintained.\n"
         }
       ],
       "background": "light",
