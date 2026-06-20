@@ -78,6 +78,10 @@
       ],
       "background": "light",
       "_template": "features"
+    },
+    {
+      "body": "## Built for Businesses Like Yours\n\nWe have worked with a variety of local, regional, and national businesses over the years. From landscapers, plumbers, HVAC companies, electricians, and contractors to home builders, attorneys, and restaurants, we understand what it takes to build a website that attracts customers and supports growth.\n\nWhether you're a local service provider or a growing organization, we create websites that combine professional design, strong performance, and real business results. Whatever your industry, we're ready to help build a website that works as hard as you do.\n",
+      "_template": "rich_text"
     }
   ]
 }
