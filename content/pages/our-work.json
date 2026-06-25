@@ -74,6 +74,13 @@
           "url": "https://cycri.org/",
           "image": "/uploads/CYCRI.png",
           "richBody": "Built a clear, content-rich website that organizes programs, leadership, and resources to communicate the organization’s mission, impact, and community work. Included a custom loading experience and built a flexible website structure that allows every section to be easily updated and maintained.\n"
+        },
+        {
+          "title": "Double Yolker Kennels",
+          "titleAlign": "center",
+          "url": "https://www.dykennels.com/",
+          "image": "/uploads/DYKennels.png",
+          "richBody": "Designed a content rich mobile-friendly website for Labrador Retriever Breeders that showcases available puppies, breeder expertise, and a clear step-by-step process for bringing home a new Labrador Retriever puppy.\n"
         }
       ],
       "background": "light",
