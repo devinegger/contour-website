@@ -88,6 +88,13 @@
           "url": "https://rexverify.com/about",
           "image": "/uploads/RexVerify.png",
           "richBody": "Devin developed a custom web-based verification platform that securely automates bank account balance verification and background checks, delivering professional, shareable reports for individuals and businesses.\n"
+        },
+        {
+          "title": "Pride Mechanical",
+          "titleAlign": "center",
+          "url": "https://pride-mechanical.com/",
+          "image": "/uploads/Pride-Mechanical.png",
+          "richBody": "Designed a website that showcases Pride Mechanical's expertise in residential, commercial, and agricultural HVAC and plumbing services, including specialized solutions for dairy farms. Devin highlights the family-owned business story and builds trust with potential customers in the About section of the page. \n"
         }
       ],
       "background": "light",
