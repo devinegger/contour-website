@@ -81,6 +81,13 @@
           "url": "https://www.dykennels.com/",
           "image": "/uploads/DYKennels.png",
           "richBody": "Designed a content rich mobile-friendly website for Labrador Retriever Breeders that showcases available puppies, breeder expertise, and a clear step-by-step process for bringing home a new Labrador Retriever puppy.\n"
+        },
+        {
+          "title": "Rex Verify",
+          "titleAlign": "center",
+          "url": "https://rexverify.com/about",
+          "image": "/uploads/RexVerify.png",
+          "richBody": "Devin developed a custom web-based verification platform that securely automates bank account balance verification and background checks, delivering professional, shareable reports for individuals and businesses.\n"
         }
       ],
       "background": "light",
